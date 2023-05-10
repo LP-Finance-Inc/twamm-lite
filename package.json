@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/LP-Finance-Inc/twamm-lite#readme",
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@solana/spl-token": "^0.3.7",
     "@solana/spl-token-registry": "^0.2.4574",

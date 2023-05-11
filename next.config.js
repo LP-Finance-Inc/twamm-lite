@@ -5,7 +5,6 @@ const withTM = require("next-transpile-modules")(libs);
 
 const nextConfig = withTM({
   reactStrictMode: true,
-  output: "standalone",
   swcMinify: true,
   webpack: (config, { isServer }) => {
     config.module.rules.push({

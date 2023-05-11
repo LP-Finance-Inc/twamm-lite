@@ -1,15 +1,16 @@
-const libs = ['@solana/wallet-adapter-base'];
-const withTM = require('next-transpile-modules')(libs);
+const libs = ["@solana/wallet-adapter-base"];
+const withTM = require("next-transpile-modules")(libs);
 
 /** @type {import('next').NextConfig} */
 
 const nextConfig = withTM({
   reactStrictMode: true,
+  output: "standalone",
   swcMinify: true,
   webpack: (config, { isServer }) => {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
+      use: ["@svgr/webpack"],
     });
 
     const cfg = {
@@ -26,7 +27,7 @@ const nextConfig = withTM({
 
     if (!isServer) {
       cfg.optimization.splitChunks = {
-        chunks: 'all',
+        chunks: "all",
         minSize: 20480,
       };
     }

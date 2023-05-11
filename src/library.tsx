@@ -15,12 +15,9 @@ const scriptDomain =
 
     const url = (document.currentScript as HTMLScriptElement)?.src;
 
-    console.log("url", url);
-
     if (url) {
       return new URL(url).origin;
     }
-    return;
   })() || "https://lite.lp.finance";
 
 async function loadRemote(id: string, href: string, type: "text/javascript" | "stylesheet") {
@@ -30,7 +27,7 @@ async function loadRemote(id: string, href: string, type: "text/javascript" | "s
     if (existing) {
       res({});
     } else {
-      let el: HTMLScriptElement | HTMLLinkElement = type === "text/javascript" ? document.createElement("script") : document.createElement("link");
+      const el: HTMLScriptElement | HTMLLinkElement = type === "text/javascript" ? document.createElement("script") : document.createElement("link");
 
       el.id = id;
       el.onload = res;
@@ -61,7 +58,6 @@ async function loadTwamm() {
     ]);
     loadRemote("twamm-load-styles-twamm", `${scriptDomain}/${bundleName}-twamm.css`, "stylesheet");
   } catch (error) {
-    console.error(`Error loading twamm terminal: ${error}`);
     throw new Error(`Error loading twamm terminal: ${error}`);
   }
 }
@@ -70,7 +66,7 @@ const defaultStyles: CSSProperties = {
   zIndex: 50,
 };
 
-const EmptyJSX = () => <></>;
+const EmptyJSX = () => null;
 
 const RenderLoadableTwamm = (props: Init) => {
   const [loaded, setLoaded] = useState(false);
@@ -103,26 +99,27 @@ const RenderLoadableTwamm = (props: Init) => {
 };
 
 const RenderShell = (props: Init) => {
-  const displayMode = props.displayMode;
-  const containerStyles = props.containerStyles;
-  const containerClassName = props.containerClassName;
+  const { displayMode, containerStyles, containerClassName } = props;
 
-  const displayClassName = useMemo(() => {
+  const displayClassName: any = useMemo(() => {
     if (!displayMode || displayMode === "modal") {
       return "fixed top-0 w-screen h-screen flex items-center justify-center bg-black/50";
-    } else if (displayMode === "integrated" || displayMode === "widget") {
+    }
+    if (displayMode === "integrated" || displayMode === "widget") {
       return "flex items-center justify-center w-full h-full";
     }
+    return null;
   }, [displayMode]);
 
-  const contentClassName = useMemo(() => {
+  const contentClassName: any = useMemo(() => {
     if (!displayMode || displayMode === "modal") {
-      return `flex flex-col h-screen w-screen max-h-[90vh] md:max-h-[600px] max-w-[360px] overflow-auto text-black relative bg-jupiter-bg rounded-lg webkit-scrollbar ${
-        containerClassName || ""
-      }`;
-    } else if (displayMode === "integrated" || displayMode === "widget") {
+      return `flex flex-col h-screen w-screen max-h-[90vh] md:max-h-[600px]
+       max-w-[360px] overflow-auto text-black relative bg-jupiter-bg rounded-lg webkit-scrollbar ${containerClassName || ""}`;
+    }
+    if (displayMode === "integrated" || displayMode === "widget") {
       return "flex flex-col h-full w-full overflow-auto text-black relative webkit-scrollbar";
     }
+    return null;
   }, [displayMode]);
 
   const onClose = () => {
@@ -133,11 +130,6 @@ const RenderShell = (props: Init) => {
 
   return (
     <div className={displayClassName}>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins&display=swap"
-        rel="stylesheet"
-      ></link>
-
       <div style={{ ...defaultStyles, ...containerStyles }} className={contentClassName}>
         <RenderLoadableTwamm {...props} />
       </div>
@@ -153,7 +145,7 @@ const RenderWidgetShell = (props: Init) => {
   const classes = useMemo(() => {
     const size = props.widgetStyle?.size || "default";
 
-    let result: { containerClassName: string; contentClassName: string } | undefined = undefined;
+    let result: { containerClassName: string; contentClassName: string } | undefined;
 
     if (!props.widgetStyle?.position || props.widgetStyle?.position === "bottom-right") {
       result = {
@@ -192,7 +184,7 @@ const RenderWidgetShell = (props: Init) => {
       <div
         className={`${classes.widgetContainerClassName} rounded-full bg-black flex items-center justify-center cursor-pointer`}
         onClick={() => setIsOpen(!isOpen)}
-      ></div>
+      />
 
       <div
         id="integrated-terminal"
@@ -210,7 +202,6 @@ const RenderWidgetShell = (props: Init) => {
 
 async function init(props: Init) {
   const { passThroughWallet, onSwapError, onSuccess, integratedTargetId, ...restProps } = props;
-  console.log(restProps);
 
   const targetDiv = document.createElement("div");
   const instanceExist = document.getElementById(containerId);
@@ -253,14 +244,13 @@ async function init(props: Init) {
 const attributes = (document.currentScript as HTMLScriptElement)?.attributes;
 
 if (typeof window !== "undefined") {
-  document.onreadystatechange = function () {
+  document.onreadystatechange = () => {
     const loadComplete = document.readyState === "complete";
     const shouldPreload = Boolean(attributes.getNamedItem("data-preload"));
 
     if (loadComplete && shouldPreload) {
       setTimeout(() => {
         loadTwamm().catch((error) => {
-          console.error(`Error pre-loading twamm terminal: ${error}`);
           throw new Error(`Error pre-loading twamm terminal: ${error}`);
         });
       }, 2000);
@@ -272,7 +262,6 @@ const resume = () => {
   const instanceExist = document.getElementById(containerId);
   if (instanceExist) {
     instanceExist.style.display = "block";
-    return;
   }
 };
 

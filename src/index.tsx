@@ -1,7 +1,3 @@
-import { Init } from "./types";
-
-const RenderTwamm = (props: Init) => {
-  return;
-};
+const RenderTwamm = () => <div>Home</div>;
 
 export { RenderTwamm };

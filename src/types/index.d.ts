@@ -2,7 +2,7 @@ import { CSSProperties } from "react";
 import { Root } from "react-dom/client";
 
 import { Wallet } from "@solana/wallet-adapter-react";
-import { PublicKey, TransactionError } from "@solana/web3.js";
+import { TransactionError } from "@solana/web3.js";
 
 declare global {
   interface Window {
@@ -14,14 +14,14 @@ export type WidgetPosition = "bottom-left" | "bottom-right" | "top-left" | "top-
 
 export type WidgetSize = "sm" | "default";
 
-export type DEFAULT_EXPLORER = "Solana Explorer" | "Solscan" | "Solana Beach" | "SolanaFM";
+export type DefaultExplorer = "Solana Explorer" | "Solscan" | "Solana Beach" | "SolanaFM";
 
 export interface Init {
   endpoint: string;
   platformFeeAndAccounts?: PlatformFeeAndAccounts;
   formProps?: FormProps;
   strictTokenList?: boolean;
-  defaultExplorer?: DEFAULT_EXPLORER;
+  defaultExplorer?: DefaultExplorer;
   displayMode?: "modal" | "integrated" | "widget";
   integratedTargetId?: string;
   widgetStyle?: {

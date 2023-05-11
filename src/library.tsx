@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 
 import { Init } from "./types";
 
-const packageJson = require("../package.json");
+import packageJson from "../package.json";
 
 const containerId = "twamm-terminal";
 const bundleName = `main-${packageJson.version}`;
@@ -15,14 +15,13 @@ const scriptDomain =
 
     const url = (document.currentScript as HTMLScriptElement)?.src;
 
-    console.log("url",url);
-    
+    console.log("url", url);
 
     if (url) {
       return new URL(url).origin;
     }
     return;
-  })() || "domain_url";
+  })() || "https://lite.lp.finance";
 
 async function loadRemote(id: string, href: string, type: "text/javascript" | "stylesheet") {
   return new Promise((res, rej) => {
@@ -211,6 +210,8 @@ const RenderWidgetShell = (props: Init) => {
 
 async function init(props: Init) {
   const { passThroughWallet, onSwapError, onSuccess, integratedTargetId, ...restProps } = props;
+  console.log(restProps);
+
   const targetDiv = document.createElement("div");
   const instanceExist = document.getElementById(containerId);
 

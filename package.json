@@ -2,9 +2,6 @@
   "name": "twamm-lite",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "16.x"
-  },
   "email": "contact@lp.finance",
   "author": "eric lee <contact@lp.finance>",
   "scripts": {

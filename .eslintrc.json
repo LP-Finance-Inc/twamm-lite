@@ -1,9 +1,9 @@
 {
   "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript", "prettier"],
   "plugins": ["prettier"],
-  // "parserOptions": {
-  //   "project": "./tsconfig.json"
-  // },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "rules": {
     "import/prefer-default-export": 0,
     "max-len": ["error", { "code": 150, "comments": 120 }],
@@ -25,5 +25,8 @@
     "react": {
       "version": "detect"
     }
+  },
+  "env": {
+    "node": true
   }
 }

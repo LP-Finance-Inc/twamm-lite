@@ -24,7 +24,6 @@ const nextConfig = {
     if (!isServer) {
       cfg.optimization.splitChunks = {
         chunks: "all",
-        minSize: 20480,
       };
     }
 

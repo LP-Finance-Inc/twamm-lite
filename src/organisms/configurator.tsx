@@ -64,7 +64,6 @@ export default function Configurator() {
       <input
         className="mt-2 text-white w-full flex justify-between items-center space-x-2 
         text-left rounded-md bg-white/10 px-4 py-2 text-sm font-medium shadow-sm border border-white/10"
-        value={0}
         inputMode="numeric"
       />
       <div className="w-full border-b border-white/10 py-3" />

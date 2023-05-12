@@ -15,14 +15,6 @@
     "build-widget": "NODE_ENV=production MODE=widget webpack",
     "analyse": "NODE_ENV=production MODE=widget ANALYSE=true webpack"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LP-Finance-Inc/twamm-lite.git"
-  },
-  "bugs": {
-    "url": "https://github.com/LP-Finance-Inc/twamm-lite/issues"
-  },
-  "homepage": "https://github.com/LP-Finance-Inc/twamm-lite#readme",
   "keywords": [
     "twamm-lite"
   ],

@@ -1,9 +1,6 @@
-const libs = ["@solana/wallet-adapter-base"];
-const withTM = require("next-transpile-modules")(libs);
-
 /** @type {import('next').NextConfig} */
 
-const nextConfig = withTM({
+const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   webpack: (config, { isServer }) => {
@@ -33,6 +30,6 @@ const nextConfig = withTM({
 
     return cfg;
   },
-});
+};
 
 module.exports = nextConfig;

@@ -140,7 +140,7 @@ const RenderShell = (props: Init) => {
 };
 
 const RenderWidgetShell = (props: Init) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const classes = useMemo(() => {
     const size = props.widgetStyle?.size || "default";

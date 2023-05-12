@@ -46,3 +46,15 @@ export interface TwammTerminal {
   onSwapError: Init["onSwapError"];
   onSuccess: Init["onSuccess"];
 }
+
+export interface FormConfigurator {
+  fixedInputMint: boolean;
+  fixedOutputMint: boolean;
+  fixedAmount: boolean;
+  initialAmount: string;
+  useWalletPassthrough: boolean;
+  initialInputMint: string;
+  initialOutputMint: string;
+  strictTokenList: boolean;
+  defaultExplorer: DEFAULT_EXPLORER;
+}

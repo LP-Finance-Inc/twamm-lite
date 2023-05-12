@@ -1,3 +1,3 @@
-const RenderTwamm = () => <div>Home</div>;
-
-export { RenderTwamm };
+export function RenderTwamm() {
+  return null;
+}

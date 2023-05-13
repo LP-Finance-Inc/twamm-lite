@@ -34,7 +34,7 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Execution Period</p>
-          <p className="text-xs text-white/30">Option to swap with Jupiter and TWAMM or only TWAMM.</p>
+          <p className="text-xs text-white/30">Option to swap with jupiter and twamm or only twamm.</p>
         </div>
         <Toggle
           className="min-w-[40px]"
@@ -44,10 +44,11 @@ export default function Configurator({
       </div>
       <div className="w-full border-b border-white/10 py-3" />
 
+      {/* Fee BPS */}
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Fee BPS</p>
-          <p className="text-xs text-white/30">Fees charged to Jupiter swap transactions.</p>
+          <p className="text-xs text-white/30">Fees charged to jupiter swap transactions.</p>
         </div>
       </div>
       <input
@@ -62,10 +63,11 @@ export default function Configurator({
       />
       <div className="w-full border-b border-white/10 py-3" />
 
+      {/* Fee Account */}
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Fee Account</p>
-          <p className="text-xs text-white/30">Account to receive Jupiter swap fees.</p>
+          <p className="text-xs text-white/30">Account to receive jupiter swap fees.</p>
         </div>
       </div>
       <input
@@ -80,10 +82,11 @@ export default function Configurator({
       />
       <div className="w-full border-b border-white/10 py-3" />
 
+      {/* Platform Fee Account */}
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Platform Fee Account</p>
-          <p className="text-xs text-white/30">Account to receive TWAMM fees.</p>
+          <p className="text-xs text-white/30">Account to receive twamm fees.</p>
         </div>
       </div>
       <input
@@ -98,6 +101,7 @@ export default function Configurator({
       />
       <div className="w-full border-b border-white/10 py-3" />
 
+      {/* Supported Token */}
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Supported Token</p>
@@ -120,7 +124,7 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Simulate wallet passthrough</p>
-          <p className="text-xs text-white/30">Simulate Terminal with a fake wallet passthrough</p>
+          <p className="text-xs text-white/30">Simulate terminal with a fake wallet passthrough</p>
         </div>
         <Toggle className="min-w-[40px]" active={useWalletPassthrough} onClick={() => setValue("useWalletPassthrough", !useWalletPassthrough)} />
       </div>

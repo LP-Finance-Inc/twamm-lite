@@ -34,7 +34,7 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Execution Period</p>
-          <p className="text-xs text-white/30">execution period</p>
+          <p className="text-xs text-white/30">Option to swap with Jupiter and TWAMM or only TWAMM.</p>
         </div>
         <Toggle
           className="min-w-[40px]"
@@ -46,8 +46,8 @@ export default function Configurator({
 
       <div className="flex justify-between mt-5">
         <div>
-          <p className="text-sm text-white/75">Fee Bps</p>
-          <p className="text-xs text-white/30">feeBps</p>
+          <p className="text-sm text-white/75">Fee BPS</p>
+          <p className="text-xs text-white/30">Fees charged to Jupiter swap transactions.</p>
         </div>
       </div>
       <input
@@ -65,7 +65,7 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Fee Account</p>
-          <p className="text-xs text-white/30">feeAccount</p>
+          <p className="text-xs text-white/30">Account to receive Jupiter swap fees.</p>
         </div>
       </div>
       <input
@@ -83,7 +83,7 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Platform Fee Account</p>
-          <p className="text-xs text-white/30">platformFeeAccount</p>
+          <p className="text-xs text-white/30">Account to receive TWAMM fees.</p>
         </div>
       </div>
       <input
@@ -101,7 +101,7 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Supported Token</p>
-          <p className="text-xs text-white/30">supported token list</p>
+          <p className="text-xs text-white/30">Tokens to be displayed. Comma separated mint address.</p>
         </div>
       </div>
       <input

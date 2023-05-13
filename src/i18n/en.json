@@ -1,6 +1,6 @@
 {
     "Heading": "Twamm Lite",
-    "Subtitle": "An open-sourced, lite version of twamm that provides end-to-end swap flow by linking it in your HTML. Check out the visual demo for the various integration modes below.",
+    "Subtitle": "Integrate LP Finance TWAMM to your frontend within a few lines of code.",
     "Tabs": [
         "Modal",
         "Integrated",

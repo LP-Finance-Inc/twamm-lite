@@ -1,3 +1,3 @@
 export function RenderTwamm() {
-  return null;
+  return <div>Home</div>;
 }

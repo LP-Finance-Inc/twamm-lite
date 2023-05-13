@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TwitterIcon({ width = "24", height = "24" }: { width?: string; height?: string }) {
+export default function TwitterIcon({ width = "30", height = "30" }: { width?: string; height?: string }) {
   return (
     <svg width={width} height={height} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

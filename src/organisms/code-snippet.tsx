@@ -24,24 +24,12 @@ const { wallet } = useWallet();
     if (displayMode === "widget") return { displayMode: "widget" };
   })();
 
-  const FIXED_INPUT_MINT_VALUES = {
-    initialInputMint: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    fixedInputMint: true,
-  };
-  const FIXED_OUTPUT_MINT_VALUES = {
-    initialOutputMint: WRAPPED_SOL_MINT.toString(),
-    fixedOutputMint: true,
-  };
-  const FIXED_AMOUNT_VALUES = {
-    initialAmount: formConfigurator.initialAmount,
-    fixedAmount: true,
-  };
-
   const formPropsToFormat = {
-    ...(formConfigurator.fixedInputMint ? FIXED_INPUT_MINT_VALUES : undefined),
-    ...(formConfigurator.fixedOutputMint ? FIXED_OUTPUT_MINT_VALUES : undefined),
-    ...(formConfigurator.fixedAmount ? FIXED_AMOUNT_VALUES : undefined),
-    ...(formConfigurator.initialAmount ? { initialAmount: formConfigurator.initialAmount } : undefined),
+    ...(formConfigurator.feeAccount ? { feeAccount: formConfigurator.feeAccount } : undefined),
+    ...(formConfigurator.feeBps ? { feeBps: formConfigurator.feeBps } : undefined),
+    ...(formConfigurator.platformFeeAccount ? { platformFeeAccount: formConfigurator.platformFeeAccount } : undefined),
+    ...(formConfigurator.executionPeriod ? { executionPeriod: formConfigurator.executionPeriod } : undefined),
+    ...(formConfigurator.supportedToken ? { supportedToken: formConfigurator.supportedToken } : undefined),
   };
   const valuesToFormat = {
     ...DISPLAY_MODE_VALUES,

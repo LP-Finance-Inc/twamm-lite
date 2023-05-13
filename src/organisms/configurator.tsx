@@ -5,17 +5,19 @@ import Toggle from "src/molecules/toggle";
 import { FormConfigurator } from "src/types";
 
 export default function Configurator({
-  fixedInputMint,
-  fixedOutputMint,
-  fixedAmount,
-  initialAmount,
+  feeAccount,
+  feeBps,
+  platformFeeAccount,
+  supportedToken,
+  executionPeriod,
   useWalletPassthrough,
   setValue,
 }: {
-  fixedInputMint: boolean;
-  fixedOutputMint: boolean;
-  fixedAmount: boolean;
-  initialAmount: string;
+  feeAccount: string;
+  feeBps: string;
+  platformFeeAccount: string;
+  supportedToken: string;
+  executionPeriod: boolean;
   useWalletPassthrough: boolean;
   setValue: UseFormSetValue<FormConfigurator>;
 }) {
@@ -28,57 +30,88 @@ export default function Configurator({
 
       <div className="w-full border-b border-white/10 py-1" />
 
-      {/* Fixed input */}
+      {/* Execution Period */}
       <div className="flex justify-between mt-5">
         <div>
-          <p className="text-sm text-white/75">Fixed input mint</p>
-          <p className="text-xs text-white/30">Input mint cannot be changed</p>
-        </div>
-        <Toggle className="min-w-[40px]" active={fixedInputMint} onClick={() => setValue("fixedInputMint", !fixedInputMint, { shouldDirty: true })} />
-      </div>
-      <div className="w-full border-b border-white/10 py-3" />
-
-      {/* Fixed output */}
-      <div className="flex justify-between mt-5">
-        <div>
-          <p className="text-sm text-white/75">Fixed output mint</p>
-          <p className="text-xs text-white/30">Output mint cannot be changed</p>
+          <p className="text-sm text-white/75">Execution Period</p>
+          <p className="text-xs text-white/30">execution period</p>
         </div>
         <Toggle
           className="min-w-[40px]"
-          active={fixedOutputMint}
-          onClick={() => setValue("fixedOutputMint", !fixedOutputMint, { shouldDirty: true })}
+          active={executionPeriod}
+          onClick={() => setValue("executionPeriod", !executionPeriod, { shouldDirty: true })}
         />
       </div>
       <div className="w-full border-b border-white/10 py-3" />
 
-      {/* Fixed amount */}
       <div className="flex justify-between mt-5">
         <div>
-          <p className="text-sm text-white/75">Fixed amount</p>
-          <p className="text-xs text-white/30">Depending on Exact In / Exact Out, the amount cannot be changed</p>
-        </div>
-        <Toggle className="min-w-[40px]" active={fixedAmount} onClick={() => setValue("fixedAmount", !fixedAmount, { shouldDirty: true })} />
-      </div>
-      <div className="w-full border-b border-white/10 py-3" />
-
-      <div className="flex justify-between mt-5">
-        <div>
-          <p className="text-sm text-white/75">Initial amount</p>
-          <p className="text-xs text-white/30">Amount to be prefilled on first load</p>
+          <p className="text-sm text-white/75">Fee Bps</p>
+          <p className="text-xs text-white/30">feeBps</p>
         </div>
       </div>
       <input
         className="mt-2 text-white w-full flex justify-between items-center space-x-2 
         text-left rounded-md bg-white/10 px-4 py-2 text-sm font-medium shadow-sm border border-white/10"
-        value={initialAmount}
+        value={feeBps}
         inputMode="numeric"
         onChange={(e) => {
-          const regex = /^[0-9\b]+$/;
           const value = e.target.value;
-          if (value === "" || regex.test(value)) {
-            setValue("initialAmount", value);
-          }
+          setValue("feeBps", value);
+        }}
+      />
+      <div className="w-full border-b border-white/10 py-3" />
+
+      <div className="flex justify-between mt-5">
+        <div>
+          <p className="text-sm text-white/75">Fee Account</p>
+          <p className="text-xs text-white/30">feeAccount</p>
+        </div>
+      </div>
+      <input
+        className="mt-2 text-white w-full flex justify-between items-center space-x-2 
+        text-left rounded-md bg-white/10 px-4 py-2 text-sm font-medium shadow-sm border border-white/10"
+        value={feeAccount}
+        inputMode="text"
+        onChange={(e) => {
+          const value = e.target.value;
+          setValue("feeAccount", value);
+        }}
+      />
+      <div className="w-full border-b border-white/10 py-3" />
+
+      <div className="flex justify-between mt-5">
+        <div>
+          <p className="text-sm text-white/75">Platform Fee Account</p>
+          <p className="text-xs text-white/30">platformFeeAccount</p>
+        </div>
+      </div>
+      <input
+        className="mt-2 text-white w-full flex justify-between items-center space-x-2 
+        text-left rounded-md bg-white/10 px-4 py-2 text-sm font-medium shadow-sm border border-white/10"
+        value={platformFeeAccount}
+        inputMode="text"
+        onChange={(e) => {
+          const value = e.target.value;
+          setValue("platformFeeAccount", value);
+        }}
+      />
+      <div className="w-full border-b border-white/10 py-3" />
+
+      <div className="flex justify-between mt-5">
+        <div>
+          <p className="text-sm text-white/75">Supported Token</p>
+          <p className="text-xs text-white/30">supported token list</p>
+        </div>
+      </div>
+      <input
+        className="mt-2 text-white w-full flex justify-between items-center space-x-2 
+        text-left rounded-md bg-white/10 px-4 py-2 text-sm font-medium shadow-sm border border-white/10"
+        value={supportedToken}
+        inputMode="text"
+        onChange={(e) => {
+          const value = e.target.value;
+          setValue("supportedToken", value);
         }}
       />
       <div className="w-full border-b border-white/10 py-3" />

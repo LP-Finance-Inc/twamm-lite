@@ -21,20 +21,16 @@ export type WidgetSize = "sm" | "default";
 export type DefaultExplorer = "Solana Explorer" | "Solscan" | "Solana Beach" | "SolanaFM";
 
 export interface FormProps {
-  initialAmount?: string;
-  fixedAmount?: boolean;
-  initialInputMint?: string;
-  fixedInputMint?: boolean;
-  initialOutputMint?: string;
-  fixedOutputMint?: boolean;
+  feeAccount: string;
+  feeBps: string;
+  platformFeeAccount: string;
+  supportedToken: string;
+  executionPeriod: boolean;
 }
 
 export interface Init {
   endpoint: string;
-  platformFeeAndAccounts?: PlatformFeeAndAccounts;
   formProps?: FormProps;
-  strictTokenList?: boolean;
-  defaultExplorer?: DefaultExplorer;
   displayMode?: "modal" | "integrated" | "widget";
   integratedTargetId?: string;
   widgetStyle?: {
@@ -61,13 +57,10 @@ export interface TwammTerminal {
 }
 
 export interface FormConfigurator {
-  fixedInputMint: boolean;
-  fixedOutputMint: boolean;
-  fixedAmount: boolean;
-  initialAmount: string;
+  feeAccount: string;
+  feeBps: string;
+  platformFeeAccount: string;
+  supportedToken: string;
+  executionPeriod: boolean;
   useWalletPassthrough: boolean;
-  initialInputMint: string;
-  initialOutputMint: string;
-  strictTokenList: boolean;
-  defaultExplorer: DefaultExplorer;
 }

@@ -8,7 +8,6 @@ import { Wallet } from "@solana/wallet-adapter-react";
 import { UnsafeBurnerWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { WalletReadyState } from "@solana/wallet-adapter-base";
 
-import { WRAPPED_SOL_MINT } from "src/constants";
 import { Init, FormConfigurator } from "src/types";
 import i18n from "src/i18n/en.json";
 import { clusterApiUrl } from "src/env";
@@ -46,15 +45,12 @@ export default function App() {
 
   const { watch, setValue } = useForm<FormConfigurator>({
     defaultValues: {
-      fixedInputMint: false,
-      fixedOutputMint: false,
-      fixedAmount: false,
-      initialAmount: "",
+      feeAccount: "",
+      feeBps: "",
+      platformFeeAccount: "",
+      supportedToken: "",
+      executionPeriod: false,
       useWalletPassthrough: false,
-      initialInputMint: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-      initialOutputMint: WRAPPED_SOL_MINT.toString(),
-      strictTokenList: true,
-      defaultExplorer: "Solana Explorer",
     },
   });
 

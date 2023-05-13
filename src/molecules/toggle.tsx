@@ -2,20 +2,22 @@ import classNames from "classnames";
 
 type Props = {
   active?: boolean;
+  onClick: (active: boolean) => void;
   className?: string;
   dotClassName?: string;
 };
 
-export default function Toggle({ active, className, dotClassName }: Props) {
+export default function Toggle({ active, onClick, className, dotClassName }: Props) {
   const activeClass = "bg-white transform translate-x-full";
   const inactiveClass = "bg-white";
   return (
     <button
       type="button"
       className={classNames("w-10 h-[22px] flex items-center rounded-full p-[1px] cursor-pointer", className, {
-        "bg-jupiter-jungle-green": active,
+        "bg-twamm-jungle-green": active,
         "bg-[#010101]": !active,
       })}
+      onClick={() => onClick(!active)}
     >
       <div
         className={classNames(

@@ -9,12 +9,25 @@ declare global {
     Twamm: TwammTerminal;
   }
 }
+export declare type PlatformFeeAndAccounts = {
+  feeBps: number;
+  feeAccounts: Map<string, PublicKey>;
+};
 
 export type WidgetPosition = "bottom-left" | "bottom-right" | "top-left" | "top-right";
 
 export type WidgetSize = "sm" | "default";
 
 export type DefaultExplorer = "Solana Explorer" | "Solscan" | "Solana Beach" | "SolanaFM";
+
+export interface FormProps {
+  initialAmount?: string;
+  fixedAmount?: boolean;
+  initialInputMint?: string;
+  fixedInputMint?: boolean;
+  initialOutputMint?: string;
+  fixedOutputMint?: boolean;
+}
 
 export interface Init {
   endpoint: string;
@@ -56,5 +69,5 @@ export interface FormConfigurator {
   initialInputMint: string;
   initialOutputMint: string;
   strictTokenList: boolean;
-  defaultExplorer: DEFAULT_EXPLORER;
+  defaultExplorer: DefaultExplorer;
 }

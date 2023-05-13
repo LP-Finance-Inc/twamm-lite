@@ -44,7 +44,7 @@ export default function App() {
     }
   }, [tab]);
 
-  const { watch } = useForm<FormConfigurator>({
+  const { watch, setValue } = useForm<FormConfigurator>({
     defaultValues: {
       fixedInputMint: false,
       fixedOutputMint: false,
@@ -90,7 +90,7 @@ export default function App() {
           </div>
           <div className="flex justify-center">
             <div className="max-w-6xl bg-black/25 mt-12 rounded-xl flex flex-col md:flex-row w-full md:p-4">
-              <Configurator />
+              <Configurator {...watchAllFields} setValue={setValue} />
               <div className="mt-8 md:mt-0 md:ml-4 h-full w-full bg-black/40 rounded-xl flex flex-col">
                 <div className="mt-4 flex justify-center ">
                   <button

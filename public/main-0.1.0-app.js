@@ -1,2 +1,2 @@
-"use strict";(self.webpackChunktwamm_lite=self.webpackChunktwamm_lite||[]).push([[443],{3155:(e,n,m)=>{Object.defineProperty(n,"__esModule",{value:!0}),n.RenderTwamm=void 0;const r=m(1527);n.RenderTwamm=function(){return(0,r.jsx)("div",{children:"Home"})}}},e=>{var n=(3155,e(e.s=3155));window.TwammRenderer=n}]);
+"use strict";(self.webpackChunktwamm_lite=self.webpackChunktwamm_lite||[]).push([[443],{3155:(e,n,t)=>{Object.defineProperty(n,"__esModule",{value:!0}),n.RenderTwamm=void 0;const m=t(1527);n.RenderTwamm=function(){return(0,m.jsx)("div",{})}}},e=>{var n=(3155,e(e.s=3155));window.TwammRenderer=n}]);
 //# sourceMappingURL=main-0.1.0-app.js.map

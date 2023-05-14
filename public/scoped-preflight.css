@@ -4,20 +4,34 @@
   box-sizing: border-box; /* 1 */
   border-width: 0; /* 2 */
   border-style: solid; /* 2 */
-  border-color: theme('borderColor.DEFAULT', currentColor); /* 2 */
+  border-color: theme("borderColor.DEFAULT", currentColor); /* 2 */
 }
 #twamm-terminal ::before,
 #twamm-terminal ::after {
-  --tw-content: '';
+  --tw-content: "";
 }
 #twamm-terminal html {
   line-height: 1.5; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -moz-tab-size: 4; /* 3 */
   tab-size: 4; /* 3 */
-  font-family: theme('fontFamily.sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"); /* 4 */
-  font-feature-settings: theme('fontFamily.sans[1].fontFeatureSettings', normal); /* 5 */
-  font-variation-settings: theme('fontFamily.sans[1].fontVariationSettings', normal); /* 6 */
+  font-family: theme(
+    "fontFamily.sans",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji"
+  ); /* 4 */
 }
 #twamm-terminal body {
   margin: 0; /* 1 */
@@ -52,7 +66,7 @@
 #twamm-terminal kbd,
 #twamm-terminal samp,
 #twamm-terminal pre {
-  font-family: theme('fontFamily.mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace); /* 1 */
+  font-family: theme("fontFamily.mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace); /* 1 */
   font-size: 1em; /* 2 */
 }
 #twamm-terminal small {
@@ -94,9 +108,9 @@
   text-transform: none;
 }
 #twamm-terminal button,
-#twamm-terminal [type='button'],
-#twamm-terminal [type='reset'],
-#twamm-terminal [type='submit'] {
+#twamm-terminal [type="button"],
+#twamm-terminal [type="reset"],
+#twamm-terminal [type="submit"] {
   -webkit-appearance: button; /* 1 */
   background-color: transparent; /* 2 */
   background-image: none; /* 2 */
@@ -114,7 +128,7 @@
 #twamm-terminal ::-webkit-outer-spin-button {
   height: auto;
 }
-#twamm-terminal [type='search'] {
+#twamm-terminal [type="search"] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
@@ -163,7 +177,7 @@
 #twamm-terminal input::placeholder,
 #twamm-terminal textarea::placeholder {
   opacity: 1; /* 1 */
-  color: theme('colors.gray.400', #9ca3af); /* 2 */
+  color: theme("colors.gray.400", #9ca3af); /* 2 */
 }
 #twamm-terminal button,
 #twamm-terminal [role="button"] {

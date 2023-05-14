@@ -3,6 +3,14 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "https://jup.ag",
+      },
+    ],
+  },
   webpack: (config, { isServer }) => {
     config.module.rules.push({
       test: /\.svg$/,

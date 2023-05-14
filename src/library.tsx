@@ -3,8 +3,8 @@ import { CSSProperties, useState, useEffect, useMemo } from "react";
 import { createRoot } from "react-dom/client";
 
 import { Init } from "./types";
-
 import packageJson from "../package.json";
+import JupiterLogo from "src/icons/jupiter-logo";
 
 const containerId = "twamm-terminal";
 const bundleName = `main-${packageJson.version}`;
@@ -56,7 +56,7 @@ async function loadTwamm() {
       loadRemote("twamm-load-styles-tailwind", `${scriptDomain}/${bundleName}-Tailwind.css`, "stylesheet"),
       loadRemote("twamm-load-styles-preflight", `${scriptDomain}/scoped-preflight.css`, "stylesheet"),
     ]);
-    loadRemote("twamm-load-styles-twamm", `${scriptDomain}/${bundleName}-twamm.css`, "stylesheet");
+    loadRemote("twamm-load-styles-twamm", `${scriptDomain}/${bundleName}-Twamm.css`, "stylesheet");
   } catch (error) {
     throw new Error(`Error loading twamm terminal: ${error}`);
   }
@@ -190,7 +190,9 @@ const RenderWidgetShell = (props: Init) => {
       <div
         className={`${classes.widgetContainerClassName} rounded-full bg-black flex items-center justify-center cursor-pointer`}
         onClick={() => setIsOpen(!isOpen)}
-      />
+      >
+        <JupiterLogo width={classes.widgetLogoSize} height={classes.widgetLogoSize} />
+      </div>
 
       <div
         id="integrated-terminal"

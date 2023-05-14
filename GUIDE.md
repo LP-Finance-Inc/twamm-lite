@@ -8,6 +8,6 @@
 ## Scoping Tailwind Preflight CSS
 
 - cp node_modules/tailwindcss/lib/css/preflight.css ./preflight.stylus
-- Scope entire file with #jupiter-terminal
+- Scope entire file with #twamm-terminal
 - npx stylus ./preflight.stylus -o ./public/scoped-preflight.css
 - rm ./preflight.stylus

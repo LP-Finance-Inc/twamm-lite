@@ -66,8 +66,6 @@ const defaultStyles: CSSProperties = {
   zIndex: 50,
 };
 
-const EmptyJSX = () => null;
-
 const RenderLoadableTwamm = (props: Init) => {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -98,8 +96,12 @@ const RenderLoadableTwamm = (props: Init) => {
   return <RenderTwamm {...props} scriptDomain={scriptDomain} />;
 };
 
+const EmptyJSX = () => null;
+
 const RenderShell = (props: Init) => {
-  const { displayMode, containerStyles, containerClassName } = props;
+  const displayMode = props.displayMode;
+  const containerStyles = props.containerStyles;
+  const containerClassName = props.containerClassName;
 
   const displayClassName: any = useMemo(() => {
     if (!displayMode || displayMode === "modal") {
@@ -130,10 +132,14 @@ const RenderShell = (props: Init) => {
 
   return (
     <div className={displayClassName}>
+      {/* eslint-disable @next/next/no-page-custom-font */}
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins&display=swap"
+        rel="stylesheet"
+      ></link>
       <div style={{ ...defaultStyles, ...containerStyles }} className={contentClassName}>
         <RenderLoadableTwamm {...props} />
       </div>
-
       {!displayMode || displayMode === "modal" ? <div onClick={onClose} className="absolute w-screen h-screen top-0 left-0" /> : null}
     </div>
   );
@@ -145,7 +151,7 @@ const RenderWidgetShell = (props: Init) => {
   const classes = useMemo(() => {
     const size = props.widgetStyle?.size || "default";
 
-    let result: { containerClassName: string; contentClassName: string } | undefined;
+    let result: { containerClassName: string; contentClassName: string } | undefined = undefined;
 
     if (!props.widgetStyle?.position || props.widgetStyle?.position === "bottom-right") {
       result = {
@@ -262,6 +268,7 @@ const resume = () => {
   const instanceExist = document.getElementById(containerId);
   if (instanceExist) {
     instanceExist.style.display = "block";
+    return;
   }
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function DiscordIcon({ width = "30", height = "30" }: { width?: string; height?: string }) {
+const DiscordIcon: React.FC<React.SVGAttributes<SVGElement>> = ({ width = "30", height = "30" }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -31,4 +31,6 @@ export default function DiscordIcon({ width = "30", height = "30" }: { width?: s
       />
     </svg>
   );
-}
+};
+
+export default DiscordIcon;

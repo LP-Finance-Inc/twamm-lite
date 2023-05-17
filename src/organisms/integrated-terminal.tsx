@@ -1,15 +1,61 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Wallet } from "@solana/wallet-adapter-react";
 
-export default function IntegratedTerminal({ rpcUrl, fakeWallet }: { rpcUrl: string | undefined; fakeWallet: Wallet | null }) {
-  useEffect(() => {}, [rpcUrl, fakeWallet]);
+import { FormProps } from "src/types";
+import { useDebouncedEffect } from "src/utils";
 
-  function hanldeOpen() {
+export default function IntegratedTerminal({ rpcUrl, fakeWallet, formProps }: { rpcUrl: string; fakeWallet: Wallet | null; formProps: FormProps }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const launchTerminal = async () => {
     window.Twamm.init({
-      displayMode: "modal",
-      endpoint: "https://rpc.helius.xyz/?api-key=d1b1b418-ee2e-4c0b-92e5-35d2c6edd259",
+      displayMode: "integrated",
+      integratedTargetId: "integrated-terminal",
+      endpoint: rpcUrl,
+      formProps,
+      passThroughWallet: fakeWallet,
     });
-  }
+  };
 
-  return <button onClick={hanldeOpen}>IntegratedTerminal </button>;
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout | undefined = undefined;
+    if (!isLoaded || !window.Twamm.init) {
+      intervalId = setInterval(() => {
+        setIsLoaded(Boolean(window.Twamm.init));
+      }, 500);
+    }
+
+    if (intervalId) {
+      return () => clearInterval(intervalId);
+    }
+  }, []);
+
+  useDebouncedEffect(
+    () => {
+      if (isLoaded && Boolean(window.Twamm.init)) {
+        launchTerminal();
+      }
+    },
+    [isLoaded, formProps, fakeWallet],
+    200,
+  );
+
+  return (
+    <div className="min-h-[600px] h-[600px] w-full rounded-2xl text-white flex flex-col items-center p-2 lg:p-4 mb-4 overflow-hidden mt-9">
+      <div className="flex flex-col lg:flex-row h-full w-full overflow-auto">
+        <div className="w-full h-full rounded-xl overflow-hidden flex justify-center">
+          {!isLoaded ? (
+            <div className="h-full w-full animate-pulse bg-white/10 mt-4 lg:mt-0 lg:ml-4 flex items-center justify-center rounded-xl">
+              <p className="">Loading...</p>
+            </div>
+          ) : null}
+
+          <div
+            id="integrated-terminal"
+            className={`flex h-full w-full max-w-[384px] overflow-auto justify-center bg-[#282830] rounded-xl ${!isLoaded ? "hidden" : ""}`}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }

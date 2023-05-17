@@ -45,10 +45,10 @@ export default function App() {
 
   const { watch, setValue } = useForm<FormConfigurator>({
     defaultValues: {
-      feeAccount: "",
-      feeBps: "",
-      platformFeeAccount: "",
-      supportedToken: "",
+      feeAccount: "9pvCGNF2aw43Smb4J1pdyobq6PnjwkhXkuFov8P42S5w",
+      feeBps: "30",
+      platformFeeAccount: "9pvCGNF2aw43Smb4J1pdyobq6PnjwkhXkuFov8P42S5w",
+      supportedToken: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v,So11111111111111111111111111111111111111112",
       executionPeriod: false,
       useWalletPassthrough: false,
     },
@@ -152,9 +152,9 @@ export default function App() {
                 </span>
 
                 <div className="flex flex-grow items-center justify-center text-white/75">
-                  {tab === "modal" ? <ModalTerminal rpcUrl={clusterApiUrl} fakeWallet={wallet} /> : null}
-                  {tab === "integrated" ? <IntegratedTerminal rpcUrl={clusterApiUrl} fakeWallet={wallet} /> : null}
-                  {tab === "widget" ? <WidgetTerminal rpcUrl={clusterApiUrl} fakeWallet={wallet} /> : null}
+                  {tab === "modal" ? <ModalTerminal rpcUrl={clusterApiUrl} fakeWallet={wallet} formProps={watchAllFields} /> : null}
+                  {tab === "integrated" ? <IntegratedTerminal rpcUrl={clusterApiUrl} fakeWallet={wallet} formProps={watchAllFields} /> : null}
+                  {tab === "widget" ? <WidgetTerminal rpcUrl={clusterApiUrl} fakeWallet={wallet} formProps={watchAllFields} /> : null}
                 </div>
               </div>
             </div>

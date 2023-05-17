@@ -4,7 +4,6 @@ import { vs2015 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import classNames from "classnames";
 
 import { Init, FormConfigurator } from "src/types";
-import { WRAPPED_SOL_MINT } from "src/constants";
 
 function addInlinesToCode(code: string, insertLines: string) {
   let lines = code.split("\n");
@@ -33,7 +32,7 @@ const { wallet } = useWallet();
   };
   const valuesToFormat = {
     ...DISPLAY_MODE_VALUES,
-    endpoint: "https://api.mainnet-beta.solana.com",
+    endpoint: process.env.NEXT_PUBLIC_CLUSTER_API_URL || "https://api.mainnet-beta.solana.com",
     ...(Object.keys(formPropsToFormat).length > 0 ? { formProps: formPropsToFormat } : undefined),
   };
 

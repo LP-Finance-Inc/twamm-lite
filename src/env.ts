@@ -1,6 +1,6 @@
 export const ankrClusterApiUrl = "https://rpc.ankr.com/solana";
 
-export const clusterApiUrl = process.env.NEXT_PUBLIC_CLUSTER_API_URL; //dynamic
+export const clusterApiUrl = process.env.NEXT_PUBLIC_CLUSTER_API_URL || "https://api.mainnet-beta.solana.com"; //dynamic
 
 export const programId: string | undefined = process.env.NEXT_PUBLIC_PROGRAM_ADDRESS;
 

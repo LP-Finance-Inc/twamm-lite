@@ -12,7 +12,15 @@ function addInlinesToCode(code: string, insertLines: string) {
   return lines.join("\n");
 }
 
-export default function CodeSnippet({ formConfigurator, displayMode }: { formConfigurator: FormConfigurator; displayMode: Init["displayMode"] }) {
+export default function CodeSnippet({
+  formConfigurator,
+  displayMode,
+  rpcUrl,
+}: {
+  formConfigurator: FormConfigurator;
+  displayMode: Init["displayMode"];
+  rpcUrl: string;
+}) {
   const USE_WALLET_SNIPPET = `import { useWallet } from '@solana/wallet-adapter-react';
 const { wallet } = useWallet();
 `;
@@ -32,7 +40,7 @@ const { wallet } = useWallet();
   };
   const valuesToFormat = {
     ...DISPLAY_MODE_VALUES,
-    endpoint: process.env.NEXT_PUBLIC_CLUSTER_API_URL || "https://api.mainnet-beta.solana.com",
+    endpoint: rpcUrl,
     ...(Object.keys(formPropsToFormat).length > 0 ? { formProps: formPropsToFormat } : undefined),
   };
 

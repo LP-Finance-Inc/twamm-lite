@@ -10,7 +10,7 @@ import { WalletReadyState } from "@solana/wallet-adapter-base";
 
 import { Init, FormConfigurator } from "src/types";
 import i18n from "src/i18n/en.json";
-import { clusterApiUrl } from "src/env";
+import { clusterApiUrl, NEXT_PUBLIC_SUPPORTED_TOKEN, feeAccount, feeBps, platformFeeAccount } from "src/env";
 import Heading from "src/atoms/heading";
 import WidgetTerminal from "src/organisms/widget-terminal";
 import ModalTerminal from "src/organisms/modal-terminal";
@@ -45,10 +45,10 @@ export default function App() {
 
   const { watch, setValue } = useForm<FormConfigurator>({
     defaultValues: {
-      feeAccount: "9pvCGNF2aw43Smb4J1pdyobq6PnjwkhXkuFov8P42S5w",
-      feeBps: "30",
-      platformFeeAccount: "9pvCGNF2aw43Smb4J1pdyobq6PnjwkhXkuFov8P42S5w",
-      supportedToken: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v,So11111111111111111111111111111111111111112",
+      feeAccount: feeAccount,
+      feeBps: feeBps.toString(),
+      platformFeeAccount: platformFeeAccount,
+      supportedToken: NEXT_PUBLIC_SUPPORTED_TOKEN,
       executionPeriod: false,
       useWalletPassthrough: false,
     },
@@ -161,7 +161,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <CodeSnippet formConfigurator={watchAllFields} displayMode={tab} />
+      <CodeSnippet formConfigurator={watchAllFields} displayMode={tab} rpcUrl={clusterApiUrl} />
       <div className="w-full bg-twamm-bg mt-12">
         <Footer />
       </div>

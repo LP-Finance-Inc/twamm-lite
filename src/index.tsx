@@ -4,9 +4,9 @@ import { Init } from "src/types";
 import { NetworkConfigurationProvider } from "src/context/network-configuration-provider";
 import { AutoConnectProvider } from "src/context/auto-connect-provider";
 import { WalletContextProvider } from "src/context/wallet-context-provider";
-import { PreferredExplorerProvider } from "src/context/preferred-explorer";
 import WalletPassthroughProvider from "src/context/wallet-passthrough-provider";
 import { NotificationProvider } from "src/context/notification-provider";
+import * as SolanaCtx from "src/context/solana-connection-context";
 
 export function RenderTwamm(props: Init) {
   return (
@@ -14,13 +14,13 @@ export function RenderTwamm(props: Init) {
       <NotificationProvider>
         <NetworkConfigurationProvider>
           <AutoConnectProvider>
-            <WalletContextProvider endpoint={props.endpoint}>
-              <PreferredExplorerProvider defaultExplorer={props.defaultExplorer}>
+            <SolanaCtx.Provider endpoint={props.endpoint}>
+              <WalletContextProvider endpoint={props.endpoint}>
                 <WalletPassthroughProvider>
                   <div></div>
                 </WalletPassthroughProvider>
-              </PreferredExplorerProvider>
-            </WalletContextProvider>
+              </WalletContextProvider>
+            </SolanaCtx.Provider>
           </AutoConnectProvider>
         </NetworkConfigurationProvider>
       </NotificationProvider>

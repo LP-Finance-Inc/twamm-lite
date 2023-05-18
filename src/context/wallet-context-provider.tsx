@@ -26,7 +26,12 @@ export const WalletContextProvider: FC<{ endpoint?: string; children: ReactNode 
       return [];
     }
 
-    return [new PhantomWalletAdapter(), new SolflareWalletAdapter(), new BackpackWalletAdapter(), new GlowWalletAdapter()];
+    return [
+      new PhantomWalletAdapter(),
+      new SolflareWalletAdapter(),
+      new BackpackWalletAdapter(),
+      new GlowWalletAdapter(),
+    ];
   }, [network]);
 
   const onError = useCallback((error: WalletError) => {

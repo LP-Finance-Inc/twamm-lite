@@ -4,14 +4,22 @@ import { Wallet } from "@solana/wallet-adapter-react";
 import { FormProps } from "src/types";
 import { useDebouncedEffect } from "src/utils";
 
-export default function IntegratedTerminal({ rpcUrl, fakeWallet, formProps }: { rpcUrl: string; fakeWallet: Wallet | null; formProps: FormProps }) {
+export default function IntegratedTerminal({
+  rpcUrl,
+  fakeWallet,
+  formProps,
+}: {
+  rpcUrl: string;
+  fakeWallet: Wallet | null;
+  formProps: FormProps;
+}) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const launchTerminal = async () => {
     window.Twamm.init({
+      endpoint: rpcUrl,
       displayMode: "integrated",
       integratedTargetId: "integrated-terminal",
-      endpoint: rpcUrl,
       formProps,
       passThroughWallet: fakeWallet,
     });
@@ -52,7 +60,9 @@ export default function IntegratedTerminal({ rpcUrl, fakeWallet, formProps }: { 
 
           <div
             id="integrated-terminal"
-            className={`flex h-full w-full max-w-[384px] overflow-auto justify-center bg-[#282830] rounded-xl ${!isLoaded ? "hidden" : ""}`}
+            className={`flex h-full w-full max-w-[384px] overflow-auto justify-center bg-[#282830] rounded-xl ${
+              !isLoaded ? "hidden" : ""
+            }`}
           />
         </div>
       </div>

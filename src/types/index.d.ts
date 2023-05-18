@@ -33,7 +33,6 @@ export interface Init {
   formProps?: FormProps;
   displayMode?: "modal" | "integrated" | "widget";
   integratedTargetId?: string;
-  defaultExplorer?: DefaultExplorer;
   widgetStyle?: {
     position?: WidgetPosition;
     size?: WidgetSize;

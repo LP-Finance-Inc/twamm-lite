@@ -14,7 +14,10 @@ interface ITwammButton {
 }
 
 const TwammButton = React.forwardRef(
-  ({ onClick, disabled, children, highlighted, className = "", size = "md", type, bgClass, rounded }: ITwammButton, ref: React.ForwardedRef<any>) => {
+  (
+    { onClick, disabled, children, highlighted, className = "", size = "md", type, bgClass, rounded }: ITwammButton,
+    ref: React.ForwardedRef<any>,
+  ) => {
     const contentClass = (() => {
       if (size === "sm") {
         return "px-4 py-2.5 text-xs";
@@ -25,6 +28,7 @@ const TwammButton = React.forwardRef(
       if (size === "lg") {
         return "p-5 text-md font-semibold";
       }
+      return null;
     })();
     const background = bgClass || "text-white bg-[#191B1F] dark:bg-black/50";
     return (

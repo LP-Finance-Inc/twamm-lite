@@ -1,9 +1,11 @@
-import { FC, ReactNode, createContext, useState, useMemo, useCallback, useRef, useContext } from "react";
+import type { FC, ReactNode } from "react";
+import { createContext, useState, useMemo, useCallback, useRef, useContext } from "react";
 import { clusterApiUrl, Connection } from "@solana/web3.js";
 import type { Commitment } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+import { ENV as ChainIdEnv } from "@solana/spl-token-registry";
 
-import { useNetworkConfiguration } from "src/context/network-configuration-provider";
+import { useNetworkConfiguration } from "src/contexts/network-configuration-provider";
 import type * as T from "src/domain/cluster.d";
 import { ankrClusterApiUrl } from "src/env";
 import storage, { sanidateURL } from "src/utils/config-storage";
@@ -20,6 +22,8 @@ const clusterStorage = storage({
   enabled: ENABLE_STORAGE_KEY,
   sanidate: sanidateURL,
 });
+
+export const chainId = ChainIdEnv.MainnetBeta;
 
 export type SolanaConnectionContext = {
   readonly presets: object;

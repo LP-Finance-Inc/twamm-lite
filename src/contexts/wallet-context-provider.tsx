@@ -1,4 +1,5 @@
-import { FC, ReactNode, useMemo, useCallback } from "react";
+import type { FC, ReactNode } from "react";
+import { useMemo, useCallback } from "react";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork, WalletError } from "@solana/wallet-adapter-base";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";

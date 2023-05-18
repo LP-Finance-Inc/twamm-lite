@@ -1,7 +1,8 @@
+import type { FC, ReactNode } from "react";
+import { createContext, useContext } from "react";
 import { WalletName, WalletReadyState } from "@solana/wallet-adapter-base";
 import { useWallet, Wallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
-import React, { createContext, FC, ReactNode, useContext } from "react";
 
 interface IWalletPassThrough {
   publicKey: PublicKey | null;

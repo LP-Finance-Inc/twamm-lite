@@ -11,6 +11,7 @@ import * as SolanaCtx from "src/contexts/solana-connection-context";
 import { CoingeckoApiProvider } from "src/contexts/coingecko-api-context";
 import { Provider as JupiterV4ApiProvider } from "src/contexts/jupiter-v4-api-context";
 import { Provider as TxProvider } from "src/contexts/transaction-runner-context";
+import TwammApp from "src/organisms/twamm-app";
 import swrConfig from "./swr-options";
 
 export function RenderTwamm(props: Init) {
@@ -26,7 +27,7 @@ export function RenderTwamm(props: Init) {
                     <WalletPassthroughProvider>
                       <SWRConfig value={swrConfig}>
                         <TxProvider>
-                          <div>app</div>
+                          <TwammApp {...props} />
                         </TxProvider>
                       </SWRConfig>
                     </WalletPassthroughProvider>

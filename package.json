@@ -32,6 +32,8 @@
     "@solana/wallet-adapter-solflare": "^0.6.24",
     "@solana/wallet-adapter-wallets": "^0.19.16",
     "@solana/web3.js": "^1.76.0",
+    "@twamm/client.js": "^1.0.0",
+    "@twamm/types": "^1.0.0",
     "a-wait-forit": "^0.2.0",
     "bn.js": "^5.2.1",
     "bs58": "^5.0.0",

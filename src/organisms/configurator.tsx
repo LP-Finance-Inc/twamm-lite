@@ -44,25 +44,6 @@ export default function Configurator({
       </div>
       <div className="w-full border-b border-white/10 py-3" />
 
-      {/* Fee BPS */}
-      <div className="flex justify-between mt-5">
-        <div>
-          <p className="text-sm text-white/75">Fee BPS</p>
-          <p className="text-xs text-white/30">Fees charged to jupiter swap transactions.</p>
-        </div>
-      </div>
-      <input
-        className="mt-2 text-white w-full flex justify-between items-center space-x-2 
-        text-left rounded-md bg-white/10 px-4 py-2 text-sm font-medium shadow-sm border border-white/10"
-        value={feeBps}
-        inputMode="numeric"
-        onChange={(e) => {
-          const { value } = e.target;
-          setValue("feeBps", value);
-        }}
-      />
-      <div className="w-full border-b border-white/10 py-3" />
-
       {/* Fee Account */}
       <div className="flex justify-between mt-5">
         <div>
@@ -116,6 +97,25 @@ export default function Configurator({
         onChange={(e) => {
           const { value } = e.target;
           setValue("supportedToken", value);
+        }}
+      />
+      <div className="w-full border-b border-white/10 py-3" />
+
+      {/* Fee BPS */}
+      <div className="flex justify-between mt-5">
+        <div>
+          <p className="text-sm text-white/75">Fee BPS</p>
+          <p className="text-xs text-white/30">Fees charged to jupiter swap transactions.</p>
+        </div>
+      </div>
+      <input
+        className="mt-2 text-white w-full flex justify-between items-center space-x-2 
+        text-left rounded-md bg-white/10 px-4 py-2 text-sm font-medium shadow-sm border border-white/10"
+        value={feeBps}
+        inputMode="numeric"
+        onChange={(e) => {
+          const { value } = e.target;
+          setValue("feeBps", value);
         }}
       />
       <div className="w-full border-b border-white/10 py-3" />

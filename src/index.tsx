@@ -1,5 +1,5 @@
-import { StrictMode } from "react";
 import { SWRConfig } from "swr";
+import { StrictMode } from "react";
 
 import { Init } from "src/types";
 import { NetworkConfigurationProvider } from "src/contexts/network-configuration-provider";
@@ -26,7 +26,7 @@ export function RenderTwamm(props: Init) {
                     <WalletPassthroughProvider>
                       <SWRConfig value={swrConfig}>
                         <TxProvider>
-                          <div></div>
+                          <div>app</div>
                         </TxProvider>
                       </SWRConfig>
                     </WalletPassthroughProvider>

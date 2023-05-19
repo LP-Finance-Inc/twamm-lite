@@ -26,16 +26,18 @@ export default function IntegratedTerminal({
   };
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout | undefined = undefined;
+    let intervalId: NodeJS.Timeout | undefined;
     if (!isLoaded || !window.Twamm.init) {
       intervalId = setInterval(() => {
         setIsLoaded(Boolean(window.Twamm.init));
       }, 500);
     }
 
-    if (intervalId) {
-      return () => clearInterval(intervalId);
-    }
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
   }, []);
 
   useDebouncedEffect(

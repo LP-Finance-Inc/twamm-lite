@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useMemo } from "react";
 import { useLocalStorage } from "@solana/wallet-adapter-react";
 
 export interface NetworkConfigurationState {
@@ -15,11 +15,15 @@ export const NetworkConfigurationProvider: FC<{ children: ReactNode }> = ({ chil
     process.env.NEXT_PUBLIC_CLUSTER_NETWORK,
   );
 
-  return (
-    <NetworkConfigurationContext.Provider value={{ networkConfiguration, setNetworkConfiguration }}>
-      {children}
-    </NetworkConfigurationContext.Provider>
+  const ContextValue = useMemo(
+    () => ({
+      networkConfiguration,
+      setNetworkConfiguration,
+    }),
+    [networkConfiguration, setNetworkConfiguration],
   );
+
+  return <NetworkConfigurationContext.Provider value={ContextValue}>{children}</NetworkConfigurationContext.Provider>;
 };
 
 export function useNetworkConfiguration(): NetworkConfigurationState {

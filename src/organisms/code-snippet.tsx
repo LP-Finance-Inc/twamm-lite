@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { vs2015 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import classNames from "classnames";
 
 import { Init, FormConfigurator } from "src/types";
+
+const USE_WALLET_SNIPPET = `import { useWallet } from '@solana/wallet-adapter-react';
+const { wallet } = useWallet();
+`;
 
 function addInlinesToCode(code: string, insertLines: string) {
   let lines = code.split("\n");
@@ -21,15 +25,12 @@ export default function CodeSnippet({
   displayMode: Init["displayMode"];
   rpcUrl: string;
 }) {
-  const USE_WALLET_SNIPPET = `import { useWallet } from '@solana/wallet-adapter-react';
-const { wallet } = useWallet();
-`;
-
-  const DISPLAY_MODE_VALUES = (() => {
+  const DISPLAY_MODE_VALUES = useMemo(() => {
     if (displayMode === "modal") return {};
     if (displayMode === "integrated") return { displayMode: "integrated", integratedTargetId: "integrated-terminal" };
     if (displayMode === "widget") return { displayMode: "widget" };
-  })();
+    return null;
+  }, [displayMode]);
 
   const formPropsToFormat = {
     ...(formConfigurator.feeAccount ? { feeAccount: formConfigurator.feeAccount } : undefined),
@@ -38,6 +39,7 @@ const { wallet } = useWallet();
     ...(formConfigurator.executionPeriod ? { executionPeriod: formConfigurator.executionPeriod } : undefined),
     ...(formConfigurator.supportedToken ? { supportedToken: formConfigurator.supportedToken } : undefined),
   };
+
   const valuesToFormat = {
     ...DISPLAY_MODE_VALUES,
     endpoint: rpcUrl,

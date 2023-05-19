@@ -1,15 +1,22 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "strictNullChecks": false
+    }
+  },
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "ES6",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": false,
+    "noEmit": true,
     "esModuleInterop": true,
-    "module": "CommonJS",
+    "module": "esnext",
+    "noImplicitAny": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -18,7 +25,8 @@
     "paths": {
       "src/*": ["./src/*"],
       "public/*": ["./public/*"]
-    }
+    },
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

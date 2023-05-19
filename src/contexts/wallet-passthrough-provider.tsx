@@ -12,7 +12,7 @@ interface IWalletPassThrough {
   select: (walletName: WalletName<string>) => void;
   connecting: boolean;
   connected: boolean;
-  disconnect: () => Promise<void>;
+  disconnect: () => Promise<void | null>;
 }
 
 const initialPassThrough = {
@@ -36,7 +36,7 @@ const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({ children }) =>
   const { publicKey, wallets, wallet, connect, select, connecting, connected, disconnect } = useWallet();
 
   const value = (() => {
-    const passThroughWallet = window.Twamm.passThroughWallet;
+    const { passThroughWallet } = window.Twamm;
 
     if (Boolean(passThroughWallet) && passThroughWallet?.adapter.publicKey) {
       return {
@@ -49,13 +49,10 @@ const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({ children }) =>
         connecting: false,
         connected: true,
         disconnect: async () => {
-          try {
-            if (passThroughWallet?.adapter.disconnect) {
-              return passThroughWallet?.adapter.disconnect();
-            }
-          } catch (error) {
-            console.log(error);
+          if (passThroughWallet?.adapter.disconnect) {
+            return passThroughWallet?.adapter.disconnect();
           }
+          return null;
         },
       };
     }

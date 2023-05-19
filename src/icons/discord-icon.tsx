@@ -1,10 +1,9 @@
 import React from "react";
 
-const DiscordIcon: React.FC<React.SVGAttributes<SVGElement>> = ({ width = "30", height = "30" }) => {
-  return (
-    <svg width={width} height={height} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M14.3409 5.84646C13.487 5.45467 12.5714 5.16602 11.614 5.00069C11.5966 
+const DiscordIcon: React.FC<React.SVGAttributes<SVGElement>> = () => (
+  <svg width="30" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M14.3409 5.84646C13.487 5.45467 12.5714 5.16602 11.614 5.00069C11.5966 
         4.9975 11.5792 5.00548 11.5702 5.02142C11.4524 5.23087 11.322 5.5041 11.2307
         5.71887C10.201 5.56471 9.17655 5.56471 8.16796 5.71887C8.0766 5.49933 7.94143
         5.23087 7.82314 5.02142C7.81416 5.00601 7.79674 4.99803 7.77931 5.00069C6.82248
@@ -27,10 +26,9 @@ const DiscordIcon: React.FC<React.SVGAttributes<SVGElement>> = ({ width = "30", 
                    11.9651 7.47675 11.9651ZM11.9282 11.9651C11.2682 11.9651 10.7243 11.3591 10.7243
                     10.6148C10.7243 9.87061 11.2576 9.2646 11.9282 9.2646C12.6041 9.2646 13.1427
                      9.87593 13.1322 10.6148C13.1322 11.3591 12.6041 11.9651 11.9282 11.9651Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-};
+      fill="currentColor"
+    />
+  </svg>
+);
 
 export default DiscordIcon;

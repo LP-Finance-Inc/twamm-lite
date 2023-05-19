@@ -27,16 +27,18 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
   };
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout | undefined = undefined;
+    let intervalId: NodeJS.Timeout | undefined;
     if (!isLoaded || !window.Twamm.init) {
       intervalId = setInterval(() => {
         setIsLoaded(Boolean(window.Twamm.init));
       }, 500);
     }
 
-    if (intervalId) {
-      return () => clearInterval(intervalId);
-    }
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
   }, []);
 
   useDebouncedEffect(
@@ -67,7 +69,7 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 onClick={() => setPosition("top-left")}
               >
                 <div className="rotate-45">
-                  <LeftArrowIcon width={24} height={24} />
+                  <LeftArrowIcon />
                 </div>
               </div>
               <div
@@ -77,7 +79,7 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 onClick={() => setPosition("top-right")}
               >
                 <div className="rotate-[135deg]">
-                  <LeftArrowIcon width={24} height={24} />
+                  <LeftArrowIcon />
                 </div>
               </div>
               <div
@@ -87,7 +89,7 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 onClick={() => setPosition("bottom-left")}
               >
                 <div className="-rotate-45">
-                  <LeftArrowIcon width={24} height={24} />
+                  <LeftArrowIcon />
                 </div>
               </div>
               <div
@@ -97,7 +99,7 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 onClick={() => setPosition("bottom-right")}
               >
                 <div className="rotate-[225deg]">
-                  <LeftArrowIcon width={24} height={24} />
+                  <LeftArrowIcon />
                 </div>
               </div>
             </div>

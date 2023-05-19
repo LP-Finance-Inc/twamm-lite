@@ -8,10 +8,8 @@ export interface Props {
 
 export { useSnackbar };
 
-export const NotificationProvider = ({ maxSnack = 1, children }: Props) => {
-  return (
-    <SnackbarProvider autoHideDuration={5000} maxSnack={maxSnack}>
-      {children}
-    </SnackbarProvider>
-  );
-};
+export const NotificationProvider = ({ maxSnack = 1, children }: Props) => (
+  <SnackbarProvider autoHideDuration={5000} maxSnack={maxSnack}>
+    {children}
+  </SnackbarProvider>
+);

@@ -57,7 +57,7 @@ export default function Configurator({
         value={feeBps}
         inputMode="numeric"
         onChange={(e) => {
-          const value = e.target.value;
+          const { value } = e.target;
           setValue("feeBps", value);
         }}
       />
@@ -76,7 +76,7 @@ export default function Configurator({
         value={feeAccount}
         inputMode="text"
         onChange={(e) => {
-          const value = e.target.value;
+          const { value } = e.target;
           setValue("feeAccount", value);
         }}
       />
@@ -95,7 +95,7 @@ export default function Configurator({
         value={platformFeeAccount}
         inputMode="text"
         onChange={(e) => {
-          const value = e.target.value;
+          const { value } = e.target;
           setValue("platformFeeAccount", value);
         }}
       />
@@ -114,7 +114,7 @@ export default function Configurator({
         value={supportedToken}
         inputMode="text"
         onChange={(e) => {
-          const value = e.target.value;
+          const { value } = e.target;
           setValue("supportedToken", value);
         }}
       />
@@ -126,7 +126,11 @@ export default function Configurator({
           <p className="text-sm text-white/75">Simulate wallet passthrough</p>
           <p className="text-xs text-white/30">Simulate terminal with a fake wallet passthrough</p>
         </div>
-        <Toggle className="min-w-[40px]" active={useWalletPassthrough} onClick={() => setValue("useWalletPassthrough", !useWalletPassthrough)} />
+        <Toggle
+          className="min-w-[40px]"
+          active={useWalletPassthrough}
+          onClick={() => setValue("useWalletPassthrough", !useWalletPassthrough)}
+        />
       </div>
       <div className="w-full border-b border-white/10 py-3" />
     </div>

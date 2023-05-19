@@ -2,9 +2,9 @@ import "tailwindcss/tailwind.css";
 import { CSSProperties, useState, useEffect, useMemo } from "react";
 import { createRoot } from "react-dom/client";
 
+import JupiterLogo from "src/icons/jupiter-logo";
 import { Init } from "./types";
 import packageJson from "../package.json";
-import JupiterLogo from "src/icons/jupiter-logo";
 
 const containerId = "twamm-terminal";
 const bundleName = `main-${packageJson.version}`;
@@ -13,9 +13,10 @@ const scriptDomain =
   (() => {
     if (typeof window === "undefined") return;
 
-    const url = (document.currentScript as HTMLScriptElement)?.src;
+    const url: string = (document.currentScript as HTMLScriptElement)?.src;
 
     if (url) {
+      // eslint-disable-next-line consistent-return
       return new URL(url).origin;
     }
   })() || "https://lite.lp.finance";
@@ -27,7 +28,8 @@ async function loadRemote(id: string, href: string, type: "text/javascript" | "s
     if (existing) {
       res({});
     } else {
-      const el: HTMLScriptElement | HTMLLinkElement = type === "text/javascript" ? document.createElement("script") : document.createElement("link");
+      const el: HTMLScriptElement | HTMLLinkElement =
+        type === "text/javascript" ? document.createElement("script") : document.createElement("link");
 
       el.id = id;
       el.onload = res;
@@ -85,23 +87,20 @@ const RenderLoadableTwamm = (props: Init) => {
     };
   }, [loaded]);
 
+  const EmptyJSX = () => null;
+
   const RenderTwamm: (props: any) => JSX.Element = useMemo(() => {
     if (loaded) {
       return (window as any).TwammRenderer.RenderTwamm;
     }
-
     return EmptyJSX;
   }, [loaded]);
 
   return <RenderTwamm {...props} scriptDomain={scriptDomain} />;
 };
 
-const EmptyJSX = () => null;
-
 const RenderShell = (props: Init) => {
-  const displayMode = props.displayMode;
-  const containerStyles = props.containerStyles;
-  const containerClassName = props.containerClassName;
+  const { displayMode, containerStyles, containerClassName } = props;
 
   const displayClassName: any = useMemo(() => {
     if (!displayMode || displayMode === "modal") {
@@ -116,13 +115,15 @@ const RenderShell = (props: Init) => {
   const contentClassName: any = useMemo(() => {
     if (!displayMode || displayMode === "modal") {
       return `flex flex-col h-screen w-screen max-h-[90vh] md:max-h-[600px]
-       max-w-[360px] overflow-auto text-black relative bg-twamm-bg rounded-lg webkit-scrollbar ${containerClassName || ""}`;
+       max-w-[360px] overflow-auto text-black relative bg-twamm-bg rounded-lg webkit-scrollbar ${
+         containerClassName || ""
+       }`;
     }
     if (displayMode === "integrated" || displayMode === "widget") {
       return "flex flex-col h-full w-full overflow-auto text-black relative webkit-scrollbar";
     }
     return null;
-  }, [displayMode]);
+  }, [containerClassName, displayMode]);
 
   const onClose = () => {
     if (window.Twamm) {
@@ -136,22 +137,31 @@ const RenderShell = (props: Init) => {
       <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins&display=swap"
         rel="stylesheet"
-      ></link>
+      />
       <div style={{ ...defaultStyles, ...containerStyles }} className={contentClassName}>
         <RenderLoadableTwamm {...props} />
       </div>
-      {!displayMode || displayMode === "modal" ? <div onClick={onClose} className="absolute w-screen h-screen top-0 left-0" /> : null}
+      {!displayMode || displayMode === "modal" ? (
+        <div onClick={onClose} className="absolute w-screen h-screen top-0 left-0" />
+      ) : null}
     </div>
   );
 };
 
+export interface Classes {
+  widgetContainerClassName: string;
+  widgetLogoSize: number;
+  containerClassName?: string | undefined;
+  contentClassName?: string | undefined;
+}
+
 const RenderWidgetShell = (props: Init) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const classes = useMemo(() => {
+  const classes: Classes = useMemo(() => {
     const size = props.widgetStyle?.size || "default";
 
-    let result: { containerClassName: string; contentClassName: string } | undefined = undefined;
+    let result;
 
     if (!props.widgetStyle?.position || props.widgetStyle?.position === "bottom-right") {
       result = {
@@ -178,9 +188,11 @@ const RenderWidgetShell = (props: Init) => {
       };
     }
 
+    const widgetContainerClassName: string = size === "default" ? "h-14 w-14" : "h-10 w-10";
+
     return {
       ...result,
-      widgetContainerClassName: size === "default" ? "h-14 w-14" : "h-10 w-10",
+      widgetContainerClassName,
       widgetLogoSize: size === "default" ? 42 : 32,
     };
   }, [props.widgetStyle?.position, props.widgetStyle?.size]);
@@ -270,7 +282,6 @@ const resume = () => {
   const instanceExist = document.getElementById(containerId);
   if (instanceExist) {
     instanceExist.style.display = "block";
-    return;
   }
 };
 

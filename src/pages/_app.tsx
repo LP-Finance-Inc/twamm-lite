@@ -45,9 +45,9 @@ export default function App() {
 
   const { watch, setValue } = useForm<FormConfigurator>({
     defaultValues: {
-      feeAccount: feeAccount,
+      feeAccount,
       feeBps: feeBps.toString(),
-      platformFeeAccount: platformFeeAccount,
+      platformFeeAccount,
       supportedToken: NEXT_PUBLIC_SUPPORTED_TOKEN,
       executionPeriod: false,
       useWalletPassthrough: false,

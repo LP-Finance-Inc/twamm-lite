@@ -33,6 +33,7 @@ const TwammButton = React.forwardRef(
     const background = bgClass || "text-white bg-[#191B1F] dark:bg-black/50";
     return (
       <button
+        // eslint-disable-next-line react/button-has-type
         type={type}
         ref={ref}
         className={classNames({

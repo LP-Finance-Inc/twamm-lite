@@ -27,7 +27,7 @@ export function RenderTwamm(props: Init) {
                     <WalletPassthroughProvider>
                       <SWRConfig value={swrConfig}>
                         <TxProvider>
-                          <TwammApp {...props} />
+                          <TwammApp />
                         </TxProvider>
                       </SWRConfig>
                     </WalletPassthroughProvider>

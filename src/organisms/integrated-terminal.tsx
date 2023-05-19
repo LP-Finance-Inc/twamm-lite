@@ -38,6 +38,7 @@ export default function IntegratedTerminal({
         clearInterval(intervalId);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useDebouncedEffect(

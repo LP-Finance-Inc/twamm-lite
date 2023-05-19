@@ -886,6 +886,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
  * DefaultApi - functional programming interface
  * @export
  */
+// eslint-disable-next-line func-names
 export const DefaultApiFp = function (configuration?: Configuration) {
   return {
     /**
@@ -1016,6 +1017,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
  * DefaultApi - factory interface
  * @export
  */
+// eslint-disable-next-line func-names
 export const DefaultApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
   return {
     /**

@@ -39,6 +39,7 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
         clearInterval(intervalId);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useDebouncedEffect(

@@ -15,7 +15,7 @@ export const WalletContextProvider: FC<{ endpoint?: string; children: ReactNode 
   const { autoConnect } = useAutoConnect();
   const { networkConfiguration } = useNetworkConfiguration();
   const network = networkConfiguration as WalletAdapterNetwork;
-  const selectedEndpoint: string = useMemo(() => endpoint ?? clusterApiUrl(network), [network]);
+  const selectedEndpoint: string = useMemo(() => endpoint ?? clusterApiUrl(network), [endpoint, network]);
 
   const passThroughWallet = (() => {
     if (typeof window === "undefined") return undefined;
@@ -33,10 +33,12 @@ export const WalletContextProvider: FC<{ endpoint?: string; children: ReactNode 
       new BackpackWalletAdapter(),
       new GlowWalletAdapter(),
     ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [network]);
 
   const onError = useCallback((error: WalletError) => {
-    console.error({ type: "error", message: error.message ? `${error.name}: ${error.message}` : error.name });
+    // eslint-disable-next-line no-console
+    console.error("error", { type: "error", message: error.message ? `${error.name}: ${error.message}` : error.name });
   }, []);
 
   return (

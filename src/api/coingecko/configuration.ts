@@ -26,6 +26,7 @@ export class Configuration {
    * @memberof Configuration
    */
   apiKey?: string | ((name: string) => string);
+
   /**
    * parameter for basic security
    *
@@ -33,6 +34,7 @@ export class Configuration {
    * @memberof Configuration
    */
   username?: string;
+
   /**
    * parameter for basic security
    *
@@ -40,6 +42,7 @@ export class Configuration {
    * @memberof Configuration
    */
   password?: string;
+
   /**
    * parameter for oauth2 security
    * @param name security name
@@ -47,6 +50,7 @@ export class Configuration {
    * @memberof Configuration
    */
   accessToken?: string | ((name: string, scopes?: string[]) => string);
+
   /**
    * override base path
    *

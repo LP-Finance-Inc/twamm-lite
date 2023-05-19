@@ -41,7 +41,7 @@ export const Provider: FC<{ endpoint: string; children: ReactNode }> = ({ endpoi
   const { networkConfiguration } = useNetworkConfiguration();
 
   const network = networkConfiguration as WalletAdapterNetwork;
-  const Endpoint: string = useMemo(() => endpoint ?? clusterApiUrl(network), [network]);
+  const Endpoint: string = useMemo(() => endpoint ?? clusterApiUrl(network), [endpoint, network]);
 
   const endpoints: Record<string, T.ClusterInfo> = {
     solana: {
@@ -100,6 +100,7 @@ export const Provider: FC<{ endpoint: string; children: ReactNode }> = ({ endpoi
 
       return hasError;
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [clusters, setCurrentCluster],
   );
 

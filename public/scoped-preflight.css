@@ -32,6 +32,8 @@
     "Segoe UI Symbol",
     "Noto Color Emoji"
   ); /* 4 */
+  font-feature-settings: theme("fontFamily.sans[1].fontFeatureSettings", normal); /* 5 */
+  font-variation-settings: theme("fontFamily.sans[1].fontVariationSettings", normal); /* 6 */
 }
 #twamm-terminal body {
   margin: 0; /* 1 */
@@ -66,7 +68,17 @@
 #twamm-terminal kbd,
 #twamm-terminal samp,
 #twamm-terminal pre {
-  font-family: theme("fontFamily.mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace); /* 1 */
+  font-family: theme(
+    "fontFamily.mono",
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace
+  ); /* 1 */
   font-size: 1em; /* 2 */
 }
 #twamm-terminal small {

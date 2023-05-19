@@ -3,3 +3,8 @@
 /next.config.js
 /postcss.config.js
 /public
+/src/api
+/src/crank.ts
+/src/crank_client.ts
+/src/idl.json
+/src/multi_crank.ts

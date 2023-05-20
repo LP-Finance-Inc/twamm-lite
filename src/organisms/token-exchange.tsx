@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { OrderSide } from "@twamm/types/lib";
 import M, { Extra } from "easy-maybe/lib";
 
-// import { Provider as TIFProvider } from "src/contexts/tif-context";
+import { Provider as TIFProvider } from "src/contexts/tif-context";
 import useAddressPairs from "src/hooks/use-address-pairs";
 import useJupTokensByMint from "src/hooks/use-jup-tokens-by-mint";
 import useTokenExchange, { action as A } from "src/hooks/use-token-exchange";
+import OrderEditor from "./order-editor";
 
 export type TradeStruct = {
   amount: number;
@@ -25,5 +26,53 @@ export default function TokenExchange(props: { onTradeChange: (arg0: TradeStruct
     return () => {};
   }, [dispatch, props.trade, tokenPairs.data, tokenPair.data]);
 
-  return <div>home</div>;
+  const onSelectA = useCallback(
+    (token: TokenInfo) => {
+      dispatch(A.selectA({ token }));
+    },
+    [dispatch],
+  );
+
+  const onSelectB = useCallback(
+    (token: TokenInfo) => {
+      dispatch(A.selectB({ token }));
+    },
+    [dispatch],
+  );
+
+  const onSwap = useCallback(
+    (price: number | undefined) => {
+      dispatch(A.swap({ price }));
+    },
+    [dispatch],
+  );
+
+  const onTradeChange = useCallback(
+    (next: TradeStruct) => {
+      const prev = props.trade;
+
+      if (prev.pair[0] !== next.pair[0] || prev.pair[1] !== next.pair[1] || prev.type !== next.type) {
+        props.onTradeChange(next);
+      }
+    },
+    [props],
+  );
+
+  return (
+    <TIFProvider>
+      <OrderEditor
+        a={state.data?.a}
+        all={state.data?.all}
+        available={state.data?.available}
+        b={state.data?.b}
+        onSelectA={onSelectA}
+        onSelectB={onSelectB}
+        onSwap={onSwap}
+        onTradeChange={onTradeChange}
+        tokenPair={tokenPair.data}
+        tokenPairs={tokenPairs.data}
+        tradeSide={state.data?.type}
+      />
+    </TIFProvider>
+  );
 }

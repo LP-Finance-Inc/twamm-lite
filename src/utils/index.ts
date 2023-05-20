@@ -12,3 +12,12 @@ export function useDebouncedEffect(fn: Function, deps: any[], time: number) {
 export function shortenAddress(address: string, chars = 4): string {
   return `${address.slice(0, chars)}...${address.slice(-chars)}`;
 }
+
+export const expirationTimeToInterval = (expirationTime: number | undefined, tif: number) => {
+  if (!expirationTime) return tif;
+
+  let delta = expirationTime * 1e3 - Date.now();
+  delta = delta <= 0 ? 0 : Number((delta / 1e3).toFixed(0));
+
+  return delta;
+};

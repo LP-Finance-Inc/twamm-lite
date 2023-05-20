@@ -1,6 +1,7 @@
 /tailwind.config.js
 /webpack.config.js
 /next.config.js
+/babel.config.js
 /postcss.config.js
 /public
 /src/api

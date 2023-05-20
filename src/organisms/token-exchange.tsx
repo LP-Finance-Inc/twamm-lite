@@ -18,8 +18,6 @@ export default function TokenExchange(props: { onTradeChange: (arg0: TradeStruct
   const tokenPair = useJupTokensByMint(props.trade.pair);
   const [state, dispatch] = useTokenExchange();
 
-  console.log("tokenPairs", tokenPairs);
-
   useEffect(() => {
     M.andMap(([pairs, pair, type]) => {
       dispatch(A.init({ pairs, pair, type }));

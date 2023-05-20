@@ -70,7 +70,7 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 onClick={() => setPosition("top-left")}
               >
                 <div className="rotate-45">
-                  <LeftArrowIcon />
+                  <LeftArrowIcon width={24} height={24} />
                 </div>
               </div>
               <div
@@ -80,7 +80,7 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 onClick={() => setPosition("top-right")}
               >
                 <div className="rotate-[135deg]">
-                  <LeftArrowIcon />
+                  <LeftArrowIcon width={24} height={24} />
                 </div>
               </div>
               <div
@@ -90,7 +90,7 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 onClick={() => setPosition("bottom-left")}
               >
                 <div className="-rotate-45">
-                  <LeftArrowIcon />
+                  <LeftArrowIcon width={24} height={24} />
                 </div>
               </div>
               <div
@@ -100,7 +100,7 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 onClick={() => setPosition("bottom-right")}
               >
                 <div className="rotate-[225deg]">
-                  <LeftArrowIcon />
+                  <LeftArrowIcon width={24} height={24} />
                 </div>
               </div>
             </div>

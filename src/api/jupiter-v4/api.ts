@@ -1,4 +1,4 @@
-// @ts-nocheck
+//@ts-nocheck
 /// <reference path="./custom.d.ts" />
 // tslint:disable
 /**
@@ -24,10 +24,10 @@ const BASE_PATH = "/".replace(/\/+$/, "");
  * @export
  */
 export const COLLECTION_FORMATS = {
-  csv: ",",
-  ssv: " ",
-  tsv: "\t",
-  pipes: "|",
+    csv: ",",
+    ssv: " ",
+    tsv: "\t",
+    pipes: "|",
 };
 
 /**
@@ -36,7 +36,7 @@ export const COLLECTION_FORMATS = {
  * @interface FetchAPI
  */
 export interface FetchAPI {
-  (url: string, init?: any): Promise<Response>;
+    (url: string, init?: any): Promise<Response>;
 }
 
 /**
@@ -45,8 +45,8 @@ export interface FetchAPI {
  * @interface FetchArgs
  */
 export interface FetchArgs {
-  url: string;
-  options: any;
+    url: string;
+    options: any;
 }
 
 /**
@@ -55,19 +55,15 @@ export interface FetchArgs {
  * @class BaseAPI
  */
 export class BaseAPI {
-  protected configuration: Configuration;
+    protected configuration: Configuration;
 
-  constructor(
-    configuration?: Configuration,
-    protected basePath: string = BASE_PATH,
-    protected fetch: FetchAPI = isomorphicFetch,
-  ) {
-    if (configuration) {
-      this.configuration = configuration;
-      this.basePath = configuration.basePath || this.basePath;
+    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected fetch: FetchAPI = isomorphicFetch) {
+        if (configuration) {
+            this.configuration = configuration;
+            this.basePath = configuration.basePath || this.basePath;
+        }
     }
-  }
-}
+};
 
 /**
  *
@@ -76,11 +72,10 @@ export class BaseAPI {
  * @extends {Error}
  */
 export class RequiredError extends Error {
-  name: "RequiredError";
-
-  constructor(public field: string, msg?: string) {
-    super(msg);
-  }
+    name: "RequiredError"
+    constructor(public field: string, msg?: string) {
+        super(msg);
+    }
 }
 
 /**
@@ -89,78 +84,78 @@ export class RequiredError extends Error {
  * @interface Def0
  */
 export interface Def0 {
-  /**
-   *
-   * @type {string}
-   * @memberof Def0
-   */
-  id?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def0
-   */
-  label?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def0
-   */
-  inputMint?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def0
-   */
-  outputMint?: string;
-  /**
-   *
-   * @type {boolean}
-   * @memberof Def0
-   */
-  notEnoughLiquidity?: boolean;
-  /**
-   *
-   * @type {string}
-   * @memberof Def0
-   */
-  inAmount?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def0
-   */
-  outAmount?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def0
-   */
-  minInAmount?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def0
-   */
-  minOutAmount?: string;
-  /**
-   *
-   * @type {number}
-   * @memberof Def0
-   */
-  priceImpactPct?: number;
-  /**
-   *
-   * @type {Def0LpFee}
-   * @memberof Def0
-   */
-  lpFee?: Def0LpFee;
-  /**
-   *
-   * @type {Def0LpFee}
-   * @memberof Def0
-   */
-  platformFee?: Def0LpFee;
+    /**
+     *
+     * @type {string}
+     * @memberof Def0
+     */
+    id?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def0
+     */
+    label?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def0
+     */
+    inputMint?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def0
+     */
+    outputMint?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof Def0
+     */
+    notEnoughLiquidity?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof Def0
+     */
+    inAmount?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def0
+     */
+    outAmount?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def0
+     */
+    minInAmount?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def0
+     */
+    minOutAmount?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof Def0
+     */
+    priceImpactPct?: number;
+    /**
+     *
+     * @type {Def0LpFee}
+     * @memberof Def0
+     */
+    lpFee?: Def0LpFee;
+    /**
+     *
+     * @type {Def0LpFee}
+     * @memberof Def0
+     */
+    platformFee?: Def0LpFee;
 }
 /**
  *
@@ -168,24 +163,24 @@ export interface Def0 {
  * @interface Def0LpFee
  */
 export interface Def0LpFee {
-  /**
-   *
-   * @type {string}
-   * @memberof Def0LpFee
-   */
-  amount?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def0LpFee
-   */
-  mint?: string;
-  /**
-   *
-   * @type {number}
-   * @memberof Def0LpFee
-   */
-  pct?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof Def0LpFee
+     */
+    amount?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def0LpFee
+     */
+    mint?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof Def0LpFee
+     */
+    pct?: number;
 }
 /**
  *
@@ -193,61 +188,60 @@ export interface Def0LpFee {
  * @interface Def1
  */
 export interface Def1 {
-  /**
-   *
-   * @type {string}
-   * @memberof Def1
-   */
-  inAmount: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def1
-   */
-  outAmount: string;
-  /**
-   *
-   * @type {number}
-   * @memberof Def1
-   */
-  priceImpactPct: number;
-  /**
-   *
-   * @type {Array<Def1MarketInfos>}
-   * @memberof Def1
-   */
-  marketInfos: Array<Def1MarketInfos>;
-  /**
-   *
-   * @type {string}
-   * @memberof Def1
-   */
-  amount: string;
-  /**
-   *
-   * @type {number}
-   * @memberof Def1
-   */
-  slippageBps: number;
-  /**
-   * The threshold for the swap based on the provided slippage: when swapMode is ExactIn the minimum out amount,
-   * when swapMode is ExactOut the maximum in amount
-   * @type {string}
-   * @memberof Def1
-   */
-  otherAmountThreshold: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def1
-   */
-  swapMode: Def1.SwapModeEnum;
-  /**
-   *
-   * @type {Def1Fees}
-   * @memberof Def1
-   */
-  fees?: Def1Fees;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1
+     */
+    inAmount: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1
+     */
+    outAmount: string;
+    /**
+     *
+     * @type {number}
+     * @memberof Def1
+     */
+    priceImpactPct: number;
+    /**
+     *
+     * @type {Array<Def1MarketInfos>}
+     * @memberof Def1
+     */
+    marketInfos: Array<Def1MarketInfos>;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1
+     */
+    amount: string;
+    /**
+     *
+     * @type {number}
+     * @memberof Def1
+     */
+    slippageBps: number;
+    /**
+     * The threshold for the swap based on the provided slippage: when swapMode is ExactIn the minimum out amount, when swapMode is ExactOut the maximum in amount
+     * @type {string}
+     * @memberof Def1
+     */
+    otherAmountThreshold: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1
+     */
+    swapMode: Def1.SwapModeEnum;
+    /**
+     *
+     * @type {Def1Fees}
+     * @memberof Def1
+     */
+    fees?: Def1Fees;
 }
 
 /**
@@ -255,14 +249,14 @@ export interface Def1 {
  * @namespace Def1
  */
 export namespace Def1 {
-  /**
-   * @export
-   * @enum {string}
-   */
-  export enum SwapModeEnum {
-    ExactIn = <any>"ExactIn",
-    ExactOut = <any>"ExactOut",
-  }
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum SwapModeEnum {
+        ExactIn = <any> 'ExactIn',
+        ExactOut = <any> 'ExactOut'
+    }
 }
 /**
  * Only returned when userPublicKey is given to /quote
@@ -270,37 +264,36 @@ export namespace Def1 {
  * @interface Def1Fees
  */
 export interface Def1Fees {
-  /**
-   * This inidicate the total amount needed for signing transaction(s). Value in lamports.
-   * @type {number}
-   * @memberof Def1Fees
-   */
-  signatureFee?: number;
-  /**
-   * This inidicate the total amount needed for deposit of serum order account(s). Value in lamports.
-   * @type {Array<number>}
-   * @memberof Def1Fees
-   */
-  openOrdersDeposits?: Array<number>;
-  /**
-   * This inidicate the total amount needed for deposit of associative token account(s). Value in lamports.
-   * @type {Array<number>}
-   * @memberof Def1Fees
-   */
-  ataDeposits?: Array<number>;
-  /**
-   * This inidicate the total lamports needed for fees and deposits above.
-   * @type {number}
-   * @memberof Def1Fees
-   */
-  totalFeeAndDeposits?: number;
-  /**
-   * This inidicate the minimum lamports needed for transaction(s).
-   * Might be used to create wrapped SOL and will be returned when the wrapped SOL is closed.
-   * @type {number}
-   * @memberof Def1Fees
-   */
-  minimumSOLForTransaction?: number;
+    /**
+     * This inidicate the total amount needed for signing transaction(s). Value in lamports.
+     * @type {number}
+     * @memberof Def1Fees
+     */
+    signatureFee?: number;
+    /**
+     * This inidicate the total amount needed for deposit of serum order account(s). Value in lamports.
+     * @type {Array<number>}
+     * @memberof Def1Fees
+     */
+    openOrdersDeposits?: Array<number>;
+    /**
+     * This inidicate the total amount needed for deposit of associative token account(s). Value in lamports.
+     * @type {Array<number>}
+     * @memberof Def1Fees
+     */
+    ataDeposits?: Array<number>;
+    /**
+     * This inidicate the total lamports needed for fees and deposits above.
+     * @type {number}
+     * @memberof Def1Fees
+     */
+    totalFeeAndDeposits?: number;
+    /**
+     * This inidicate the minimum lamports needed for transaction(s). Might be used to create wrapped SOL and will be returned when the wrapped SOL is closed.
+     * @type {number}
+     * @memberof Def1Fees
+     */
+    minimumSOLForTransaction?: number;
 }
 /**
  *
@@ -308,78 +301,78 @@ export interface Def1Fees {
  * @interface Def1MarketInfos
  */
 export interface Def1MarketInfos {
-  /**
-   *
-   * @type {string}
-   * @memberof Def1MarketInfos
-   */
-  id?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def1MarketInfos
-   */
-  label?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def1MarketInfos
-   */
-  inputMint?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def1MarketInfos
-   */
-  outputMint?: string;
-  /**
-   *
-   * @type {boolean}
-   * @memberof Def1MarketInfos
-   */
-  notEnoughLiquidity?: boolean;
-  /**
-   *
-   * @type {string}
-   * @memberof Def1MarketInfos
-   */
-  inAmount?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def1MarketInfos
-   */
-  outAmount?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def1MarketInfos
-   */
-  minInAmount?: string;
-  /**
-   *
-   * @type {string}
-   * @memberof Def1MarketInfos
-   */
-  minOutAmount?: string;
-  /**
-   *
-   * @type {number}
-   * @memberof Def1MarketInfos
-   */
-  priceImpactPct?: number;
-  /**
-   *
-   * @type {Def0LpFee}
-   * @memberof Def1MarketInfos
-   */
-  lpFee?: Def0LpFee;
-  /**
-   *
-   * @type {Def0LpFee}
-   * @memberof Def1MarketInfos
-   */
-  platformFee?: Def0LpFee;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1MarketInfos
+     */
+    id?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1MarketInfos
+     */
+    label?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1MarketInfos
+     */
+    inputMint?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1MarketInfos
+     */
+    outputMint?: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof Def1MarketInfos
+     */
+    notEnoughLiquidity?: boolean;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1MarketInfos
+     */
+    inAmount?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1MarketInfos
+     */
+    outAmount?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1MarketInfos
+     */
+    minInAmount?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Def1MarketInfos
+     */
+    minOutAmount?: string;
+    /**
+     *
+     * @type {number}
+     * @memberof Def1MarketInfos
+     */
+    priceImpactPct?: number;
+    /**
+     *
+     * @type {Def0LpFee}
+     * @memberof Def1MarketInfos
+     */
+    lpFee?: Def0LpFee;
+    /**
+     *
+     * @type {Def0LpFee}
+     * @memberof Def1MarketInfos
+     */
+    platformFee?: Def0LpFee;
 }
 /**
  *
@@ -387,36 +380,36 @@ export interface Def1MarketInfos {
  * @interface Def2
  */
 export interface Def2 {
-  /**
-   * Address of the token
-   * @type {string}
-   * @memberof Def2
-   */
-  id?: string;
-  /**
-   * Symbol of the token
-   * @type {string}
-   * @memberof Def2
-   */
-  mintSymbol?: string;
-  /**
-   * Address of the vs token
-   * @type {string}
-   * @memberof Def2
-   */
-  vsToken?: string;
-  /**
-   * Symbol of the vs token
-   * @type {string}
-   * @memberof Def2
-   */
-  vsTokenSymbol?: string;
-  /**
-   * Default to 1 unit of the token worth in USDC if vsToken is not specified.
-   * @type {number}
-   * @memberof Def2
-   */
-  price?: number;
+    /**
+     * Address of the token
+     * @type {string}
+     * @memberof Def2
+     */
+    id?: string;
+    /**
+     * Symbol of the token
+     * @type {string}
+     * @memberof Def2
+     */
+    mintSymbol?: string;
+    /**
+     * Address of the vs token
+     * @type {string}
+     * @memberof Def2
+     */
+    vsToken?: string;
+    /**
+     * Symbol of the vs token
+     * @type {string}
+     * @memberof Def2
+     */
+    vsTokenSymbol?: string;
+    /**
+     * Default to 1 unit of the token worth in USDC if vsToken is not specified.
+     * @type {number}
+     * @memberof Def2
+     */
+    price?: number;
 }
 /**
  *
@@ -424,7 +417,8 @@ export interface Def2 {
  * @interface Def3
  */
 export interface Def3 extends null<String, Def2> {
-  [key: string]: Def2;
+    [key: string]: Def2;
+
 }
 /**
  * Default response
@@ -432,24 +426,24 @@ export interface Def3 extends null<String, Def2> {
  * @interface InlineResponse200
  */
 export interface InlineResponse200 {
-  /**
-   *
-   * @type {Array<InlineResponse200Data>}
-   * @memberof InlineResponse200
-   */
-  data?: Array<InlineResponse200Data>;
-  /**
-   *
-   * @type {number}
-   * @memberof InlineResponse200
-   */
-  timeTaken?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof InlineResponse200
-   */
-  contextSlot?: number;
+    /**
+     *
+     * @type {Array<InlineResponse200Data>}
+     * @memberof InlineResponse200
+     */
+    data?: Array<InlineResponse200Data>;
+    /**
+     *
+     * @type {number}
+     * @memberof InlineResponse200
+     */
+    timeTaken?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof InlineResponse200
+     */
+    contextSlot?: number;
 }
 /**
  * Default response
@@ -457,38 +451,37 @@ export interface InlineResponse200 {
  * @interface InlineResponse2001
  */
 export interface InlineResponse2001 {
-  /**
-   * Base64 encoded transaction
-   * @type {string}
-   * @memberof InlineResponse2001
-   */
-  swapTransaction?: string;
+    /**
+     * Base64 encoded transaction
+     * @type {string}
+     * @memberof InlineResponse2001
+     */
+    swapTransaction?: string;
 }
 /**
- * Default response with ids which return an object. Refer to Price hash model below.
- * If the id is invalid, it will not return in the hash.
+ * Default response with ids which return an object. Refer to Price hash model below. If the id is invalid, it will not return in the hash.
  * @export
  * @interface InlineResponse2002
  */
 export interface InlineResponse2002 {
-  /**
-   *
-   * @type {Def3}
-   * @memberof InlineResponse2002
-   */
-  data?: Def3;
-  /**
-   *
-   * @type {number}
-   * @memberof InlineResponse2002
-   */
-  timeTaken?: number;
-  /**
-   *
-   * @type {number}
-   * @memberof InlineResponse2002
-   */
-  contextSlot?: number;
+    /**
+     *
+     * @type {Def3}
+     * @memberof InlineResponse2002
+     */
+    data?: Def3;
+    /**
+     *
+     * @type {number}
+     * @memberof InlineResponse2002
+     */
+    timeTaken?: number;
+    /**
+     *
+     * @type {number}
+     * @memberof InlineResponse2002
+     */
+    contextSlot?: number;
 }
 /**
  * Default response
@@ -496,18 +489,18 @@ export interface InlineResponse2002 {
  * @interface InlineResponse2003
  */
 export interface InlineResponse2003 {
-  /**
-   * All the mints that are indexed to match in indexedRouteMap
-   * @type {Array<string>}
-   * @memberof InlineResponse2003
-   */
-  mintKeys?: Array<string>;
-  /**
-   * All the possible route and their corresponding output mints
-   * @type {{ [key: string]: Array<number>; }}
-   * @memberof InlineResponse2003
-   */
-  indexedRouteMap?: { [key: string]: Array<number> };
+    /**
+     * All the mints that are indexed to match in indexedRouteMap
+     * @type {Array<string>}
+     * @memberof InlineResponse2003
+     */
+    mintKeys?: Array<string>;
+    /**
+     * All the possible route and their corresponding output mints
+     * @type {{ [key: string]: Array<number>; }}
+     * @memberof InlineResponse2003
+     */
+    indexedRouteMap?: { [key: string]: Array<number>; };
 }
 /**
  *
@@ -515,61 +508,60 @@ export interface InlineResponse2003 {
  * @interface InlineResponse200Data
  */
 export interface InlineResponse200Data {
-  /**
-   *
-   * @type {string}
-   * @memberof InlineResponse200Data
-   */
-  inAmount: string;
-  /**
-   *
-   * @type {string}
-   * @memberof InlineResponse200Data
-   */
-  outAmount: string;
-  /**
-   *
-   * @type {number}
-   * @memberof InlineResponse200Data
-   */
-  priceImpactPct: number;
-  /**
-   *
-   * @type {Array<Def1MarketInfos>}
-   * @memberof InlineResponse200Data
-   */
-  marketInfos: Array<Def1MarketInfos>;
-  /**
-   *
-   * @type {string}
-   * @memberof InlineResponse200Data
-   */
-  amount: string;
-  /**
-   *
-   * @type {number}
-   * @memberof InlineResponse200Data
-   */
-  slippageBps: number;
-  /**
-   * The threshold for the swap based on the provided slippage:
-   * when swapMode is ExactIn the minimum out amount, when swapMode is ExactOut the maximum in amount
-   * @type {string}
-   * @memberof InlineResponse200Data
-   */
-  otherAmountThreshold: string;
-  /**
-   *
-   * @type {string}
-   * @memberof InlineResponse200Data
-   */
-  swapMode: InlineResponse200Data.SwapModeEnum;
-  /**
-   *
-   * @type {Def1Fees}
-   * @memberof InlineResponse200Data
-   */
-  fees?: Def1Fees;
+    /**
+     *
+     * @type {string}
+     * @memberof InlineResponse200Data
+     */
+    inAmount: string;
+    /**
+     *
+     * @type {string}
+     * @memberof InlineResponse200Data
+     */
+    outAmount: string;
+    /**
+     *
+     * @type {number}
+     * @memberof InlineResponse200Data
+     */
+    priceImpactPct: number;
+    /**
+     *
+     * @type {Array<Def1MarketInfos>}
+     * @memberof InlineResponse200Data
+     */
+    marketInfos: Array<Def1MarketInfos>;
+    /**
+     *
+     * @type {string}
+     * @memberof InlineResponse200Data
+     */
+    amount: string;
+    /**
+     *
+     * @type {number}
+     * @memberof InlineResponse200Data
+     */
+    slippageBps: number;
+    /**
+     * The threshold for the swap based on the provided slippage: when swapMode is ExactIn the minimum out amount, when swapMode is ExactOut the maximum in amount
+     * @type {string}
+     * @memberof InlineResponse200Data
+     */
+    otherAmountThreshold: string;
+    /**
+     *
+     * @type {string}
+     * @memberof InlineResponse200Data
+     */
+    swapMode: InlineResponse200Data.SwapModeEnum;
+    /**
+     *
+     * @type {Def1Fees}
+     * @memberof InlineResponse200Data
+     */
+    fees?: Def1Fees;
 }
 
 /**
@@ -577,28 +569,27 @@ export interface InlineResponse200Data {
  * @namespace InlineResponse200Data
  */
 export namespace InlineResponse200Data {
-  /**
-   * @export
-   * @enum {string}
-   */
-  export enum SwapModeEnum {
-    ExactIn = <any>"ExactIn",
-    ExactOut = <any>"ExactOut",
-  }
+    /**
+     * @export
+     * @enum {string}
+     */
+    export enum SwapModeEnum {
+        ExactIn = <any> 'ExactIn',
+        ExactOut = <any> 'ExactOut'
+    }
 }
 /**
- * Duplicate symbol found for input or vsToken.\ The server will respond an error structure
- * which contains the conflict addresses. User will have to use address mode instead.
+ * Duplicate symbol found for input or vsToken. The server will respond an error structure which contains the conflict addresses. User will have to use address mode instead.
  * @export
  * @interface InlineResponse409
  */
 export interface InlineResponse409 {
-  /**
-   *
-   * @type {InlineResponse409Data}
-   * @memberof InlineResponse409
-   */
-  data?: InlineResponse409Data;
+    /**
+     *
+     * @type {InlineResponse409Data}
+     * @memberof InlineResponse409
+     */
+    data?: InlineResponse409Data;
 }
 /**
  *
@@ -606,18 +597,18 @@ export interface InlineResponse409 {
  * @interface InlineResponse409Data
  */
 export interface InlineResponse409Data {
-  /**
-   * Duplicated symbol found for [symbol], use one of the address instead
-   * @type {string}
-   * @memberof InlineResponse409Data
-   */
-  error?: string;
-  /**
-   * List of addresses for the symbol
-   * @type {Array}
-   * @memberof InlineResponse409Data
-   */
-  addresses?: Array;
+    /**
+     * Duplicated symbol found for [symbol], use one of the address instead
+     * @type {string}
+     * @memberof InlineResponse409Data
+     */
+    error?: string;
+    /**
+     * List of addresses for the symbol
+     * @type {Array}
+     * @memberof InlineResponse409Data
+     */
+    addresses?: Array;
 }
 /**
  *
@@ -625,483 +616,385 @@ export interface InlineResponse409Data {
  * @interface V4SwapBody
  */
 export interface V4SwapBody {
-  /**
-   *
-   * @type {Def1}
-   * @memberof V4SwapBody
-   */
-  route: Def1;
-  /**
-   * Public key of the user
-   * @type {string}
-   * @memberof V4SwapBody
-   */
-  userPublicKey: string;
-  /**
-   * Wrap/unwrap SOL
-   * @type {boolean}
-   * @memberof V4SwapBody
-   */
-  wrapUnwrapSOL?: boolean;
-  /**
-   * Fee token account for the output token (only pass in if you set a feeBps)
-   * @type {string}
-   * @memberof V4SwapBody
-   */
-  feeAccount?: string;
-  /**
-   * Request a legacy transaction rather than the default versioned transaction,
-   * needs to be paired with a quote using asLegacyTransaction otherwise the transaction might be too large
-   * @type {boolean}
-   * @memberof V4SwapBody
-   */
-  asLegacyTransaction?: boolean;
-  /**
-   * compute unit price to prioritize the transaction, the additional fee will be compute unit consumed
-   * * computeUnitPriceMicroLamports
-   * @type {number}
-   * @memberof V4SwapBody
-   */
-  computeUnitPriceMicroLamports?: number;
-  /**
-   * Public key of the wallet that will receive the output of the swap,
-   * this assumes the associated token account exists, currently adds a token transfer
-   * @type {string}
-   * @memberof V4SwapBody
-   */
-  destinationWallet?: string;
+    /**
+     *
+     * @type {Def1}
+     * @memberof V4SwapBody
+     */
+    route: Def1;
+    /**
+     * Public key of the user
+     * @type {string}
+     * @memberof V4SwapBody
+     */
+    userPublicKey: string;
+    /**
+     * Wrap/unwrap SOL
+     * @type {boolean}
+     * @memberof V4SwapBody
+     */
+    wrapUnwrapSOL?: boolean;
+    /**
+     * Fee token account for the output token (only pass in if you set a feeBps)
+     * @type {string}
+     * @memberof V4SwapBody
+     */
+    feeAccount?: string;
+    /**
+     * Request a legacy transaction rather than the default versioned transaction, needs to be paired with a quote using asLegacyTransaction otherwise the transaction might be too large
+     * @type {boolean}
+     * @memberof V4SwapBody
+     */
+    asLegacyTransaction?: boolean;
+    /**
+     * compute unit price to prioritize the transaction, the additional fee will be compute unit consumed * computeUnitPriceMicroLamports
+     * @type {number}
+     * @memberof V4SwapBody
+     */
+    computeUnitPriceMicroLamports?: number;
+    /**
+     * Public key of the wallet that will receive the output of the swap, this assumes the associated token account exists, currently adds a token transfer
+     * @type {string}
+     * @memberof V4SwapBody
+     */
+    destinationWallet?: string;
 }
 /**
  * DefaultApi - fetch parameter creator
  * @export
  */
-// eslint-disable-next-line func-names, @typescript-eslint/no-unused-vars
 export const DefaultApiFetchParamCreator = function (configuration?: Configuration) {
-  return {
-    /**
-     * Returns a hash map, input mint as key and an array of valid output mint as values,
-     * token mints are indexed to reduce the file size
-     * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4IndexedRouteMapGet(onlyDirectRoutes?: boolean, options: any = {}): FetchArgs {
-      const localVarPath = `/v4/indexed-route-map`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = { method: "GET", ...options };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
+    return {
+        /**
+         * Returns a hash map, input mint as key and an array of valid output mint as values, token mints are indexed to reduce the file size
+         * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4IndexedRouteMapGet(onlyDirectRoutes?: boolean, options: any = {}): FetchArgs {
+            const localVarPath = `/v4/indexed-route-map`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
-      if (onlyDirectRoutes !== undefined) {
-        localVarQueryParameter.onlyDirectRoutes = onlyDirectRoutes;
-      }
+            if (onlyDirectRoutes !== undefined) {
+                localVarQueryParameter['onlyDirectRoutes'] = onlyDirectRoutes;
+            }
 
-      localVarUrlObj.query = { ...localVarUrlObj.query, ...localVarQueryParameter, ...options.query };
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search;
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...options.headers };
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
-      return {
-        url: url.format(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-    /**
-     * Get simple price for a given input mint, output mint and amount
-     * @summary Return simple price
-     * Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v). Use &#x60;,&#x60; to
-     * query multiple tokens, e.g. (sol,btc,mer,&lt;address&gt;)
-     * @param {string} ids
-     * Default to USDC. Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v).
-     * @param {string} [vsToken]
-     * @param {number} [vsAmount] Unit amount of specified input token. Default to 1.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4PriceGet(ids: string, vsToken?: string, vsAmount?: number, options: any = {}): FetchArgs {
-      // verify required parameter 'ids' is not null or undefined
-      if (ids === null || ids === undefined) {
-        throw new RequiredError("ids", "Required parameter ids was null or undefined when calling v4PriceGet.");
-      }
-      const localVarPath = `/v4/price`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = { method: "GET", ...options };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get simple price for a given input mint, output mint and amount
+         * @summary Return simple price
+         * @param {string} ids Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v). Use &#x60;,&#x60; to query multiple tokens, e.g. (sol,btc,mer,&lt;address&gt;)
+         * @param {string} [vsToken] Default to USDC. Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v).
+         * @param {number} [vsAmount] Unit amount of specified input token. Default to 1.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4PriceGet(ids: string, vsToken?: string, vsAmount?: number, options: any = {}): FetchArgs {
+            // verify required parameter 'ids' is not null or undefined
+            if (ids === null || ids === undefined) {
+                throw new RequiredError('ids','Required parameter ids was null or undefined when calling v4PriceGet.');
+            }
+            const localVarPath = `/v4/price`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
-      if (ids !== undefined) {
-        localVarQueryParameter.ids = ids;
-      }
+            if (ids !== undefined) {
+                localVarQueryParameter['ids'] = ids;
+            }
 
-      if (vsToken !== undefined) {
-        localVarQueryParameter.vsToken = vsToken;
-      }
+            if (vsToken !== undefined) {
+                localVarQueryParameter['vsToken'] = vsToken;
+            }
 
-      if (vsAmount !== undefined) {
-        localVarQueryParameter.vsAmount = vsAmount;
-      }
+            if (vsAmount !== undefined) {
+                localVarQueryParameter['vsAmount'] = vsAmount;
+            }
 
-      localVarUrlObj.query = { ...localVarUrlObj.query, ...localVarQueryParameter, ...options.query };
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search;
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...options.headers };
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
-      return {
-        url: url.format(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-    /**
-     * Get quote for a given input mint, output mint and amount
-     * @summary Return route
-     * @param {string} inputMint inputMint
-     * @param {string} outputMint outputMint
-     * @param {string} amount amount
-     * @param {string} [swapMode] Swap mode, default is ExactIn
-     * @param {number} [slippageBps] Slippage bps
-     * @param {number} [feeBps] Fee BPS (only pass in if you want to charge a fee on this swap)
-     * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
-     * Public key of the user (only pass in if you want deposit and fee being returned, might slow down query)
-     * @param {string} [userPublicKey]
-     * Only return routes that can be done in a single legacy transaction. (Routes might be limited)
-     * @param {boolean} [asLegacyTransaction]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4QuoteGet(
-      inputMint: string,
-      outputMint: string,
-      amount: string,
-      swapMode?: string,
-      slippageBps?: number,
-      feeBps?: number,
-      onlyDirectRoutes?: boolean,
-      userPublicKey?: string,
-      asLegacyTransaction?: boolean,
-      options: any = {},
-    ): FetchArgs {
-      // verify required parameter 'inputMint' is not null or undefined
-      if (inputMint === null || inputMint === undefined) {
-        throw new RequiredError(
-          "inputMint",
-          "Required parameter inputMint was null or undefined when calling v4QuoteGet.",
-        );
-      }
-      // verify required parameter 'outputMint' is not null or undefined
-      if (outputMint === null || outputMint === undefined) {
-        throw new RequiredError(
-          "outputMint",
-          "Required parameter outputMint was null or undefined when calling v4QuoteGet.",
-        );
-      }
-      // verify required parameter 'amount' is not null or undefined
-      if (amount === null || amount === undefined) {
-        throw new RequiredError("amount", "Required parameter amount was null or undefined when calling v4QuoteGet.");
-      }
-      const localVarPath = `/v4/quote`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = { method: "GET", ...options };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get quote for a given input mint, output mint and amount
+         * @summary Return route
+         * @param {string} inputMint inputMint
+         * @param {string} outputMint outputMint
+         * @param {string} amount amount
+         * @param {string} [swapMode] Swap mode, default is ExactIn
+         * @param {number} [slippageBps] Slippage bps
+         * @param {number} [feeBps] Fee BPS (only pass in if you want to charge a fee on this swap)
+         * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
+         * @param {string} [userPublicKey] Public key of the user (only pass in if you want deposit and fee being returned, might slow down query)
+         * @param {boolean} [asLegacyTransaction] Only return routes that can be done in a single legacy transaction. (Routes might be limited)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4QuoteGet(inputMint: string, outputMint: string, amount: string, swapMode?: string, slippageBps?: number, feeBps?: number, onlyDirectRoutes?: boolean, userPublicKey?: string, asLegacyTransaction?: boolean, options: any = {}): FetchArgs {
+            // verify required parameter 'inputMint' is not null or undefined
+            if (inputMint === null || inputMint === undefined) {
+                throw new RequiredError('inputMint','Required parameter inputMint was null or undefined when calling v4QuoteGet.');
+            }
+            // verify required parameter 'outputMint' is not null or undefined
+            if (outputMint === null || outputMint === undefined) {
+                throw new RequiredError('outputMint','Required parameter outputMint was null or undefined when calling v4QuoteGet.');
+            }
+            // verify required parameter 'amount' is not null or undefined
+            if (amount === null || amount === undefined) {
+                throw new RequiredError('amount','Required parameter amount was null or undefined when calling v4QuoteGet.');
+            }
+            const localVarPath = `/v4/quote`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
-      if (inputMint !== undefined) {
-        localVarQueryParameter.inputMint = inputMint;
-      }
+            if (inputMint !== undefined) {
+                localVarQueryParameter['inputMint'] = inputMint;
+            }
 
-      if (outputMint !== undefined) {
-        localVarQueryParameter.outputMint = outputMint;
-      }
+            if (outputMint !== undefined) {
+                localVarQueryParameter['outputMint'] = outputMint;
+            }
 
-      if (amount !== undefined) {
-        localVarQueryParameter.amount = amount;
-      }
+            if (amount !== undefined) {
+                localVarQueryParameter['amount'] = amount;
+            }
 
-      if (swapMode !== undefined) {
-        localVarQueryParameter.swapMode = swapMode;
-      }
+            if (swapMode !== undefined) {
+                localVarQueryParameter['swapMode'] = swapMode;
+            }
 
-      if (slippageBps !== undefined) {
-        localVarQueryParameter.slippageBps = slippageBps;
-      }
+            if (slippageBps !== undefined) {
+                localVarQueryParameter['slippageBps'] = slippageBps;
+            }
 
-      if (feeBps !== undefined) {
-        localVarQueryParameter.feeBps = feeBps;
-      }
+            if (feeBps !== undefined) {
+                localVarQueryParameter['feeBps'] = feeBps;
+            }
 
-      if (onlyDirectRoutes !== undefined) {
-        localVarQueryParameter.onlyDirectRoutes = onlyDirectRoutes;
-      }
+            if (onlyDirectRoutes !== undefined) {
+                localVarQueryParameter['onlyDirectRoutes'] = onlyDirectRoutes;
+            }
 
-      if (userPublicKey !== undefined) {
-        localVarQueryParameter.userPublicKey = userPublicKey;
-      }
+            if (userPublicKey !== undefined) {
+                localVarQueryParameter['userPublicKey'] = userPublicKey;
+            }
 
-      if (asLegacyTransaction !== undefined) {
-        localVarQueryParameter.asLegacyTransaction = asLegacyTransaction;
-      }
+            if (asLegacyTransaction !== undefined) {
+                localVarQueryParameter['asLegacyTransaction'] = asLegacyTransaction;
+            }
 
-      localVarUrlObj.query = { ...localVarUrlObj.query, ...localVarQueryParameter, ...options.query };
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search;
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...options.headers };
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
-      return {
-        url: url.format(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-    /**
-     * Get swap serialized transactions for a route
-     * @summary Return setup, swap and cleanup transactions
-     * @param {V4SwapBody} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4SwapPost(body?: V4SwapBody, options: any = {}): FetchArgs {
-      const localVarPath = `/v4/swap`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = { method: "POST", ...options };
-      const localVarHeaderParameter = {} as any;
-      const localVarQueryParameter = {} as any;
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get swap serialized transactions for a route
+         * @summary Return setup, swap and cleanup transactions
+         * @param {V4SwapBody} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4SwapPost(body?: V4SwapBody, options: any = {}): FetchArgs {
+            const localVarPath = `/v4/swap`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
-      localVarHeaderParameter["Content-Type"] = "application/json";
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
-      localVarUrlObj.query = { ...localVarUrlObj.query, ...localVarQueryParameter, ...options.query };
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      delete localVarUrlObj.search;
-      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...options?.headers };
-      const needsSerialization =
-        <any>"V4SwapBody" !== "string" || localVarRequestOptions.headers["Content-Type"] === "application/json";
-      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || "";
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V4SwapBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
-      return {
-        url: url.format(localVarUrlObj),
-        options: localVarRequestOptions,
-      };
-    },
-  };
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
 };
 
 /**
  * DefaultApi - functional programming interface
  * @export
  */
-// eslint-disable-next-line func-names
-export const DefaultApiFp = function (configuration?: Configuration) {
-  return {
-    /**
-     * Returns a hash map, input mint as key and an array of valid output mint as values,
-     * token mints are indexed to reduce the file size
-     * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4IndexedRouteMapGet(
-      onlyDirectRoutes?: boolean,
-      options?: any,
-    ): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2003> {
-      const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).v4IndexedRouteMapGet(
-        onlyDirectRoutes,
-        options,
-      );
-      return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) =>
-        fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-          if (response.status >= 200 && response.status < 300) {
-            return response.json();
-          }
-          // eslint-disable-next-line @typescript-eslint/no-throw-literal
-          throw response;
-        });
-    },
-    /**
-     * Get simple price for a given input mint, output mint and amount
-     * @summary Return simple price
-     * Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v).
-     * Use &#x60;,&#x60; to query multiple tokens, e.g. (sol,btc,mer,&lt;address&gt;)
-     * @param {string} ids
-     * Default to USDC. Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v).
-     * @param {string} [vsToken]
-     * @param {number} [vsAmount] Unit amount of specified input token. Default to 1.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4PriceGet(
-      ids: string,
-      vsToken?: string,
-      vsAmount?: number,
-      options?: any,
-    ): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2002> {
-      const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).v4PriceGet(ids, vsToken, vsAmount, options);
-      return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) =>
-        fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-          if (response.status >= 200 && response.status < 300) {
-            return response.json();
-          }
-
-          // eslint-disable-next-line @typescript-eslint/no-throw-literal
-          throw response;
-        });
-    },
-    /**
-     * Get quote for a given input mint, output mint and amount
-     * @summary Return route
-     * @param {string} inputMint inputMint
-     * @param {string} outputMint outputMint
-     * @param {string} amount amount
-     * @param {string} [swapMode] Swap mode, default is ExactIn
-     * @param {number} [slippageBps] Slippage bps
-     * @param {number} [feeBps] Fee BPS (only pass in if you want to charge a fee on this swap)
-     * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
-     * Public key of the user (only pass in if you want deposit and fee being returned, might slow down query)
-     * @param {string} [userPublicKey]
-     * Only return routes that can be done in a single legacy transaction. (Routes might be limited)
-     * @param {boolean} [asLegacyTransaction]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4QuoteGet(
-      inputMint: string,
-      outputMint: string,
-      amount: string,
-      swapMode?: string,
-      slippageBps?: number,
-      feeBps?: number,
-      onlyDirectRoutes?: boolean,
-      userPublicKey?: string,
-      asLegacyTransaction?: boolean,
-      options?: any,
-    ): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse200> {
-      const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).v4QuoteGet(
-        inputMint,
-        outputMint,
-        amount,
-        swapMode,
-        slippageBps,
-        feeBps,
-        onlyDirectRoutes,
-        userPublicKey,
-        asLegacyTransaction,
-        options,
-      );
-      return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) =>
-        fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-          if (response.status >= 200 && response.status < 300) {
-            return response.json();
-          }
-          // eslint-disable-next-line @typescript-eslint/no-throw-literal
-          throw response;
-        });
-    },
-    /**
-     * Get swap serialized transactions for a route
-     * @summary Return setup, swap and cleanup transactions
-     * @param {V4SwapBody} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4SwapPost(body?: V4SwapBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2001> {
-      const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).v4SwapPost(body, options);
-      return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) =>
-        fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-          if (response.status >= 200 && response.status < 300) {
-            return response.json();
-          }
-          // eslint-disable-next-line @typescript-eslint/no-throw-literal
-          throw response;
-        });
-    },
-  };
+export const DefaultApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * Returns a hash map, input mint as key and an array of valid output mint as values, token mints are indexed to reduce the file size
+         * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4IndexedRouteMapGet(onlyDirectRoutes?: boolean, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2003> {
+            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).v4IndexedRouteMapGet(onlyDirectRoutes, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * Get simple price for a given input mint, output mint and amount
+         * @summary Return simple price
+         * @param {string} ids Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v). Use &#x60;,&#x60; to query multiple tokens, e.g. (sol,btc,mer,&lt;address&gt;)
+         * @param {string} [vsToken] Default to USDC. Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v).
+         * @param {number} [vsAmount] Unit amount of specified input token. Default to 1.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4PriceGet(ids: string, vsToken?: string, vsAmount?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2002> {
+            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).v4PriceGet(ids, vsToken, vsAmount, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * Get quote for a given input mint, output mint and amount
+         * @summary Return route
+         * @param {string} inputMint inputMint
+         * @param {string} outputMint outputMint
+         * @param {string} amount amount
+         * @param {string} [swapMode] Swap mode, default is ExactIn
+         * @param {number} [slippageBps] Slippage bps
+         * @param {number} [feeBps] Fee BPS (only pass in if you want to charge a fee on this swap)
+         * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
+         * @param {string} [userPublicKey] Public key of the user (only pass in if you want deposit and fee being returned, might slow down query)
+         * @param {boolean} [asLegacyTransaction] Only return routes that can be done in a single legacy transaction. (Routes might be limited)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4QuoteGet(inputMint: string, outputMint: string, amount: string, swapMode?: string, slippageBps?: number, feeBps?: number, onlyDirectRoutes?: boolean, userPublicKey?: string, asLegacyTransaction?: boolean, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse200> {
+            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).v4QuoteGet(inputMint, outputMint, amount, swapMode, slippageBps, feeBps, onlyDirectRoutes, userPublicKey, asLegacyTransaction, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * Get swap serialized transactions for a route
+         * @summary Return setup, swap and cleanup transactions
+         * @param {V4SwapBody} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4SwapPost(body?: V4SwapBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse2001> {
+            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).v4SwapPost(body, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+    }
 };
 
 /**
  * DefaultApi - factory interface
  * @export
  */
-// eslint-disable-next-line func-names
 export const DefaultApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
-  return {
-    /**
-     * Returns a hash map, input mint as key and an array of valid output mint as values,
-     * token mints are indexed to reduce the file size
-     * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4IndexedRouteMapGet(onlyDirectRoutes?: boolean, options?: any) {
-      return DefaultApiFp(configuration).v4IndexedRouteMapGet(onlyDirectRoutes, options)(fetch, basePath);
-    },
-    /**
-     * Get simple price for a given input mint, output mint and amount
-     * @summary Return simple price
-     * Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v).
-     * Use &#x60;,&#x60; to query multiple tokens,
-     * e.g. (sol,btc,mer,&lt;address&gt;)
-     * @param {string} ids
-     * Default to USDC. Symbol or address of a token,
-     * (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v).
-     * @param {string} [vsToken]
-     * @param {number} [vsAmount] Unit amount of specified input token. Default to 1.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4PriceGet(ids: string, vsToken?: string, vsAmount?: number, options?: any) {
-      return DefaultApiFp(configuration).v4PriceGet(ids, vsToken, vsAmount, options)(fetch, basePath);
-    },
-    /**
-     * Get quote for a given input mint, output mint and amount
-     * @summary Return route
-     * @param {string} inputMint inputMint
-     * @param {string} outputMint outputMint
-     * @param {string} amount amount
-     * @param {string} [swapMode] Swap mode, default is ExactIn
-     * @param {number} [slippageBps] Slippage bps
-     * @param {number} [feeBps] Fee BPS (only pass in if you want to charge a fee on this swap)
-     * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
-     * Public key of the user (only pass in if you want deposit and fee
-     * being returned, might slow down query)
-     * @param {string} [userPublicKey]
-     * Only return routes that can be done in a single
-     * transaction. (Routes might be limited)
-     * @param {boolean} [asLegacyTransaction]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4QuoteGet(
-      inputMint: string,
-      outputMint: string,
-      amount: string,
-      swapMode?: string,
-      slippageBps?: number,
-      feeBps?: number,
-      onlyDirectRoutes?: boolean,
-      userPublicKey?: string,
-      asLegacyTransaction?: boolean,
-      options?: any,
-    ) {
-      return DefaultApiFp(configuration).v4QuoteGet(
-        inputMint,
-        outputMint,
-        amount,
-        swapMode,
-        slippageBps,
-        feeBps,
-        onlyDirectRoutes,
-        userPublicKey,
-        asLegacyTransaction,
-        options,
-      )(fetch, basePath);
-    },
-    /**
-     * Get swap serialized transactions for a route
-     * @summary Return setup, swap and cleanup transactions
-     * @param {V4SwapBody} [body]
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    v4SwapPost(body?: V4SwapBody, options?: any) {
-      return DefaultApiFp(configuration).v4SwapPost(body, options)(fetch, basePath);
-    },
-  };
+    return {
+        /**
+         * Returns a hash map, input mint as key and an array of valid output mint as values, token mints are indexed to reduce the file size
+         * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4IndexedRouteMapGet(onlyDirectRoutes?: boolean, options?: any) {
+            return DefaultApiFp(configuration).v4IndexedRouteMapGet(onlyDirectRoutes, options)(fetch, basePath);
+        },
+        /**
+         * Get simple price for a given input mint, output mint and amount
+         * @summary Return simple price
+         * @param {string} ids Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v). Use &#x60;,&#x60; to query multiple tokens, e.g. (sol,btc,mer,&lt;address&gt;)
+         * @param {string} [vsToken] Default to USDC. Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v).
+         * @param {number} [vsAmount] Unit amount of specified input token. Default to 1.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4PriceGet(ids: string, vsToken?: string, vsAmount?: number, options?: any) {
+            return DefaultApiFp(configuration).v4PriceGet(ids, vsToken, vsAmount, options)(fetch, basePath);
+        },
+        /**
+         * Get quote for a given input mint, output mint and amount
+         * @summary Return route
+         * @param {string} inputMint inputMint
+         * @param {string} outputMint outputMint
+         * @param {string} amount amount
+         * @param {string} [swapMode] Swap mode, default is ExactIn
+         * @param {number} [slippageBps] Slippage bps
+         * @param {number} [feeBps] Fee BPS (only pass in if you want to charge a fee on this swap)
+         * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
+         * @param {string} [userPublicKey] Public key of the user (only pass in if you want deposit and fee being returned, might slow down query)
+         * @param {boolean} [asLegacyTransaction] Only return routes that can be done in a single legacy transaction. (Routes might be limited)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4QuoteGet(inputMint: string, outputMint: string, amount: string, swapMode?: string, slippageBps?: number, feeBps?: number, onlyDirectRoutes?: boolean, userPublicKey?: string, asLegacyTransaction?: boolean, options?: any) {
+            return DefaultApiFp(configuration).v4QuoteGet(inputMint, outputMint, amount, swapMode, slippageBps, feeBps, onlyDirectRoutes, userPublicKey, asLegacyTransaction, options)(fetch, basePath);
+        },
+        /**
+         * Get swap serialized transactions for a route
+         * @summary Return setup, swap and cleanup transactions
+         * @param {V4SwapBody} [body]
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        v4SwapPost(body?: V4SwapBody, options?: any) {
+            return DefaultApiFp(configuration).v4SwapPost(body, options)(fetch, basePath);
+        },
+    };
 };
 
 /**
@@ -1111,90 +1004,61 @@ export const DefaultApiFactory = function (configuration?: Configuration, fetch?
  * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
-  /**
-   * Returns a hash map, input mint as key and an array of valid output
-   * mint as values, token mints are indexed to reduce the file size
-   * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public v4IndexedRouteMapGet(onlyDirectRoutes?: boolean, options?: any) {
-    return DefaultApiFp(this.configuration).v4IndexedRouteMapGet(onlyDirectRoutes, options)(this.fetch, this.basePath);
-  }
+    /**
+     * Returns a hash map, input mint as key and an array of valid output mint as values, token mints are indexed to reduce the file size
+     * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public v4IndexedRouteMapGet(onlyDirectRoutes?: boolean, options?: any) {
+        return DefaultApiFp(this.configuration).v4IndexedRouteMapGet(onlyDirectRoutes, options)(this.fetch, this.basePath);
+    }
 
-  /**
-   * Get simple price for a given input mint, output mint and amount
-   * @summary Return simple price
-   * Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v). Use &#x60;,&#x60;
-   * to query multiple tokens, e.g. (sol,btc,mer,&lt;address&gt;)
-   * @param {string} ids
-   * Default to USDC. Symbol or address of a token,
-   * (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v).
-   * @param {string} [vsToken]
-   * @param {number} [vsAmount] Unit amount of specified input token. Default to 1.
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public v4PriceGet(ids: string, vsToken?: string, vsAmount?: number, options?: any) {
-    return DefaultApiFp(this.configuration).v4PriceGet(ids, vsToken, vsAmount, options)(this.fetch, this.basePath);
-  }
+    /**
+     * Get simple price for a given input mint, output mint and amount
+     * @summary Return simple price
+     * @param {string} ids Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v). Use &#x60;,&#x60; to query multiple tokens, e.g. (sol,btc,mer,&lt;address&gt;)
+     * @param {string} [vsToken] Default to USDC. Symbol or address of a token, (e.g. SOL or EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v).
+     * @param {number} [vsAmount] Unit amount of specified input token. Default to 1.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public v4PriceGet(ids: string, vsToken?: string, vsAmount?: number, options?: any) {
+        return DefaultApiFp(this.configuration).v4PriceGet(ids, vsToken, vsAmount, options)(this.fetch, this.basePath);
+    }
 
-  /**
-   * Get quote for a given input mint, output mint and amount
-   * @summary Return route
-   * @param {string} inputMint inputMint
-   * @param {string} outputMint outputMint
-   * @param {string} amount amount
-   * @param {string} [swapMode] Swap mode, default is ExactIn
-   * @param {number} [slippageBps] Slippage bps
-   * @param {number} [feeBps] Fee BPS (only pass in if you want to charge a fee on this swap)
-   * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
-   * Public key of the user (only pass in if you want deposit and
-   * fee being returned, might slow down query)
-   * @param {string} [userPublicKey]
-   * Only return routes that can be done in a single legacy transaction. (Routes might be limited)
-   * @param {boolean} [asLegacyTransaction]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public v4QuoteGet(
-    inputMint: string,
-    outputMint: string,
-    amount: string,
-    swapMode?: string,
-    slippageBps?: number,
-    feeBps?: number,
-    onlyDirectRoutes?: boolean,
-    userPublicKey?: string,
-    asLegacyTransaction?: boolean,
-    options?: any,
-  ) {
-    return DefaultApiFp(this.configuration).v4QuoteGet(
-      inputMint,
-      outputMint,
-      amount,
-      swapMode,
-      slippageBps,
-      feeBps,
-      onlyDirectRoutes,
-      userPublicKey,
-      asLegacyTransaction,
-      options,
-    )(this.fetch, this.basePath);
-  }
+    /**
+     * Get quote for a given input mint, output mint and amount
+     * @summary Return route
+     * @param {string} inputMint inputMint
+     * @param {string} outputMint outputMint
+     * @param {string} amount amount
+     * @param {string} [swapMode] Swap mode, default is ExactIn
+     * @param {number} [slippageBps] Slippage bps
+     * @param {number} [feeBps] Fee BPS (only pass in if you want to charge a fee on this swap)
+     * @param {boolean} [onlyDirectRoutes] Only return direct routes (no hoppings and split trade)
+     * @param {string} [userPublicKey] Public key of the user (only pass in if you want deposit and fee being returned, might slow down query)
+     * @param {boolean} [asLegacyTransaction] Only return routes that can be done in a single legacy transaction. (Routes might be limited)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public v4QuoteGet(inputMint: string, outputMint: string, amount: string, swapMode?: string, slippageBps?: number, feeBps?: number, onlyDirectRoutes?: boolean, userPublicKey?: string, asLegacyTransaction?: boolean, options?: any) {
+        return DefaultApiFp(this.configuration).v4QuoteGet(inputMint, outputMint, amount, swapMode, slippageBps, feeBps, onlyDirectRoutes, userPublicKey, asLegacyTransaction, options)(this.fetch, this.basePath);
+    }
 
-  /**
-   * Get swap serialized transactions for a route
-   * @summary Return setup, swap and cleanup transactions
-   * @param {V4SwapBody} [body]
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof DefaultApi
-   */
-  public v4SwapPost(body?: V4SwapBody, options?: any) {
-    return DefaultApiFp(this.configuration).v4SwapPost(body, options)(this.fetch, this.basePath);
-  }
+    /**
+     * Get swap serialized transactions for a route
+     * @summary Return setup, swap and cleanup transactions
+     * @param {V4SwapBody} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public v4SwapPost(body?: V4SwapBody, options?: any) {
+        return DefaultApiFp(this.configuration).v4SwapPost(body, options)(this.fetch, this.basePath);
+    }
+
 }

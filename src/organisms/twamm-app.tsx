@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// import { Init } from "src/types";
+import { WalletModal } from "src/molecules/wallet-modal";
 import Header from "./header";
 
 export default function TwammApp() {
@@ -9,7 +9,11 @@ export default function TwammApp() {
   return (
     <>
       <Header setIsWalletModalOpen={setIsWalletModalOpen} />
-      {isWalletModalOpen && null}
+      {isWalletModalOpen ? (
+        <div className="absolute h-full w-full flex justify-center items-center bg-black/50 rounded-lg overflow-hidden">
+          <WalletModal setIsWalletModalOpen={setIsWalletModalOpen} />
+        </div>
+      ) : null}
     </>
   );
 }

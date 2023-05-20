@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useMemo, useState, useRef, useEffect } from "react";
 
-import { useWalletPassThrough } from "src/contexts/wallet-passthrough-provider";
+import { useWalletPassThrough } from "src/contexts/wallet-passthrough-context";
 import WalletBadge from "src/atoms/wallet-badge";
 
 const WalletButton: FC<{ setIsWalletModalOpen(toggle: boolean): void }> = ({ setIsWalletModalOpen }) => {

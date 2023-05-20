@@ -21,29 +21,25 @@
   "license": "MIT",
   "dependencies": {
     "@jup-ag/api": "3",
-    "@project-serum/anchor": "^0.26.0",
-    "@solana/spl-token": "^0.3.7",
+    "@jup-ag/core": "4.0.0-beta.18",
+    "@project-serum/anchor": "0.25.0",
+    "@solana/spl-token": "0.3.5",
     "@solana/spl-token-registry": "^0.2.4574",
-    "@solana/wallet-adapter-backpack": "^0.1.13",
     "@solana/wallet-adapter-base": "^0.9.22",
-    "@solana/wallet-adapter-glow": "^0.1.17",
-    "@solana/wallet-adapter-phantom": "^0.9.22",
     "@solana/wallet-adapter-react": "^0.15.32",
-    "@solana/wallet-adapter-solflare": "^0.6.24",
     "@solana/wallet-adapter-wallets": "^0.19.16",
     "@solana/web3.js": "^1.76.0",
     "@twamm/client.js": "^1.0.0",
     "@twamm/types": "^1.0.0",
     "a-wait-forit": "^0.2.0",
     "bn.js": "^5.2.1",
-    "bs58": "^5.0.0",
     "classnames": "^2.3.2",
     "easy-maybe": "^0.0.7",
     "eslint-config-next": "12.2.5",
     "eslint-config-prettier": "8.5.0",
     "isomorphic-fetch": "^3.0.0",
-    "jsbi": "^4.3.0",
     "lodash.debounce": "^4.0.8",
+    "moment": "^2.29.4",
     "next": "13.1.2",
     "next-themes": "^0.2.1",
     "notistack": "^3.0.1",
@@ -53,8 +49,9 @@
     "react-hook-form": "^7.43.9",
     "react-syntax-highlighter": "^15.5.0",
     "react-window": "^1.8.9",
-    "swr": "^2.1.5",
-    "tailwindcss": "^3.3.2"
+    "swr": "2.0.0-rc.0",
+    "tailwindcss": "^3.3.2",
+    "yup": "0.32.11"
   },
   "devDependencies": {
     "@types/node": "20.1.1",
@@ -64,6 +61,7 @@
     "@types/react-syntax-highlighter": "^15.5.6",
     "@types/react-window": "1.8.5",
     "@typescript-eslint/eslint-plugin": "5.47.1",
+    "@welldone-software/why-did-you-render": "^7.0.1",
     "autoprefixer": "10.4.14",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^5.0.0",
@@ -87,5 +85,12 @@
     "webpack": "^5.74.0",
     "webpack-bundle-analyzer": "^4.8.0",
     "webpack-cli": "^5.1.1"
+  },
+  "optionalDependencies": {
+    "@babel/core": "7.0.0",
+    "@babel/runtime": "7",
+    "@typescript-eslint/parser": "5.43.0",
+    "bs58": "4.0.1",
+    "jsbi": "4"
   }
 }

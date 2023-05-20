@@ -3,6 +3,7 @@ import { useWallet, WalletContextState } from "@solana/wallet-adapter-react";
 import { Adapter, WalletReadyState } from "@solana/wallet-adapter-base";
 
 import LeftArrowIcon from "src/icons/left-arrow-icon";
+import { useSnackbar } from "src/contexts/notification-context";
 import WalletListItem from "./wallet-list-item";
 
 const PRIORITISE: {
@@ -19,6 +20,7 @@ interface WalletModalProps {
 }
 
 export const WalletModal: FC<WalletModalProps> = ({ setIsWalletModalOpen }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const { wallets, select } = useWallet();
 
   const handleWalletClick = (event: MouseEvent, wallet: Adapter) => {
@@ -27,8 +29,9 @@ export const WalletModal: FC<WalletModalProps> = ({ setIsWalletModalOpen }) => {
       select(wallet.name);
 
       if (wallet.readyState === WalletReadyState.NotDetected) {
-        const err = new Error(WalletReadyState.NotDetected);
-        throw err;
+        enqueueSnackbar(WalletReadyState.NotDetected, {
+          variant: "error",
+        });
       }
       setIsWalletModalOpen(false);
     } catch (error) {

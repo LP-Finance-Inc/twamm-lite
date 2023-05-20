@@ -8,7 +8,7 @@ export interface Props {
 
 export { useSnackbar };
 
-export const NotificationProvider = ({ maxSnack = 1, children }: Props) => (
+export const NotificationProvider = ({ maxSnack = 3, children }: Props) => (
   <SnackbarProvider autoHideDuration={5000} maxSnack={maxSnack}>
     {children}
   </SnackbarProvider>

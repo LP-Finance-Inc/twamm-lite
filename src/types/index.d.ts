@@ -30,7 +30,7 @@ export interface FormProps {
 
 export interface Init {
   endpoint: string;
-  formProps?: FormProps;
+  formProps: FormProps;
   displayMode?: "modal" | "integrated" | "widget";
   integratedTargetId?: string;
   widgetStyle?: {

@@ -83,6 +83,8 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
     fallback: {
       fs: false,
+      os: false,
+      path: false,
     },
     alias: {
       src: path.resolve(__dirname, "src"),

@@ -37,11 +37,9 @@ interface ConfigurationWithProvider extends SWRConfiguration {
   provider?: typeof provider;
 }
 
-const swrConfig = (config?: SWRConfiguration): ConfigurationWithProvider => ({
+export default (config?: SWRConfiguration): ConfigurationWithProvider => ({
   ...(config || {}),
   ...dedupeEach(10e3),
   ...revalOnFocus(),
   ...retryFor(),
 });
-
-export default swrConfig;

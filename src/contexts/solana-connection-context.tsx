@@ -5,7 +5,7 @@ import type { Commitment } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { ENV as ChainIdEnv } from "@solana/spl-token-registry";
 
-import { useNetworkConfiguration } from "src/contexts/network-configuration-provider";
+import { useNetworkConfiguration } from "src/contexts/network-configuration-context";
 import type * as T from "src/domain/cluster.d";
 import { ankrClusterApiUrl } from "src/env";
 import storage, { sanidateURL } from "src/utils/config-storage";

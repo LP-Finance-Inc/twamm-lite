@@ -1,3 +1,8 @@
+import type { Idl } from "@project-serum/anchor";
+import idlJson from "../idl.json";
+
+export const idl = idlJson as Idl;
+
 export const ankrClusterApiUrl = "https://rpc.ankr.com/solana";
 
 export const ClusterApiUrl = process.env.NEXT_PUBLIC_CLUSTER_API_URL || "https://api.mainnet-beta.solana.com"; // dynamic

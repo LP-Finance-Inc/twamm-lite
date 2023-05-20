@@ -2,16 +2,23 @@ import type { FC, ReactNode } from "react";
 import { useMemo, useCallback } from "react";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork, WalletError } from "@solana/wallet-adapter-base";
-import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
-import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
-import { BackpackWalletAdapter } from "@solana/wallet-adapter-backpack";
-import { GlowWalletAdapter } from "@solana/wallet-adapter-glow";
+import {
+  BackpackWalletAdapter,
+  GlowWalletAdapter,
+  PhantomWalletAdapter,
+  SolflareWalletAdapter,
+  SolletExtensionWalletAdapter,
+  SolletWalletAdapter,
+  ExodusWalletAdapter,
+} from "@solana/wallet-adapter-wallets";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 
-import { useNetworkConfiguration } from "./network-configuration-provider";
-import { useAutoConnect } from "./auto-connect-provider";
+import { useNetworkConfiguration } from "./network-configuration-context";
+import { useAutoConnect } from "./auto-connect-context";
+import { useSnackbar } from "./notification-context";
 
 export const WalletContextProvider: FC<{ endpoint?: string; children: ReactNode }> = ({ endpoint, children }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const { autoConnect } = useAutoConnect();
   const { networkConfiguration } = useNetworkConfiguration();
   const network = networkConfiguration as WalletAdapterNetwork;
@@ -29,17 +36,24 @@ export const WalletContextProvider: FC<{ endpoint?: string; children: ReactNode 
 
     return [
       new PhantomWalletAdapter(),
-      new SolflareWalletAdapter(),
       new BackpackWalletAdapter(),
       new GlowWalletAdapter(),
+      new SolflareWalletAdapter({ network }),
+      new SolletWalletAdapter({ network }),
+      new SolletExtensionWalletAdapter({ network }),
+      new ExodusWalletAdapter(),
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [network]);
 
-  const onError = useCallback((error: WalletError) => {
-    // eslint-disable-next-line no-console
-    console.error("error", { type: "error", message: error.message ? `${error.name}: ${error.message}` : error.name });
-  }, []);
+  const onError = useCallback(
+    (error: WalletError) => {
+      enqueueSnackbar(error.message || error.name, {
+        variant: "error",
+      });
+    },
+    [enqueueSnackbar],
+  );
 
   return (
     <ConnectionProvider endpoint={selectedEndpoint}>

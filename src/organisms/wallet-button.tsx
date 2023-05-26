@@ -1,11 +1,14 @@
 import type { FC } from "react";
 import { useMemo, useState, useRef, useEffect } from "react";
 
-import { useWalletPassThrough } from "src/contexts/wallet-passthrough-context";
+import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
 import WalletBadge from "src/atoms/wallet-badge";
 
-const WalletButton: FC<{ setIsWalletModalOpen(toggle: boolean): void }> = ({ setIsWalletModalOpen }) => {
-  const { publicKey, wallet, connected, connecting, disconnect } = useWalletPassThrough();
+const WalletButton: FC<{ setIsWalletModalOpen(toggle: boolean): void }> = ({
+  setIsWalletModalOpen,
+}) => {
+  const { publicKey, wallet, connected, connecting, disconnect } =
+    useWalletPassThrough();
 
   const [active, setActive] = useState(false);
   const ref = useRef<HTMLUListElement>(null);
@@ -62,7 +65,7 @@ const WalletButton: FC<{ setIsWalletModalOpen(toggle: boolean): void }> = ({ set
           aria-label="dropdown-list"
           className={
             active
-              ? "absolute block top-10 right-0 text-sm bg-black rounded-lg p-2 text-white dark:bg-white dark:text-black"
+              ? "absolute block top-10 right-0 text-sm bg-black rounded-lg p-2 text-white"
               : "hidden"
           }
           ref={ref}

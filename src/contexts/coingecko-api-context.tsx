@@ -7,9 +7,13 @@ export type CoingeckoApiContextType = {
   contractApi: ContractApi;
 };
 
-export const ApiContext = createContext<CoingeckoApiContextType | undefined>(undefined);
+export const ApiContext = createContext<CoingeckoApiContextType | undefined>(
+  undefined
+);
 
-export const CoingeckoApiProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const CoingeckoApiProvider: FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [context] = useState<CoingeckoApiContextType>({
     contractApi: new ContractApi(),
   });

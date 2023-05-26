@@ -18,7 +18,11 @@ const fetcher = (program: Program, provider: Provider) => {
     const primary = params.aToken.address;
     const secondary = params.bToken.address;
 
-    const { data, primary: a, assumedType } = await tokenPair.getExchangePair<TTokenPair>(primary, secondary);
+    const {
+      data,
+      primary: a,
+      assumedType,
+    } = await tokenPair.getExchangePair<TTokenPair>(primary, secondary);
 
     let actualPair: [TokenInfo, TokenInfo];
     if (String(a) === primary) {
@@ -43,7 +47,10 @@ const fetcher = (program: Program, provider: Provider) => {
       tifs,
     } = data;
 
-    const exchangePairData: [[TokenInfo, TokenInfo], OrderSide] = [actualPair, assumedType];
+    const exchangePairData: [[TokenInfo, TokenInfo], OrderSide] = [
+      actualPair,
+      assumedType,
+    ];
 
     return {
       allowDeposits,

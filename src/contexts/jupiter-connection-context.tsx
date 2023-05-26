@@ -21,10 +21,15 @@ export type JupiterConnectionContext = {
   readonly tokenMap: TokenMap;
 };
 
-export const Context = createContext<JupiterConnectionContext | undefined>(undefined);
+export const Context = createContext<JupiterConnectionContext | undefined>(
+  undefined
+);
 
 export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
-  const api = useMemo(() => new DefaultApi(new Configuration({ basePath: JUPITER_CONFIG_URI })), []);
+  const api = useMemo(
+    () => new DefaultApi(new Configuration({ basePath: JUPITER_CONFIG_URI })),
+    []
+  );
   const moniker: Cluster = "mainnet-beta";
   const [ready, setReady] = useState(false);
   const [routeMap, setRouteMap] = useState<RouteMap>(new Map());
@@ -44,11 +49,11 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
           Object.keys(rmap).reduce((map, key) => {
             map.set(
               mints[Number(key)],
-              rmap[key].map((i) => mints[i]),
+              rmap[key].map((i) => mints[i])
             );
             return map;
           }, new Map() as RouteMap),
-        Extra.combine2([M.of(indexedRouteMap), M.of(mintKeys)]),
+        Extra.combine2([M.of(indexedRouteMap), M.of(mintKeys)])
       );
 
       const tokens = M.andMap((t) => {
@@ -75,7 +80,7 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
       tokenMap,
       ready,
     }),
-    [api, moniker, routeMap, tokenMap, ready],
+    [api, moniker, routeMap, tokenMap, ready]
   );
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;
@@ -90,7 +95,9 @@ export default function useJupiter() {
   return context;
 }
 
-export function withCtx<P = any>(NestedComponent: FC<P> | ComponentClass<P, any>) {
+export function withCtx<P = any>(
+  NestedComponent: FC<P> | ComponentClass<P, any>
+) {
   // eslint-disable-next-line react/display-name
   return (props: P & JSX.IntrinsicAttributes) => (
     <Provider>

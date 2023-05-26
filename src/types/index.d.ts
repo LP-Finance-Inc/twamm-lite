@@ -14,11 +14,19 @@ export declare type PlatformFeeAndAccounts = {
   feeAccounts: Map<string, PublicKey>;
 };
 
-export type WidgetPosition = "bottom-left" | "bottom-right" | "top-left" | "top-right";
+export type WidgetPosition =
+  | "bottom-left"
+  | "bottom-right"
+  | "top-left"
+  | "top-right";
 
 export type WidgetSize = "sm" | "default";
 
-export type DefaultExplorer = "Solana Explorer" | "Solscan" | "Solana Beach" | "SolanaFM";
+export type DefaultExplorer =
+  | "Solana Explorer"
+  | "Solscan"
+  | "Solana Beach"
+  | "SolanaFM";
 
 export interface FormProps {
   feeAccount: string;

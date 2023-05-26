@@ -7,7 +7,11 @@ import { useDebouncedEffect } from "src/utils";
 import LeftArrowIcon from "src/icons/left-arrow-icon";
 import TwammButton from "src/atoms/twamm-button";
 
-export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wallet | null; formProps: FormProps }) {
+export default function WidgetTerminal(props: {
+  rpcUrl: string;
+  fakeWallet: Wallet | null;
+  formProps: FormProps;
+}) {
   const { rpcUrl, fakeWallet, formProps } = props;
   const [isLoaded, setIsLoaded] = useState(false);
   const [position, setPosition] = useState<WidgetPosition>("bottom-right");
@@ -49,7 +53,7 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
       }
     },
     [isLoaded, props, position, size],
-    1000,
+    1000
   );
 
   return (
@@ -59,14 +63,18 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
           <div className="relative mt-8 md:mt-0">
             <div className="bg-white/10 rounded-xl flex items-center justify-center w-full md:w-[384px] h-[216px]">
               <span className="text-xs text-white/50 text-center w-[70%]">
-                Click on the arrows to see how the twamm widget will appear on your web browser.
+                Click on the arrows to see how the twamm widget will appear on
+                your web browser.
                 <br />
                 Click on the logo to view the twamm swap modal.
               </span>
               <div
-                className={classNames("absolute left-1 top-1 cursor-pointer hover:bg-black/20 rounded-full p-1", {
-                  "jup-gradient": position === "top-left",
-                })}
+                className={classNames(
+                  "absolute left-1 top-1 cursor-pointer hover:bg-black/20 rounded-full p-1",
+                  {
+                    "jup-gradient": position === "top-left",
+                  }
+                )}
                 onClick={() => setPosition("top-left")}
               >
                 <div className="rotate-45">
@@ -74,9 +82,12 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 </div>
               </div>
               <div
-                className={classNames("absolute right-1 top-1 cursor-pointer hover:bg-black/20 rounded-full p-1", {
-                  "jup-gradient": position === "top-right",
-                })}
+                className={classNames(
+                  "absolute right-1 top-1 cursor-pointer hover:bg-black/20 rounded-full p-1",
+                  {
+                    "jup-gradient": position === "top-right",
+                  }
+                )}
                 onClick={() => setPosition("top-right")}
               >
                 <div className="rotate-[135deg]">
@@ -84,9 +95,12 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 </div>
               </div>
               <div
-                className={classNames("absolute left-1 bottom-1 cursor-pointer hover:bg-black/20 rounded-full p-1", {
-                  "jup-gradient": position === "bottom-left",
-                })}
+                className={classNames(
+                  "absolute left-1 bottom-1 cursor-pointer hover:bg-black/20 rounded-full p-1",
+                  {
+                    "jup-gradient": position === "bottom-left",
+                  }
+                )}
                 onClick={() => setPosition("bottom-left")}
               >
                 <div className="-rotate-45">
@@ -94,9 +108,12 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                 </div>
               </div>
               <div
-                className={classNames("absolute right-1 bottom-1 cursor-pointer hover:bg-black/20 rounded-full p-1", {
-                  "jup-gradient": position === "bottom-right",
-                })}
+                className={classNames(
+                  "absolute right-1 bottom-1 cursor-pointer hover:bg-black/20 rounded-full p-1",
+                  {
+                    "jup-gradient": position === "bottom-right",
+                  }
+                )}
                 onClick={() => setPosition("bottom-right")}
               >
                 <div className="rotate-[225deg]">
@@ -115,7 +132,9 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                   setSize("sm");
                 }}
                 type="button"
-                className={size === "sm" ? "bg-white/10" : "opacity-20 hover:opacity-70"}
+                className={
+                  size === "sm" ? "bg-white/10" : "opacity-20 hover:opacity-70"
+                }
               >
                 <div className="flex items-center space-x-2 text-xs">
                   <div>Small</div>
@@ -127,7 +146,11 @@ export default function WidgetTerminal(props: { rpcUrl: string; fakeWallet: Wall
                   setSize("default");
                 }}
                 type="button"
-                className={size === "default" ? "bg-white/10" : "opacity-20 hover:opacity-70"}
+                className={
+                  size === "default"
+                    ? "bg-white/10"
+                    : "opacity-20 hover:opacity-70"
+                }
               >
                 <div className="flex items-center space-x-2 text-xs">
                   <div>Default</div>

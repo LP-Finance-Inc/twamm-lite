@@ -20,4 +20,8 @@ export enum SpecialIntervals {
   INSTANT = -2,
 }
 
-export type IntervalVariant = IndexedTIF | SpecialIntervals.NO_DELAY | SpecialIntervals.INSTANT | tif;
+export type IntervalVariant =
+  | IndexedTIF
+  | SpecialIntervals.NO_DELAY
+  | SpecialIntervals.INSTANT
+  | tif;

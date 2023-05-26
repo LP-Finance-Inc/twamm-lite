@@ -7,7 +7,15 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "https://jup.ag",
+        hostname: "jup.ag",
+      },
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "shdw-drive.genesysgo.net",
       },
     ],
   },
@@ -36,7 +44,10 @@ const nextConfig = {
         cacheGroups: {
           solanaTokenList: {
             name: "solana-token-list",
-            test: (module) => /[@solana\\/]spl-token-registry[\\/].*[\\/]solana.tokenlist.json/.test(module.resource),
+            test: (module) =>
+              /[@solana\\/]spl-token-registry[\\/].*[\\/]solana.tokenlist.json/.test(
+                module.resource
+              ),
             maxSize: 7 * 1e6,
           },
           jupAgCore: {

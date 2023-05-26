@@ -26,14 +26,22 @@ const initialPassThrough = {
   disconnect: async () => {},
 };
 
-export const WalletPassthroughContext = createContext<IWalletPassThrough>(initialPassThrough);
+export const WalletPassthroughContext =
+  createContext<IWalletPassThrough>(initialPassThrough);
 
-export function useWalletPassThrough(): IWalletPassThrough {
-  return useContext(WalletPassthroughContext);
-}
-
-const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const { publicKey, wallets, wallet, connect, select, connecting, connected, disconnect } = useWallet();
+export const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const {
+    publicKey,
+    wallets,
+    wallet,
+    connect,
+    select,
+    connecting,
+    connected,
+    disconnect,
+  } = useWallet();
 
   const value = (() => {
     const { passThroughWallet } = window.Twamm;
@@ -69,7 +77,13 @@ const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({ children }) =>
     };
   })();
 
-  return <WalletPassthroughContext.Provider value={value}>{children}</WalletPassthroughContext.Provider>;
+  return (
+    <WalletPassthroughContext.Provider value={value}>
+      {children}
+    </WalletPassthroughContext.Provider>
+  );
 };
 
-export default WalletPassthroughProvider;
+export default function useWalletPassThrough(): IWalletPassThrough {
+  return useContext(WalletPassthroughContext);
+}

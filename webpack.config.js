@@ -40,7 +40,7 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
       {
-        test: /\.tsx?$/,
+        test: /\.ts(x?)$/,
         use: [
           {
             loader: "ts-loader",

@@ -1,5 +1,11 @@
 import type { FC, ReactNode } from "react";
-import { createContext, useContext, useMemo, useState, useCallback } from "react";
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  useCallback,
+} from "react";
 
 import type { IntervalVariant, IndexedTIF } from "src/domain/interval.d";
 import { SpecialIntervals } from "src/domain/interval.d";
@@ -29,9 +35,12 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const [state, dispatch] = useTradeIntervals();
 
-  const changeOptions = useCallback((opts: { minTimeTillExpiration: number }) => {
-    setOptions(opts);
-  }, []);
+  const changeOptions = useCallback(
+    (opts: { minTimeTillExpiration: number }) => {
+      setOptions(opts);
+    },
+    []
+  );
 
   const changeTif = useCallback(
     (execute: IntervalVariant, schedule: ScheduleTIF) => {
@@ -55,7 +64,7 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
         }
       }
     },
-    [dispatch],
+    [dispatch]
   );
 
   const changeIntervals = useCallback(
@@ -65,11 +74,11 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
           A.setTifs({
             indexedTifs,
             minTimeTillExpiration: options.minTimeTillExpiration,
-          }),
+          })
         );
       }
     },
-    [dispatch, options],
+    [dispatch, options]
   );
 
   const contextValue = useMemo(
@@ -85,7 +94,7 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
       setTif: changeTif,
       tifs: state.data?.indexedTifs,
     }),
-    [changeIntervals, changeOptions, changeTif, state],
+    [changeIntervals, changeOptions, changeTif, state]
   );
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;
@@ -102,9 +111,13 @@ export default () => {
 
 export const selectors = (data?: { selected: IntervalVariant }) => ({
   get isInstantOrder() {
-    return Boolean(data?.selected) && data?.selected === SpecialIntervals.INSTANT;
+    return (
+      Boolean(data?.selected) && data?.selected === SpecialIntervals.INSTANT
+    );
   },
   get isProgramOrder() {
-    return Boolean(data?.selected) && data?.selected !== SpecialIntervals.NO_DELAY;
+    return (
+      Boolean(data?.selected) && data?.selected !== SpecialIntervals.NO_DELAY
+    );
   },
 });

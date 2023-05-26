@@ -1,7 +1,13 @@
 import React from "react";
 
 const ChevronDownIcon: React.FC<React.SVGAttributes<SVGElement>> = () => (
-  <svg width="10" height="6" viewBox="0 0 10 6" fill="inherit" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="10"
+    height="6"
+    viewBox="0 0 10 6"
+    fill="inherit"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       fillRule="evenodd"
       clipRule="evenodd"

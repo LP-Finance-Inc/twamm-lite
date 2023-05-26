@@ -9,7 +9,9 @@ export type TwammLiteParamsContext = {
   readonly executionPeriod: boolean;
 };
 
-export const Context = createContext<TwammLiteParamsContext | undefined>(undefined);
+export const Context = createContext<TwammLiteParamsContext | undefined>(
+  undefined
+);
 
 export const Provider: FC<{
   feeAccount: string;
@@ -18,7 +20,14 @@ export const Provider: FC<{
   supportedToken: string;
   executionPeriod: boolean;
   children: ReactNode;
-}> = ({ feeAccount, feeBps, platformFeeAccount, supportedToken, executionPeriod, children }) => {
+}> = ({
+  feeAccount,
+  feeBps,
+  platformFeeAccount,
+  supportedToken,
+  executionPeriod,
+  children,
+}) => {
   const ContextValue = useMemo(
     () => ({
       feeAccount,
@@ -27,7 +36,7 @@ export const Provider: FC<{
       supportedToken,
       executionPeriod,
     }),
-    [feeAccount, feeBps, platformFeeAccount, supportedToken, executionPeriod],
+    [feeAccount, feeBps, platformFeeAccount, supportedToken, executionPeriod]
   );
 
   return <Context.Provider value={ContextValue}>{children}</Context.Provider>;

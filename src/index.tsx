@@ -5,7 +5,7 @@ import { Init } from "src/types";
 import { NetworkConfigurationProvider } from "src/contexts/network-configuration-context";
 import { AutoConnectProvider } from "src/contexts/auto-connect-context";
 import { WalletContextProvider } from "src/contexts/wallet-context-context";
-import WalletPassthroughProvider from "src/contexts/wallet-passthrough-context";
+import { WalletPassthroughProvider } from "src/contexts/wallet-passthrough-context";
 import { NotificationProvider } from "src/contexts/notification-context";
 import * as SolanaCtx from "src/contexts/solana-connection-context";
 import { CoingeckoApiProvider } from "src/contexts/coingecko-api-context";

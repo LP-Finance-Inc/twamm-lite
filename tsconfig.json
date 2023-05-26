@@ -1,15 +1,21 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "strictNullChecks": false
+    }
+  },
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es6",
+    "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": false,
+    "noEmit": true,
     "esModuleInterop": true,
-    "module": "commonjs",
+    "module": "CommonJS",
     "noImplicitAny": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,

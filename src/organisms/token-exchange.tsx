@@ -14,7 +14,10 @@ export type TradeStruct = {
   type: OrderSide;
 };
 
-export default function TokenExchange(props: { onTradeChange: (arg0: TradeStruct) => void; trade: TradeStruct }) {
+export default function TokenExchange(props: {
+  onTradeChange: (arg0: TradeStruct) => void;
+  trade: TradeStruct;
+}) {
   const tokenPairs = useAddressPairs();
   const tokenPair = useJupTokensByMint(props.trade.pair);
   const [state, dispatch] = useTokenExchange();
@@ -30,32 +33,36 @@ export default function TokenExchange(props: { onTradeChange: (arg0: TradeStruct
     (token: TokenInfo) => {
       dispatch(A.selectA({ token }));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onSelectB = useCallback(
     (token: TokenInfo) => {
       dispatch(A.selectB({ token }));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onSwap = useCallback(
     (price: number | undefined) => {
       dispatch(A.swap({ price }));
     },
-    [dispatch],
+    [dispatch]
   );
 
   const onTradeChange = useCallback(
     (next: TradeStruct) => {
       const prev = props.trade;
 
-      if (prev.pair[0] !== next.pair[0] || prev.pair[1] !== next.pair[1] || prev.type !== next.type) {
+      if (
+        prev.pair[0] !== next.pair[0] ||
+        prev.pair[1] !== next.pair[1] ||
+        prev.type !== next.type
+      ) {
         props.onTradeChange(next);
       }
     },
-    [props],
+    [props]
   );
 
   return (

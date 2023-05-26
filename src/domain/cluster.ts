@@ -4,11 +4,16 @@ type PredicateFn = (item: ClusterInfo) => boolean;
 
 const CUSTOM_MONIKER = "custom";
 
-const findByEndpoint = (endpoint: string, c: ClusterInfo) => c.endpoint === endpoint;
+const findByEndpoint = (endpoint: string, c: ClusterInfo) =>
+  c.endpoint === endpoint;
 
 export default function ClusterUtils(fallback: ClusterInfo) {
   const self = {
-    findBy: (valueOrPredicate: string | PredicateFn | undefined, clusters: ClusterInfo[], defaultValue = fallback) => {
+    findBy: (
+      valueOrPredicate: string | PredicateFn | undefined,
+      clusters: ClusterInfo[],
+      defaultValue = fallback
+    ) => {
       if (!valueOrPredicate) return defaultValue;
 
       const predicate =
@@ -16,7 +21,8 @@ export default function ClusterUtils(fallback: ClusterInfo) {
           ? valueOrPredicate
           : (c: ClusterInfo) => findByEndpoint(valueOrPredicate, c);
 
-      return (clusters.find((c) => predicate(c)) ?? defaultValue) as ClusterInfo;
+      return (clusters.find((c) => predicate(c)) ??
+        defaultValue) as ClusterInfo;
     },
     findByMoniker: (moniker: string | undefined, clusters: ClusterInfo[]) => {
       const monikerPredicate = (c: ClusterInfo) => c.moniker === moniker;

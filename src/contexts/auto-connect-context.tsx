@@ -7,13 +7,17 @@ export interface AutoConnectContextState {
   setAutoConnect(autoConnect: boolean): void;
 }
 
-export const AutoConnectContext = createContext<AutoConnectContextState>({} as AutoConnectContextState);
+export const AutoConnectContext = createContext<AutoConnectContextState>(
+  {} as AutoConnectContextState
+);
 
 export function useAutoConnect(): AutoConnectContextState {
   return useContext(AutoConnectContext);
 }
 
-export const AutoConnectProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const AutoConnectProvider: FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [autoConnect, setAutoConnect] = useLocalStorage("autoConnect", true);
 
   const contextValue = useMemo(
@@ -21,8 +25,12 @@ export const AutoConnectProvider: FC<{ children: ReactNode }> = ({ children }) =
       autoConnect,
       setAutoConnect,
     }),
-    [autoConnect, setAutoConnect],
+    [autoConnect, setAutoConnect]
   );
 
-  return <AutoConnectContext.Provider value={contextValue}>{children}</AutoConnectContext.Provider>;
+  return (
+    <AutoConnectContext.Provider value={contextValue}>
+      {children}
+    </AutoConnectContext.Provider>
+  );
 };

@@ -5,7 +5,7 @@ const swrKey = (
   params: { id: string } & Partial<{
     vsToken: string;
     vsAmount: string;
-  }>,
+  }>
 ) => ({
   key: "price",
   params,

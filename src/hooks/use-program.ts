@@ -20,7 +20,11 @@ export default () => {
 
   const connection = createConnection(commitment);
 
-  const provider = new Provider(connection, currentWallet as Wallet, preflightCommitment);
+  const provider = new Provider(
+    connection,
+    currentWallet as Wallet,
+    preflightCommitment
+  );
 
   const program = new Program(idl, new PublicKey(programId), provider);
 

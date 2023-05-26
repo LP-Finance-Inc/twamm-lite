@@ -1,7 +1,13 @@
 import React from "react";
 
 const TwitterIcon: React.FC<React.SVGAttributes<SVGElement>> = () => (
-  <svg width="30" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="30"
+    height="30"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M16.3817 6.15419C15.8893 6.34995 15.3602 6.48226 14.8049 6.54177C15.3717 6.23713 15.807 5.75476 
         16.012 5.18001C15.4815 5.46205 14.894 5.6669 14.2686 5.77731C13.7678 5.29894 13.0543 5 12.2647 

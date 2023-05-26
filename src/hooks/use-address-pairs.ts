@@ -29,10 +29,13 @@ export default (_: void, options = {}) => {
         return [a, b];
       });
 
-      const addressPairs = pairs.map<AddressPair>((pair) => [String(pair[0]), String(pair[1])]);
+      const addressPairs = pairs.map<AddressPair>((pair) => [
+        String(pair[0]),
+        String(pair[1]),
+      ]);
 
       return addressPairs;
     },
-    options,
+    options
   );
 };

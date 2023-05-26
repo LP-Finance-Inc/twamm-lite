@@ -1,5 +1,17 @@
-const UnknownImage = ({ width = 24, height = 24 }: { width: number; height: number }) => (
-  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+const UnknownImage = ({
+  width = 24,
+  height = 24,
+}: {
+  width: number;
+  height: number;
+}) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M12 0C18.6271 0 24 5.37288 24 12C24 18.6271 18.6269 24 12 24C5.37312 24 0 18.6286 0 12C0 5.37144 5.37216 0 12 0Z"
       fill="#23C1AA"

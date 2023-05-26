@@ -10,7 +10,13 @@ import { WalletReadyState } from "@solana/wallet-adapter-base";
 
 import { Init, FormConfigurator } from "src/types";
 import i18n from "src/i18n/en.json";
-import { ClusterApiUrl, NEXT_PUBLIC_SUPPORTED_TOKEN, feeAccount, feeBps, platformFeeAccount } from "src/env";
+import {
+  ClusterApiUrl,
+  NEXT_PUBLIC_SUPPORTED_TOKEN,
+  feeAccount,
+  feeBps,
+  platformFeeAccount,
+} from "src/env";
 import Heading from "src/atoms/heading";
 import WidgetTerminal from "src/organisms/widget-terminal";
 import ModalTerminal from "src/organisms/modal-terminal";
@@ -19,7 +25,8 @@ import Configurator from "src/organisms/configurator";
 import CodeSnippet from "src/organisms/code-snippet";
 import Footer from "src/organisms/footer";
 
-const isDeveloping = process.env.NODE_ENV === "development" && typeof window !== "undefined";
+const isDeveloping =
+  process.env.NODE_ENV === "development" && typeof window !== "undefined";
 
 const isPreview = Boolean(process.env.NEXT_PUBLIC_IS_NEXT_PREVIEW);
 
@@ -46,7 +53,7 @@ export default function App() {
   const { watch, setValue } = useForm<FormConfigurator>({
     defaultValues: {
       feeAccount,
-      feeBps: feeBps.toString(),
+      feeBps,
       platformFeeAccount,
       supportedToken: NEXT_PUBLIC_SUPPORTED_TOKEN,
       executionPeriod: false,
@@ -80,8 +87,12 @@ export default function App() {
         <div className="">
           <div className="flex flex-col items-center h-full w-full mt-4 md:mt-14">
             <div className="flex flex-col justify-center items-center text-center">
-              <Heading className="text-4xl md:text-[52px] font-semibold px-4 pb-2 md:px-0">{i18n.Heading}</Heading>
-              <p className="text-[#9D9DA6] w-[80%] md:max-w-[60%] text-md mt-4 heading-[24px]">{i18n.Subtitle}</p>
+              <Heading className="text-4xl md:text-[52px] font-semibold px-4 pb-2 md:px-0">
+                {i18n.Heading}
+              </Heading>
+              <p className="text-[#9D9DA6] w-[80%] md:max-w-[60%] text-md mt-4 heading-[24px]">
+                {i18n.Subtitle}
+              </p>
             </div>
           </div>
           <div className="flex justify-center">
@@ -96,10 +107,12 @@ export default function App() {
                     type="button"
                     className={classNames(
                       "!bg-none relative px-4 justify-center ",
-                      tab === "modal" ? "" : "opacity-20 hover:opacity-70",
+                      tab === "modal" ? "" : "opacity-20 hover:opacity-70"
                     )}
                   >
-                    <div className="flex items-center text-md text-white font-medium">{i18n.Tabs[0]}</div>
+                    <div className="flex items-center text-md text-white font-medium">
+                      {i18n.Tabs[0]}
+                    </div>
 
                     {tab === "modal" ? (
                       <div
@@ -118,10 +131,12 @@ export default function App() {
                     type="button"
                     className={classNames(
                       "!bg-none relative px-4 justify-center",
-                      tab === "integrated" ? "" : "opacity-20 hover:opacity-70",
+                      tab === "integrated" ? "" : "opacity-20 hover:opacity-70"
                     )}
                   >
-                    <div className="flex items-center text-md text-white font-medium">{i18n.Tabs[1]}</div>
+                    <div className="flex items-center text-md text-white font-medium">
+                      {i18n.Tabs[1]}
+                    </div>
                     {tab === "integrated" ? (
                       <div
                         className="absolute left-0 bottom-[-8px] w-full h-0.5 bg-gradient-to-r
@@ -139,10 +154,12 @@ export default function App() {
                     type="button"
                     className={classNames(
                       "!bg-none relative px-4 justify-center",
-                      tab === "widget" ? "" : "opacity-20 hover:opacity-70",
+                      tab === "widget" ? "" : "opacity-20 hover:opacity-70"
                     )}
                   >
-                    <div className="flex items-center text-md text-white font-medium">{i18n.Tabs[2]}</div>
+                    <div className="flex items-center text-md text-white font-medium">
+                      {i18n.Tabs[2]}
+                    </div>
                     {tab === "widget" ? (
                       <div
                         className="absolute left-0 bottom-[-8px] w-full h-0.5 bg-gradient-to-r
@@ -155,8 +172,12 @@ export default function App() {
                 </div>
 
                 <span className="flex justify-center text-center text-xs text-[#9D9DA6] mt-4">
-                  {tab === "modal" ? "Twamm renders as a modal and takes up the whole screen." : null}
-                  {tab === "integrated" ? "Twamm renders as a part of your dApp." : null}
+                  {tab === "modal"
+                    ? "Twamm renders as a modal and takes up the whole screen."
+                    : null}
+                  {tab === "integrated"
+                    ? "Twamm renders as a part of your dApp."
+                    : null}
                   {tab === "widget"
                     ? "Twamm renders as part of a widget that can be placed at different positions on your dApp."
                     : null}
@@ -164,13 +185,25 @@ export default function App() {
 
                 <div className="flex flex-grow items-center justify-center text-white/75">
                   {tab === "modal" ? (
-                    <ModalTerminal rpcUrl={ClusterApiUrl} fakeWallet={wallet} formProps={watchAllFields} />
+                    <ModalTerminal
+                      rpcUrl={ClusterApiUrl}
+                      fakeWallet={wallet}
+                      formProps={watchAllFields}
+                    />
                   ) : null}
                   {tab === "integrated" ? (
-                    <IntegratedTerminal rpcUrl={ClusterApiUrl} fakeWallet={wallet} formProps={watchAllFields} />
+                    <IntegratedTerminal
+                      rpcUrl={ClusterApiUrl}
+                      fakeWallet={wallet}
+                      formProps={watchAllFields}
+                    />
                   ) : null}
                   {tab === "widget" ? (
-                    <WidgetTerminal rpcUrl={ClusterApiUrl} fakeWallet={wallet} formProps={watchAllFields} />
+                    <WidgetTerminal
+                      rpcUrl={ClusterApiUrl}
+                      fakeWallet={wallet}
+                      formProps={watchAllFields}
+                    />
                   ) : null}
                 </div>
               </div>
@@ -178,7 +211,11 @@ export default function App() {
           </div>
         </div>
       </div>
-      <CodeSnippet formConfigurator={watchAllFields} displayMode={tab} rpcUrl={ClusterApiUrl} />
+      <CodeSnippet
+        formConfigurator={watchAllFields}
+        displayMode={tab}
+        rpcUrl={ClusterApiUrl}
+      />
       <div className="w-full bg-twamm-bg mt-12">
         <Footer />
       </div>

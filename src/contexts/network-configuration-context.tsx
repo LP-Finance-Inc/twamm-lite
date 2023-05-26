@@ -7,12 +7,15 @@ export interface NetworkConfigurationState {
   setNetworkConfiguration(networkConfiguration: string): void;
 }
 
-export const NetworkConfigurationContext = createContext<NetworkConfigurationState>({} as NetworkConfigurationState);
+export const NetworkConfigurationContext =
+  createContext<NetworkConfigurationState>({} as NetworkConfigurationState);
 
-export const NetworkConfigurationProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const NetworkConfigurationProvider: FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [networkConfiguration, setNetworkConfiguration] = useLocalStorage(
     "network",
-    process.env.NEXT_PUBLIC_CLUSTER_NETWORK,
+    process.env.NEXT_PUBLIC_CLUSTER_NETWORK
   );
 
   const ContextValue = useMemo(
@@ -20,10 +23,14 @@ export const NetworkConfigurationProvider: FC<{ children: ReactNode }> = ({ chil
       networkConfiguration,
       setNetworkConfiguration,
     }),
-    [networkConfiguration, setNetworkConfiguration],
+    [networkConfiguration, setNetworkConfiguration]
   );
 
-  return <NetworkConfigurationContext.Provider value={ContextValue}>{children}</NetworkConfigurationContext.Provider>;
+  return (
+    <NetworkConfigurationContext.Provider value={ContextValue}>
+      {children}
+    </NetworkConfigurationContext.Provider>
+  );
 };
 
 export function useNetworkConfiguration(): NetworkConfigurationState {

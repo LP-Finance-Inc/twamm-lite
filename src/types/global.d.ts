@@ -18,7 +18,9 @@ interface PromiseRejectedResult {
   reason: any;
 }
 
-declare type PromiseSettledResult<T> = PromiseFulfilledResult<T> | PromiseRejectedResult;
+declare type PromiseSettledResult<T> =
+  | PromiseFulfilledResult<T>
+  | PromiseRejectedResult;
 
 declare type SWRParams<F> = ReturnType<F>;
 
@@ -44,7 +46,10 @@ declare type JupTokenDataV2 = {
   extensions: {} | undefined;
 };
 
-declare type CoinToken = Pick<JupTokenDataV2, "address" | "decimals" | "name" | "symbol">;
+declare type CoinToken = Pick<
+  JupTokenDataV2,
+  "address" | "decimals" | "name" | "symbol"
+>;
 
 declare type JupToken = CoinToken & Pick<JupTokenDataV2, "logoURI">;
 

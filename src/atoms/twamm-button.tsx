@@ -15,8 +15,18 @@ interface ITwammButton {
 
 const TwammButton = React.forwardRef(
   (
-    { onClick, disabled, children, highlighted, className = "", size = "md", type, bgClass, rounded }: ITwammButton,
-    ref: React.ForwardedRef<any>,
+    {
+      onClick,
+      disabled,
+      children,
+      highlighted,
+      className = "",
+      size = "md",
+      type,
+      bgClass,
+      rounded,
+    }: ITwammButton,
+    ref: React.ForwardedRef<any>
   ) => {
     const contentClass = (() => {
       if (size === "sm") {
@@ -30,7 +40,7 @@ const TwammButton = React.forwardRef(
       }
       return null;
     })();
-    const background = bgClass || "text-white bg-[#191B1F] dark:bg-black/50";
+    const background = bgClass || "text-white bg-[#191B1F]";
     return (
       <button
         // eslint-disable-next-line react/button-has-type
@@ -47,10 +57,12 @@ const TwammButton = React.forwardRef(
         disabled={disabled}
         onClick={onClick}
       >
-        <div className={`${contentClass} h-full w-full leading-none`}>{children}</div>
+        <div className={`${contentClass} h-full w-full leading-none`}>
+          {children}
+        </div>
       </button>
     );
-  },
+  }
 );
 
 TwammButton.displayName = "TwammButton";

@@ -1,7 +1,13 @@
 import React from "react";
 
 const DiscordIcon: React.FC<React.SVGAttributes<SVGElement>> = () => (
-  <svg width="30" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="30"
+    height="30"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M14.3409 5.84646C13.487 5.45467 12.5714 5.16602 11.614 5.00069C11.5966 
         4.9975 11.5792 5.00548 11.5702 5.02142C11.4524 5.23087 11.322 5.5041 11.2307

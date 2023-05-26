@@ -8,7 +8,10 @@ import TokenExchange, { TradeStruct } from "./token-exchange";
 
 const DEFAULT_TRADE = {
   amount: 0,
-  pair: [address.NATIVE_TOKEN_ADDRESS, "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"] as AddressPair,
+  pair: [
+    address.NATIVE_TOKEN_ADDRESS,
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  ] as AddressPair,
   type: OrderSide.buy,
 };
 

@@ -69,7 +69,9 @@ export default function storage({
     },
     enabled(): boolean {
       if (global.localStorage) {
-        return global.localStorage.getItem(ENABLE_STORAGE_KEY) === ENABLED_VALUE;
+        return (
+          global.localStorage.getItem(ENABLE_STORAGE_KEY) === ENABLED_VALUE
+        );
       }
 
       return false;

@@ -11,18 +11,27 @@ import {
   SolletWalletAdapter,
   ExodusWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
-import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
+import {
+  ConnectionProvider,
+  WalletProvider,
+} from "@solana/wallet-adapter-react";
 
 import { useNetworkConfiguration } from "./network-configuration-context";
 import { useAutoConnect } from "./auto-connect-context";
 import { useSnackbar } from "./notification-context";
 
-export const WalletContextProvider: FC<{ endpoint?: string; children: ReactNode }> = ({ endpoint, children }) => {
+export const WalletContextProvider: FC<{
+  endpoint?: string;
+  children: ReactNode;
+}> = ({ endpoint, children }) => {
   const { enqueueSnackbar } = useSnackbar();
   const { autoConnect } = useAutoConnect();
   const { networkConfiguration } = useNetworkConfiguration();
   const network = networkConfiguration as WalletAdapterNetwork;
-  const selectedEndpoint: string = useMemo(() => endpoint ?? clusterApiUrl(network), [endpoint, network]);
+  const selectedEndpoint: string = useMemo(
+    () => endpoint ?? clusterApiUrl(network),
+    [endpoint, network]
+  );
 
   const passThroughWallet = (() => {
     if (typeof window === "undefined") return undefined;
@@ -52,12 +61,16 @@ export const WalletContextProvider: FC<{ endpoint?: string; children: ReactNode 
         variant: "error",
       });
     },
-    [enqueueSnackbar],
+    [enqueueSnackbar]
   );
 
   return (
     <ConnectionProvider endpoint={selectedEndpoint}>
-      <WalletProvider wallets={wallets} onError={onError} autoConnect={autoConnect}>
+      <WalletProvider
+        wallets={wallets}
+        onError={onError}
+        autoConnect={autoConnect}
+      >
         {children}
       </WalletProvider>
     </ConnectionProvider>

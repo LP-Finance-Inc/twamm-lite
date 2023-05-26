@@ -1,5 +1,11 @@
 import type { FC, ReactNode } from "react";
-import { createContext, useContext, useMemo, useCallback, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useCallback,
+  useState,
+} from "react";
 import type { AnchorProvider } from "@project-serum/anchor";
 import { forit } from "a-wait-forit/lib-ts";
 import { isNil } from "ramda";
@@ -68,7 +74,9 @@ export type TransactionRunnerContext = {
   readonly viewExplorer: (sig: string) => string;
 };
 
-export const Context = createContext<TransactionRunnerContext | undefined>(undefined);
+export const Context = createContext<TransactionRunnerContext | undefined>(
+  undefined
+);
 
 export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
   const storedSlippage = Number(slippageStorage.get());
@@ -77,24 +85,36 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
   const storedPerformaceFee = performanceFeeStorage.get();
 
   const hasSlippage = useMemo(
-    () => Boolean(slippageStorage.enabled() && !isNil(storedSlippage) && !Number.isNaN(storedSlippage)),
-    [storedSlippage],
+    () =>
+      Boolean(
+        slippageStorage.enabled() &&
+          !isNil(storedSlippage) &&
+          !Number.isNaN(storedSlippage)
+      ),
+    [storedSlippage]
   );
-  const hasExplorer = useMemo(() => Boolean(explorerStorage.enabled() && storedExplorer), [storedExplorer]);
+  const hasExplorer = useMemo(
+    () => Boolean(explorerStorage.enabled() && storedExplorer),
+    [storedExplorer]
+  );
   const hasVersionedAPI = useMemo(
     () => versionedAPIStorage.enabled() && !isNil(storedVersionedAPI),
-    [storedVersionedAPI],
+    [storedVersionedAPI]
   );
 
   const hasPerformaceFee = useMemo(
     () => performanceFeeStorage.enabled() && !isNil(storedPerformaceFee),
-    [storedPerformaceFee],
+    [storedPerformaceFee]
   );
 
   const initialSlippage = hasSlippage ? storedSlippage : FALLBACK_SLIPPAGE;
   const initialExplorer = hasExplorer ? storedExplorer : FALLBACK_EXPLORER;
-  const initialVersionedAPIOption = hasVersionedAPI ? Number(storedVersionedAPI) : FALLBACK_VERSIONED_API;
-  const initialPerformanceFee = hasPerformaceFee ? Number(storedPerformaceFee) : FALLBACK_PERFORMANCE_FEE;
+  const initialVersionedAPIOption = hasVersionedAPI
+    ? Number(storedVersionedAPI)
+    : FALLBACK_VERSIONED_API;
+  const initialPerformanceFee = hasPerformaceFee
+    ? Number(storedPerformaceFee)
+    : FALLBACK_PERFORMANCE_FEE;
 
   const [active, setActive] = useState<boolean>(false);
   const [error, setError] = useState<Error>();
@@ -102,11 +122,15 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
   const [explorers] = useState(EXPLORERS);
   const [info, setInfo] = useState<string>();
   const [performanceFees] = useState(PERFORMANCE_FEES);
-  const [performanceFee, setPerformanceFee] = useState<number>(initialPerformanceFee);
+  const [performanceFee, setPerformanceFee] = useState<number>(
+    initialPerformanceFee
+  );
   const [provider, setProvider] = useState<AnchorProvider>();
   const [signature, setSignature] = useState<string>();
   const [slippage, setSlippage] = useState<number>(initialSlippage);
-  const [versionedAPI, setVersionedAPI] = useState(Boolean(initialVersionedAPIOption));
+  const [versionedAPI, setVersionedAPI] = useState(
+    Boolean(initialVersionedAPIOption)
+  );
 
   const commit = useCallback(
     async (operation: Parameters<TransactionRunnerContext["commit"]>[0]) => {
@@ -126,7 +150,8 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 
       if (err) {
         setActive(false);
-        const clientError = err instanceof Error ? err : new Error(i18n.TxRunnerRequestFailure);
+        const clientError =
+          err instanceof Error ? err : new Error(i18n.TxRunnerRequestFailure);
         setError(clientError);
 
         return clientError;
@@ -134,7 +159,7 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 
       return undefined;
     },
-    [active, setActive],
+    [active, setActive]
   );
 
   const changeSlippage = useCallback(
@@ -148,7 +173,7 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 
       return undefined;
     },
-    [setSlippage],
+    [setSlippage]
   );
 
   const changeExplorer = useCallback(
@@ -162,7 +187,7 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 
       return undefined;
     },
-    [setExplorer],
+    [setExplorer]
   );
 
   const changePerformaceFee = useCallback(
@@ -174,7 +199,7 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 
       return undefined;
     },
-    [setPerformanceFee],
+    [setPerformanceFee]
   );
 
   const changeVersionedAPI = useCallback(
@@ -189,10 +214,13 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 
       return undefined;
     },
-    [setVersionedAPI],
+    [setVersionedAPI]
   );
 
-  const viewExplorer = useCallback((sig: string) => new URL(`${explorer}/${sig}`).href, [explorer]);
+  const viewExplorer = useCallback(
+    (sig: string) => new URL(`${explorer}/${sig}`).href,
+    [explorer]
+  );
 
   const contextValue = useMemo(
     () => ({
@@ -237,7 +265,7 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
       slippage,
       versionedAPI,
       viewExplorer,
-    ],
+    ]
   );
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

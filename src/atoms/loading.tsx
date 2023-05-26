@@ -1,9 +1,14 @@
+import classNames from "classnames";
+
 export default function Loading() {
   return (
-    <div role="status" className="w-full h-full flex justify-center mt-32">
+    <div
+      role="status"
+      className={classNames("w-full h-full flex justify-center mt-32")}
+    >
       <svg
         aria-hidden="true"
-        className="w-8 h-8 mr-2 text-gray-500 animate-spin dark:text-gray-600 fill-twamm-bg"
+        className="w-8 h-8 mr-2 text-gray-500 animate-spin fill-twamm-bg"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

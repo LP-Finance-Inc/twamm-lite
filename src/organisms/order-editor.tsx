@@ -1,21 +1,19 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import { OrderSide } from "@twamm/types/lib";
 import M, { Extra } from "easy-maybe/lib";
 import { translateAddress } from "@project-serum/anchor";
 
+import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
+import useBlockchain from "src/contexts/solana-connection-context";
 import useIndexedTIFs from "src/contexts/tif-context";
 import usePrice from "src/hooks/use-price";
 import useTokenPairByTokens from "src/hooks/use-token-pair-by-tokens";
 import useTIFIntervals from "src/hooks/use-tif-intervals";
 import { add, dedupeEach, keepPrevious, refreshEach } from "src/swr-options";
 import Loading from "src/atoms/loading";
-
-export interface Ref {
-  close: () => void;
-  isOpened: boolean;
-  open: () => void;
-}
+import UniversalPopover, { Ref } from "../molecules/universal-popover";
+import OrderForm from "./order-form";
+import CoinSelect from "./coin-select";
 
 export default ({
   a,
@@ -37,11 +35,18 @@ export default ({
   onSelectA: (token: TokenInfo) => void;
   onSelectB: (token: TokenInfo) => void;
   onSwap: (price?: number) => void;
-  onTradeChange: (arg0: { amount: number; pair: AddressPair; type: OrderSide }) => void;
+  onTradeChange: (arg0: {
+    amount: number;
+    pair: AddressPair;
+    type: OrderSide;
+  }) => void;
   tokenPairs: Voidable<AddressPair[]>;
   tokenPair: Voidable<JupToken[]>;
   tradeSide: Voidable<OrderSide>;
 }) => {
+  const { publicKey } = useWalletPassThrough();
+  const { connection } = useBlockchain();
+
   const pairs = M.of(tokenPairs);
   const pair = M.of(tokenPair);
 
@@ -57,19 +62,22 @@ export default ({
           id: primary.address,
           vsToken: secondary.address,
         }),
-        Extra.combine2([M.of(a), M.of(b)]),
-      ),
-    ),
+        Extra.combine2([M.of(a), M.of(b)])
+      )
+    )
   );
 
-  const selectedPair = useTokenPairByTokens(a && b && { aToken: a, bToken: b }, refreshEach());
+  const selectedPair = useTokenPairByTokens(
+    a && b && { aToken: a, bToken: b },
+    refreshEach()
+  );
 
   const intervalTifs = useTIFIntervals(
     selectedPair.data?.exchangePair[0],
     selectedPair.data?.tifs,
     selectedPair.data?.currentPoolPresent,
     selectedPair.data?.poolCounters,
-    add([keepPrevious(), dedupeEach(10e3), refreshEach(10e3)]),
+    add([keepPrevious(), dedupeEach(10e3), refreshEach(10e3)])
   );
 
   useEffect(() => {
@@ -103,9 +111,10 @@ export default ({
   const onTokenChoose = useCallback(
     (index: number) => {
       setCurToken(index);
-      if (selectCoinRef.current && !selectCoinRef.current?.isOpened) selectCoinRef.current.open();
+      if (selectCoinRef.current && !selectCoinRef.current?.isOpened)
+        selectCoinRef.current.open();
     },
-    [setCurToken],
+    [setCurToken]
   );
 
   const onTokenAChoose = useCallback(() => {
@@ -120,8 +129,6 @@ export default ({
     onSwap(tokenPairPrice.data);
   }, [tokenPairPrice.data, onSwap]);
 
-  const onCoinDeselect = useCallback(() => {}, []);
-
   const onCoinSelect = useCallback(
     (token: TokenInfo) => {
       if (selectCoinRef.current?.isOpened) selectCoinRef.current.close();
@@ -130,25 +137,57 @@ export default ({
 
       if (a && b && ![a.symbol, b.symbol].includes(token.symbol)) {
         setTif(0, false);
-        // reset the interval on pair change
       }
     },
-    [a, b, curToken, onSelectA, onSelectB, setTif],
+    [a, b, curToken, onSelectA, onSelectB, setTif]
   );
 
   const tokens = useMemo(() => {
     const allKeys = M.withDefault(
       undefined,
-      M.andMap((ak) => ak.map(translateAddress), M.of(all)),
+      M.andMap((ak) => ak.map(translateAddress), M.of(all))
     );
     const availableKeys = M.withDefault(
       undefined,
-      M.andMap((ak) => ak.map(translateAddress), M.of(available)),
+      M.andMap((ak) => ak.map(translateAddress), M.of(available))
     );
     return curToken === 2 ? availableKeys : allKeys;
   }, [curToken, available, all]);
 
-  if (Extra.isNothing(pair) || Extra.isNothing(pairs) || Extra.isNothing(M.of(available))) return <Loading />;
+  if (
+    Extra.isNothing(pair) ||
+    Extra.isNothing(pairs) ||
+    Extra.isNothing(M.of(available))
+  ) {
+    return <Loading />;
+  }
 
-  return <Loading />;
+  return (
+    <>
+      <UniversalPopover ref={selectCoinRef} title="Select token">
+        <CoinSelect
+          onSelect={onCoinSelect}
+          tokens={tokens}
+          publicKey={publicKey}
+          connection={connection}
+        />
+      </UniversalPopover>
+      <button onClick={onTokenChoose}>click</button>
+      <OrderForm
+        primary={a}
+        secondary={b}
+        intervalTifs={intervalTifs.data}
+        onABSwap={onTokenSwap}
+        onASelect={onTokenAChoose}
+        onBSelect={onTokenBChoose}
+        poolCounters={selectedPair.data?.poolCounters}
+        poolTifs={selectedPair.data?.tifs}
+        side={tradeSide}
+        tokenA={a?.symbol}
+        tokenADecimals={a?.decimals}
+        tokenB={b?.symbol}
+        tokenPair={selectedPair.data?.exchangePair[0]}
+      />
+    </>
+  );
 };

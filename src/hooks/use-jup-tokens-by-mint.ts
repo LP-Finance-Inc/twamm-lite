@@ -17,7 +17,9 @@ const fetcher =
 
     const mints = castKeys(params.mints);
 
-    const selectedTokens = tokens.filter((token) => mints.includes(token.address));
+    const selectedTokens = tokens.filter((token) =>
+      mints.includes(token.address)
+    );
 
     const tokenMap = new Map();
     selectedTokens.forEach((token) => {
@@ -33,9 +35,12 @@ export default (mints?: SWRArgs<typeof swrKey>["mints"], options = {}) => {
   return useSWR(
     M.withDefault(
       undefined,
-      M.andMap(([m]) => swrKey({ mints: m }), Extra.combine2([M.of(mints), M.of(jupTokens.data)])),
+      M.andMap(
+        ([m]) => swrKey({ mints: m }),
+        Extra.combine2([M.of(mints), M.of(jupTokens.data)])
+      )
     ),
     fetcher(jupTokens.data),
-    options,
+    options
   );
 };

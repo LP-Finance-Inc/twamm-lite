@@ -26,7 +26,9 @@ export default function Configurator({
       className="w-full max-w-full border border-white/10 md:border-none md:mx-0 md:max-w-[300px] max-h-[700px] 
     overflow-y-scroll overflow-x-hidden webkit-scrollbar bg-white/5 rounded-xl p-4"
     >
-      <p className="text-white mt-2 text-sm font-semibold">Things you can configure</p>
+      <p className="text-white mt-2 text-sm font-semibold">
+        Things you can configure
+      </p>
 
       <div className="w-full border-b border-white/10 py-1" />
 
@@ -34,12 +36,16 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Execution Period</p>
-          <p className="text-xs text-white/30">Option to swap with jupiter and twamm or only twamm.</p>
+          <p className="text-xs text-white/30">
+            Option to swap with jupiter and twamm or only twamm.
+          </p>
         </div>
         <Toggle
           className="min-w-[40px]"
           active={executionPeriod}
-          onClick={() => setValue("executionPeriod", !executionPeriod, { shouldDirty: true })}
+          onClick={() =>
+            setValue("executionPeriod", !executionPeriod, { shouldDirty: true })
+          }
         />
       </div>
       <div className="w-full border-b border-white/10 py-3" />
@@ -48,7 +54,9 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Fee Account</p>
-          <p className="text-xs text-white/30">Account to receive jupiter swap fees.</p>
+          <p className="text-xs text-white/30">
+            Account to receive jupiter swap fees.
+          </p>
         </div>
       </div>
       <input
@@ -67,7 +75,9 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Platform Fee Account</p>
-          <p className="text-xs text-white/30">Account to receive twamm fees.</p>
+          <p className="text-xs text-white/30">
+            Account to receive twamm fees.
+          </p>
         </div>
       </div>
       <input
@@ -86,7 +96,9 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Supported Token</p>
-          <p className="text-xs text-white/30">Tokens to be displayed. Comma separated mint address.</p>
+          <p className="text-xs text-white/30">
+            Tokens to be displayed. Comma separated mint address.
+          </p>
         </div>
       </div>
       <input
@@ -105,7 +117,9 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Fee BPS</p>
-          <p className="text-xs text-white/30">Fees charged to jupiter swap transactions.</p>
+          <p className="text-xs text-white/30">
+            Fees charged to jupiter swap transactions.
+          </p>
         </div>
       </div>
       <input
@@ -124,12 +138,16 @@ export default function Configurator({
       <div className="flex justify-between mt-5">
         <div>
           <p className="text-sm text-white/75">Simulate wallet passthrough</p>
-          <p className="text-xs text-white/30">Simulate terminal with a fake wallet passthrough</p>
+          <p className="text-xs text-white/30">
+            Simulate terminal with a fake wallet passthrough
+          </p>
         </div>
         <Toggle
           className="min-w-[40px]"
           active={useWalletPassthrough}
-          onClick={() => setValue("useWalletPassthrough", !useWalletPassthrough)}
+          onClick={() =>
+            setValue("useWalletPassthrough", !useWalletPassthrough)
+          }
         />
       </div>
       <div className="w-full border-b border-white/10 py-3" />

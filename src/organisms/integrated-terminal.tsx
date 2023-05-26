@@ -48,7 +48,7 @@ export default function IntegratedTerminal({
       }
     },
     [isLoaded, formProps, fakeWallet],
-    200,
+    200
   );
 
   return (

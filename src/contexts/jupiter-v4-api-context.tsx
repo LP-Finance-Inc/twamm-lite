@@ -12,7 +12,9 @@ export const Context = createContext<JupiterApiContext | undefined>(undefined);
 
 export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
   const [context] = useState<JupiterApiContext>({
-    defaultApi: new DefaultApi(new Configuration({ basePath: JUPITER_CONFIG_URI })),
+    defaultApi: new DefaultApi(
+      new Configuration({ basePath: JUPITER_CONFIG_URI })
+    ),
   });
 
   return <Context.Provider value={context}>{children}</Context.Provider>;

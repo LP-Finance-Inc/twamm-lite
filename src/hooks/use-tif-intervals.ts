@@ -76,7 +76,9 @@ const fetcher =
 
     if (poolsToFetch.length) {
       const pools: unknown = await Promise.allSettled(
-        poolsToFetch.map(([tif, index]) => pool.getPoolByTIF(tif, poolCounters[index])),
+        poolsToFetch.map(([tif, index]) =>
+          pool.getPoolByTIF(tif, poolCounters[index])
+        )
       );
 
       const fetchedPools = pools as Array<SettledResult<Pool>>;
@@ -84,7 +86,7 @@ const fetcher =
       const zippedPools: TifWithPool<Pool>[] = zipWith(
         (x, y) => populateTokenPairPool(x, y),
         poolsToFetch,
-        fetchedPools,
+        fetchedPools
       );
 
       const availablePools = zippedPools
@@ -122,7 +124,7 @@ export default (
   tifs: number[] | undefined,
   currentPoolPresent: boolean[] | undefined,
   poolCounters: Counter[] | undefined,
-  options = {},
+  options = {}
 ) => {
   const { program } = useProgram();
 
@@ -137,6 +139,6 @@ export default (
         poolCounters,
       }),
     fetcher(program),
-    options,
+    options
   );
 };

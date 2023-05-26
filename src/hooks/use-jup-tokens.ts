@@ -25,7 +25,9 @@ const fetcher = async ({ params }: SWRParams<typeof swrKey>) => {
 
   const hasProperAddress = (t: JupToken) => ADDRESSES.includes(t.address);
 
-  const allTokens: Array<JupToken> = await (await fetch(TOKEN_LIST_URL[moniker])).json();
+  const allTokens: Array<JupToken> = await (
+    await fetch(TOKEN_LIST_URL[moniker])
+  ).json();
 
   const neededTokens = allTokens
     .filter((t) => hasProperAddress(t) || isSol(t))

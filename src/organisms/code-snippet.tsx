@@ -11,7 +11,11 @@ const { wallet } = useWallet();
 
 function addInlinesToCode(code: string, insertLines: string) {
   let lines = code.split("\n");
-  lines = [...lines.slice(0, lines.length - 1), insertLines, ...lines.slice(lines.length - 1, lines.length)];
+  lines = [
+    ...lines.slice(0, lines.length - 1),
+    insertLines,
+    ...lines.slice(lines.length - 1, lines.length),
+  ];
 
   return lines.join("\n");
 }
@@ -27,30 +31,51 @@ export default function CodeSnippet({
 }) {
   const DISPLAY_MODE_VALUES = useMemo(() => {
     if (displayMode === "modal") return {};
-    if (displayMode === "integrated") return { displayMode: "integrated", integratedTargetId: "integrated-terminal" };
+    if (displayMode === "integrated")
+      return {
+        displayMode: "integrated",
+        integratedTargetId: "integrated-terminal",
+      };
     if (displayMode === "widget") return { displayMode: "widget" };
     return null;
   }, [displayMode]);
 
   const formPropsToFormat = {
-    ...(formConfigurator.feeAccount ? { feeAccount: formConfigurator.feeAccount } : undefined),
-    ...(formConfigurator.feeBps ? { feeBps: formConfigurator.feeBps } : undefined),
-    ...(formConfigurator.platformFeeAccount ? { platformFeeAccount: formConfigurator.platformFeeAccount } : undefined),
-    ...(formConfigurator.executionPeriod ? { executionPeriod: formConfigurator.executionPeriod } : undefined),
-    ...(formConfigurator.supportedToken ? { supportedToken: formConfigurator.supportedToken } : undefined),
+    ...(formConfigurator.feeAccount
+      ? { feeAccount: formConfigurator.feeAccount }
+      : undefined),
+    ...(formConfigurator.feeBps
+      ? { feeBps: formConfigurator.feeBps }
+      : undefined),
+    ...(formConfigurator.platformFeeAccount
+      ? { platformFeeAccount: formConfigurator.platformFeeAccount }
+      : undefined),
+    ...(formConfigurator.executionPeriod
+      ? { executionPeriod: formConfigurator.executionPeriod }
+      : undefined),
+    ...(formConfigurator.supportedToken
+      ? { supportedToken: formConfigurator.supportedToken }
+      : undefined),
   };
 
   const valuesToFormat = {
     ...DISPLAY_MODE_VALUES,
     endpoint: rpcUrl,
-    ...(Object.keys(formPropsToFormat).length > 0 ? { formProps: formPropsToFormat } : undefined),
+    ...(Object.keys(formPropsToFormat).length > 0
+      ? { formProps: formPropsToFormat }
+      : undefined),
   };
 
-  const formPropsSnippet = Object.keys(valuesToFormat).length > 0 ? JSON.stringify(valuesToFormat, null, 4) : "";
+  const formPropsSnippet =
+    Object.keys(valuesToFormat).length > 0
+      ? JSON.stringify(valuesToFormat, null, 4)
+      : "";
 
   const INIT_SNIPPET = `window.Twamm.init(${formPropsSnippet});`;
 
-  let snippet = formConfigurator.useWalletPassthrough ? `${USE_WALLET_SNIPPET}${INIT_SNIPPET}` : INIT_SNIPPET;
+  let snippet = formConfigurator.useWalletPassthrough
+    ? `${USE_WALLET_SNIPPET}${INIT_SNIPPET}`
+    : INIT_SNIPPET;
 
   if (formConfigurator.useWalletPassthrough) {
     snippet = addInlinesToCode(snippet, `\t"passThroughWallet": wallet,`);
@@ -78,7 +103,7 @@ export default function CodeSnippet({
           className={classNames(
             `absolute top-0 right-4 md:top-10 md:right-2 
             text-xs text-white border rounded-xl px-2 py-1 opacity-50 hover:opacity-100`,
-            isCopied ? "opacity-100 cursor-wait" : "",
+            isCopied ? "opacity-100 cursor-wait" : ""
           )}
           onClick={copyToClipboard}
         >

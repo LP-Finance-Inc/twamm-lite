@@ -51,3 +51,7 @@ export const formatNumber = {
     return numberFormatter.format(val);
   },
 };
+
+export const detectedSeparator = formatNumber.format(1.1).substring(1, 2);
+
+export const MAX_INPUT_LIMIT = 100_000_000_000_000;

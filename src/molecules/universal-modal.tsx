@@ -17,7 +17,7 @@ export default ({ children, onClose, setOpen, title }: Props) => {
   }, [onClose, setOpen]);
 
   return (
-    <div className="absolute h-full w-full bg-twamm-bg rounded-lg overflow-hidden">
+    <div className="absolute h-full w-full bg-twamm-bg rounded-lg overflow-hidden z-50">
       <div className="flex flex-col h-full w-full py-4 px-2">
         <div className="flex w-full justify-between">
           <div

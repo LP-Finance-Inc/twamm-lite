@@ -1,12 +1,17 @@
 import M from "easy-maybe/lib";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import classNames from "classnames";
 
 import usePrice from "src/hooks/use-price";
 import useBalance from "src/hooks/use-balance";
 import { add, keepPrevious, refreshEach } from "src/swr-options";
 import useIndexedTIFs from "src/contexts/tif-context";
 import TokenSelect from "src/atoms/token-select";
+import AmountField from "src/atoms/amount-field";
+import WalletIcon from "src/icons/wallet-icon";
+import { formatPrice } from "src/domain/index";
+import { formatNumber } from "src/utils";
+import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
+import SwitchPairButton from "src/icons/switch-pair-icon";
 import type { IntervalVariant } from "../domain/interval.d";
 
 export default ({
@@ -38,6 +43,7 @@ export default ({
   const [pairAmount, setPairAmount] = useState<number>(0);
   const [isPending, setPending] = useState<boolean>(false);
   const balance = useBalance(a?.address, add([keepPrevious(), refreshEach()]));
+  const { publickKey } = useWalletPassThrough();
   const { tifs: intervalTifs, selected } = useIndexedTIFs();
   const pairPrice: any = usePrice(a?.address ? { id: a?.address } : undefined);
 
@@ -91,13 +97,26 @@ export default ({
     [onIntervalSelect]
   );
 
+  const priceA = usePrice({
+    id: a?.address as string,
+  });
+
   const price = usePrice({
     id: b?.address as string,
   });
 
-  const priceA = usePrice({
-    id: a?.address as string,
-  });
+  const totalAmount = M.andThen<number, number>(
+    (p) => (Number.isNaN(amount) ? M.of(undefined) : M.of(p * pairAmount)),
+    M.of(pairPrice.data)
+  );
+
+  const displayAmount = M.withDefault(
+    "",
+    M.andMap(
+      (p) => (p === 0 ? formatPrice(0) : `~${formatPrice(p)}`),
+      totalAmount
+    )
+  );
 
   useEffect(() => {
     setPending(true);
@@ -169,20 +188,10 @@ export default ({
       <div className="h-full flex flex-col items-center justify-center pb-4">
         <div className="w-full mt-2 rounded-xl flex flex-col px-2">
           <div className="flex-col">
-            <div
-              className={classNames(
-                "border-b border-transparent bg-[#212128] rounded-xl transition-all"
-              )}
-            >
-              <div
-                className={classNames("px-x border-transparent rounded-xl ")}
-              >
+            <div className="border-b border-transparent bg-[#212128] rounded-xl transition-all">
+              <div className="px-x border-transparent rounded-xl ">
                 <div>
-                  <div
-                    className={classNames(
-                      "py-5 px-4 flex flex-col dark:text-white"
-                    )}
-                  >
+                  <div className="py-5 px-4 flex flex-col">
                     <div className="flex justify-between items-center">
                       <TokenSelect
                         alt={a?.symbol}
@@ -192,11 +201,49 @@ export default ({
                         onClick={handleInputSelect}
                       />
 
-                      <div className="text-right">a</div>
+                      <div className="text-right flex flex-row items-center gap-2">
+                        <AmountField
+                          amount={pairAmount}
+                          disabled={false}
+                          onChange={onChange}
+                          decimals={a?.decimals}
+                        />
+                        <button
+                          type="button"
+                          onClick={onMaxClick}
+                          className="px-1 text-sm rounded-lg  flex items-center bg-[#4f5058] hover:bg-white/20 text-white"
+                        >
+                          Max
+                        </button>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="flex ml-2 mt-3 space-x-1 text-xs items-center text-white/30 fill-current">
+                        <WalletIcon width={10} height={10} />
+                        {!publickKey && (
+                          <span translate="no">
+                            {formatNumber.format(0, 6)}
+                          </span>
+                        )}
+                        {publickKey && (
+                          <span translate="no">{displayBalance}</span>
+                        )}
+                        <span>{a?.symbol}</span>
+                      </div>
+                      <span className="text-xs text-white/30">
+                        {displayAmount}
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div className="my-2">
+              <SwitchPairButton
+                className="transition-all"
+                onClick={handleSwap}
+              />
             </div>
           </div>
         </div>

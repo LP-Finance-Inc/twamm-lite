@@ -172,7 +172,6 @@ export default ({
           connection={connection}
         />
       </UniversalPopover>
-      <button onClick={onTokenChoose}>click</button>
       <OrderForm
         primary={a}
         secondary={b}

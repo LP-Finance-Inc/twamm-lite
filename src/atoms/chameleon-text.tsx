@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export default function Heading({
+export default function ChameleonText({
   children,
   className,
 }: {

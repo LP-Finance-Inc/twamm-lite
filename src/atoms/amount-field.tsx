@@ -10,11 +10,13 @@ export default ({
   disabled,
   onChange: handleChange = () => {},
   decimals,
+  isPending,
 }: {
   amount: number;
   disabled: boolean;
   onChange?: (arg0: number) => void;
   decimals?: number;
+  isPending: boolean;
 }) => {
   const onChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,20 +34,25 @@ export default ({
   );
 
   return (
-    <NumericFormat
-      allowNegative={false}
-      disabled={disabled}
-      value={amount}
-      decimalScale={decimals}
-      onChange={onChange}
-      valueIsNumericString
-      placeholder="0.00"
-      isAllowed={withValueLimit}
-      className={classNames(
-        "h-full w-full bg-transparent text-white text-right font-semibold dark:placeholder:text-white/25 text-lg",
-        { "cursor-not-allowed": disabled }
+    <>
+      {isPending && <div className="h-2.5 bg-gray-500 rounded-full w-20" />}
+      {!isPending && (
+        <NumericFormat
+          allowNegative={false}
+          disabled={disabled}
+          value={amount || ""}
+          decimalScale={decimals}
+          onChange={onChange}
+          valueIsNumericString
+          placeholder="0.00"
+          isAllowed={withValueLimit}
+          className={classNames(
+            "h-full w-full bg-transparent text-white text-right font-semibold text-lg",
+            { "cursor-not-allowed": disabled }
+          )}
+          decimalSeparator={detectedSeparator}
+        />
       )}
-      decimalSeparator={detectedSeparator}
-    />
+    </>
   );
 };

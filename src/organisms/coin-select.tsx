@@ -58,7 +58,7 @@ export default ({
   }, []);
 
   if (isLoading) {
-    return <Loading />;
+    return <Loading top={32} height={8} width={8} />;
   }
 
   return (

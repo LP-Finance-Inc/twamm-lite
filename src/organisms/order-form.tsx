@@ -9,6 +9,7 @@ import useIndexedTIFs, { selectors } from "src/contexts/tif-context";
 import type { ValidationErrors } from "src/domain/order";
 import ExchangePairForm from "./exchange-pair-form";
 import type { IntervalVariant, PoolTIF } from "../domain/interval.d";
+import ExecuteJupiterOrder from "./jupiter-order-progress";
 
 export default ({
   primary,
@@ -151,19 +152,44 @@ export default ({
 
   return (
     <Form onSubmit={onSubmit} validate={() => errors}>
-      {({ handleSubmit }) => (
-        <ExchangePairForm
-          amount={deferredAmount}
-          primary={primary}
-          onABSwap={onABSwap}
-          onASelect={onASelect}
-          onBSelect={onBSelect}
-          onChangeAmount={onChangeAmount}
-          onIntervalSelect={onIntervalSelect}
-          onSubmit={handleSubmit}
-          secondary={secondary}
-          submitting={submitting}
-        />
+      {({ handleSubmit, valid }) => (
+        <>
+          <ExchangePairForm
+            amount={deferredAmount}
+            primary={primary}
+            onABSwap={onABSwap}
+            onASelect={onASelect}
+            onBSelect={onBSelect}
+            onChangeAmount={onChangeAmount}
+            onIntervalSelect={onIntervalSelect}
+            onSubmit={handleSubmit}
+            secondary={secondary}
+            submitting={submitting}
+          />
+          <div className="px-2">
+            {selected.isInstantOrder ? (
+              <ExecuteJupiterOrder
+                disabled={!jupiterParams || !valid || submitting}
+                form="exchange-form"
+                onSuccess={onSuccess}
+                params={jupiterParams}
+                progress={submitting}
+                validate={() => errors}
+              />
+            ) : (
+              <p>hi</p>
+              // <ExecuteProgramOrder
+              //   disabled={!programParams || !valid || submitting}
+              //   form="exchange-form"
+              //   onSuccess={onSuccess}
+              //   params={programParams}
+              //   progress={submitting}
+              //   scheduled={scheduled}
+              //   validate={() => errors}
+              // />
+            )}
+          </div>
+        </>
       )}
     </Form>
   );

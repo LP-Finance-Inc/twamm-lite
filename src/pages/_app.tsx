@@ -17,7 +17,7 @@ import {
   feeBps,
   platformFeeAccount,
 } from "src/env";
-import Heading from "src/atoms/heading";
+import ChameleonText from "src/atoms/chameleon-text";
 import WidgetTerminal from "src/organisms/widget-terminal";
 import ModalTerminal from "src/organisms/modal-terminal";
 import IntegratedTerminal from "src/organisms/integrated-terminal";
@@ -87,9 +87,9 @@ export default function App() {
         <div className="">
           <div className="flex flex-col items-center h-full w-full mt-4 md:mt-14">
             <div className="flex flex-col justify-center items-center text-center">
-              <Heading className="text-4xl md:text-[52px] font-semibold px-4 pb-2 md:px-0">
+              <ChameleonText className="text-4xl md:text-[52px] font-semibold px-4 pb-2 md:px-0">
                 {i18n.Heading}
-              </Heading>
+              </ChameleonText>
               <p className="text-[#9D9DA6] w-[80%] md:max-w-[60%] text-md mt-4 heading-[24px]">
                 {i18n.Subtitle}
               </p>

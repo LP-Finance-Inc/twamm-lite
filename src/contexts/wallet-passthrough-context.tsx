@@ -1,19 +1,21 @@
 import type { FC, ReactNode } from "react";
-import { createContext, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import { WalletName, WalletReadyState } from "@solana/wallet-adapter-base";
 import { useWallet, Wallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 
-interface IWalletPassThrough {
-  publicKey: PublicKey | null;
-  wallets: Wallet[];
-  wallet: Wallet | null;
-  connect: () => Promise<void>;
-  select: (walletName: WalletName<string>) => void;
-  connecting: boolean;
-  connected: boolean;
-  disconnect: () => Promise<void | null>;
-}
+export type IWalletPassThrough = {
+  readonly publicKey: PublicKey | null;
+  readonly wallets: Wallet[];
+  readonly wallet: Wallet | null;
+  readonly connect: () => Promise<void>;
+  readonly select: (walletName: WalletName<string>) => void;
+  readonly connecting: boolean;
+  readonly connected: boolean;
+  readonly disconnect: () => Promise<void | null>;
+  readonly isWalletModalOpen: boolean;
+  readonly setIsWalletModalOpen: (toggle: boolean) => void;
+};
 
 const initialPassThrough = {
   publicKey: null,
@@ -26,12 +28,14 @@ const initialPassThrough = {
   disconnect: async () => {},
 };
 
-export const WalletPassthroughContext =
-  createContext<IWalletPassThrough>(initialPassThrough);
+export const WalletPassthroughContext = createContext<
+  IWalletPassThrough | undefined
+>(undefined);
 
 export const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const {
     publicKey,
     wallets,
@@ -62,6 +66,8 @@ export const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({
           }
           return null;
         },
+        isWalletModalOpen,
+        setIsWalletModalOpen,
       };
     }
 
@@ -74,6 +80,8 @@ export const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({
       connecting,
       connected,
       disconnect,
+      isWalletModalOpen,
+      setIsWalletModalOpen,
     };
   })();
 
@@ -84,6 +92,10 @@ export const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({
   );
 };
 
-export default function useWalletPassThrough(): IWalletPassThrough {
-  return useContext(WalletPassthroughContext);
+export default function useWalletPassThrough() {
+  const context = useContext(WalletPassthroughContext);
+  if (context === undefined) {
+    throw new Error("Wallet pass through context is required");
+  }
+  return context;
 }

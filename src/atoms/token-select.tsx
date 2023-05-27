@@ -23,15 +23,20 @@ export default ({
   return (
     <button
       type="button"
-      className="py-2 px-3 rounded-2xl flex items-center bg-[#36373E] hover:bg-white/20 text-white"
+      className="py-2.5 px-3 rounded-xl flex items-center bg-[#36373E] hover:bg-white/20 text-white"
       onClick={disabled ? () => null : handleClick}
       disabled={disabled}
     >
-      <div className="h-5 w-5">
-        <TokenIcon alt={alt} src={image} width={24} height={24} />
-      </div>
-      <div className="ml-4 mr-2 font-semibold" translate="no">
-        {label ?? "-"}
+      <TokenIcon
+        alt={alt}
+        src={image}
+        width={24}
+        height={24}
+        disabled={disabled}
+      />
+
+      <div className="ml-2 mr-2 font-semibold" translate="no">
+        {label ?? ""}
       </div>
       <span className="text-white/25 fill-current">
         <ChevronDownIcon />

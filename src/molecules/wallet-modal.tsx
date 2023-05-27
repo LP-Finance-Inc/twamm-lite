@@ -41,12 +41,17 @@ export const WalletModal: FC<WalletModalProps> = ({ setIsWalletModalOpen }) => {
   };
 
   const renderWalletList = (walletList: WalletContextState["wallets"]) => (
-    <div className="h-full overflow-y-auto space-y-2 webkit-scrollbar" translate="no">
+    <div
+      className="h-full overflow-y-auto space-y-2 webkit-scrollbar"
+      translate="no"
+    >
       {walletList.map((wallet, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <ul key={index}>
           <WalletListItem
-            handleClick={(event: any) => handleWalletClick(event, wallet.adapter)}
+            handleClick={(event: any) =>
+              handleWalletClick(event, wallet.adapter)
+            }
             wallet={wallet.adapter}
           />
         </ul>
@@ -57,7 +62,10 @@ export const WalletModal: FC<WalletModalProps> = ({ setIsWalletModalOpen }) => {
   return (
     <div className="flex flex-col h-full w-full py-4 px-2 bg-twamm-bg">
       <div className="flex w-full justify-between">
-        <div className="text-white fill-current w-6 h-6 cursor-pointer" onClick={() => setIsWalletModalOpen(false)}>
+        <div
+          className="text-white fill-current w-6 h-6 cursor-pointer"
+          onClick={() => setIsWalletModalOpen(false)}
+        >
           <LeftArrowIcon width={24} height={24} />
         </div>
 
@@ -67,7 +75,11 @@ export const WalletModal: FC<WalletModalProps> = ({ setIsWalletModalOpen }) => {
       </div>
 
       <div className="mt-7 overflow-auto">
-        {renderWalletList(wallets.sort((a, b) => PRIORITISE[a.readyState] - PRIORITISE[b.readyState]))}
+        {renderWalletList(
+          wallets.sort(
+            (a, b) => PRIORITISE[a.readyState] - PRIORITISE[b.readyState]
+          )
+        )}
       </div>
     </div>
   );

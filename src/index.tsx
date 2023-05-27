@@ -16,11 +16,11 @@ import TwammApp from "src/organisms/twamm-app";
 import swrConfig from "./swr-options";
 
 export function RenderTwamm(props: Init) {
-  const { formProps } = props;
+  const { formProps, endpoint } = props;
 
   return (
     <StrictMode>
-      <TwammLiteParamsProvider {...formProps}>
+      <TwammLiteParamsProvider {...formProps} endpoint={endpoint}>
         <NotificationProvider>
           <CoingeckoApiProvider>
             <JupiterV4ApiProvider>

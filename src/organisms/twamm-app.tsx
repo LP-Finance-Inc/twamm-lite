@@ -3,6 +3,7 @@ import { address } from "@twamm/client.js";
 import { OrderSide } from "@twamm/types/lib";
 
 import { WalletModal } from "src/molecules/wallet-modal";
+import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
 import Header from "./header";
 import TokenExchange, { TradeStruct } from "./token-exchange";
 
@@ -16,7 +17,7 @@ const DEFAULT_TRADE = {
 };
 
 export default function TwammApp() {
-  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
+  const { isWalletModalOpen, setIsWalletModalOpen } = useWalletPassThrough();
   const [trade, setTrade] = useState<TradeStruct>(DEFAULT_TRADE);
 
   const onTradeChange = useCallback((next: TradeStruct) => {

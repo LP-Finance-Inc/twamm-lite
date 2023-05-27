@@ -42,7 +42,8 @@ export default ({
   const outValueRef = useRef<number>(0);
   const [pairAmount, setPairAmount] = useState<number>(0);
   const [isPending, setPending] = useState<boolean>(false);
-  const balance = useBalance(a?.address, add([keepPrevious(), refreshEach()]));
+  const balanceA = useBalance(a?.address, add([keepPrevious(), refreshEach()]));
+  const balanceB = useBalance(b?.address, add([keepPrevious(), refreshEach()]));
   const { publickKey } = useWalletPassThrough();
   const { tifs: intervalTifs, selected } = useIndexedTIFs();
   const pairPrice: any = usePrice(a?.address ? { id: a?.address } : undefined);
@@ -56,12 +57,17 @@ export default ({
   );
 
   const onMaxClick = useCallback(() => {
-    M.andMap(onChange, M.of(balance.data));
-  }, [onChange, balance.data]);
+    M.andMap(onChange, M.of(balanceA.data));
+  }, [onChange, balanceA.data]);
 
-  const displayBalance = M.withDefault<string | number>(
+  const displayBalanceA = M.withDefault<string | number>(
     "0",
-    M.of(balance.data)
+    M.of(balanceA.data)
+  );
+
+  const displayBalanceB = M.withDefault<string | number>(
+    "0",
+    M.of(balanceB.data)
   );
 
   const sellRate = useMemo(() => {
@@ -101,7 +107,7 @@ export default ({
     id: a?.address as string,
   });
 
-  const price = usePrice({
+  const priceB = usePrice({
     id: b?.address as string,
   });
 
@@ -158,7 +164,7 @@ export default ({
 
             outRef.current = OutAmount;
             outValueRef.current = Number(
-              (OutAmount * price.data)
+              (OutAmount * priceB.data)
                 ?.toFixed(10)
                 ?.match(/^-?\d*\.?0*\d{0,2}/)?.[0]
             );
@@ -181,13 +187,14 @@ export default ({
     }, 300);
 
     return () => clearTimeout(debounceTime);
-  }, [amount, a, b, selected, price.data]);
+  }, [amount, a, b, selected, priceB.data]);
 
   return (
     <form onSubmit={onSubmit} id="exchange-form">
       <div className="h-full flex flex-col items-center justify-center pb-4">
         <div className="w-full mt-2 rounded-xl flex flex-col px-2">
           <div className="flex-col">
+            {/* pay section  */}
             <div className="border-b border-transparent bg-[#212128] rounded-xl transition-all">
               <div className="px-x border-transparent rounded-xl ">
                 <div>
@@ -200,18 +207,18 @@ export default ({
                         label={a?.symbol}
                         onClick={handleInputSelect}
                       />
-
                       <div className="text-right flex flex-row items-center gap-2">
                         <AmountField
                           amount={pairAmount}
                           disabled={false}
                           onChange={onChange}
                           decimals={a?.decimals}
+                          isPending={false}
                         />
                         <button
                           type="button"
                           onClick={onMaxClick}
-                          className="px-1 text-sm rounded-lg  flex items-center bg-[#4f5058] hover:bg-white/20 text-white"
+                          className="py-0.5 px-1 text-xs rounded-md flex items-center bg-[#4f5058] hover:bg-white/20 text-white"
                         >
                           Max
                         </button>
@@ -226,7 +233,7 @@ export default ({
                           </span>
                         )}
                         {publickKey && (
-                          <span translate="no">{displayBalance}</span>
+                          <span translate="no">{displayBalanceA}</span>
                         )}
                         <span>{a?.symbol}</span>
                       </div>
@@ -239,12 +246,78 @@ export default ({
               </div>
             </div>
 
+            {/* Swap token pairs  */}
             <div className="my-2">
               <SwitchPairButton
                 className="transition-all"
                 onClick={handleSwap}
               />
             </div>
+
+            {/* recevie section  */}
+            <div className="border-b border-transparent bg-[#212128] rounded-xl transition-all">
+              <div className="px-x border-transparent rounded-xl ">
+                <div>
+                  <div className="py-5 px-4 flex flex-col">
+                    <div className="flex justify-between items-center">
+                      <TokenSelect
+                        alt={b?.symbol}
+                        disabled={!a}
+                        image={b?.logoURI}
+                        label={b?.symbol}
+                        onClick={handleOutputSelect}
+                      />
+                      <div className="text-right flex flex-row items-center gap-2">
+                        <AmountField
+                          amount={amount ? outRef.current : 0}
+                          disabled
+                          onChange={onChange}
+                          decimals={b?.decimals}
+                          isPending={isPending}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="flex ml-2 mt-3 space-x-1 text-xs items-center text-white/30 fill-current">
+                        <WalletIcon width={10} height={10} />
+                        {!publickKey && (
+                          <span translate="no">
+                            {formatNumber.format(0, 6)}
+                          </span>
+                        )}
+                        {publickKey && (
+                          <span translate="no">{displayBalanceB}</span>
+                        )}
+                        <span>{b?.symbol}</span>
+                      </div>
+                      {isPending ? (
+                        <div className="h-2.5 bg-gray-500 rounded-full w-20" />
+                      ) : (
+                        <span className="text-xs text-white/30">
+                          {!outValueRef.current && amount
+                            ? 0
+                            : `~ ${formatPrice(outValueRef.current)}`}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* sellRate  */}
+            {amount != null &&
+              selected &&
+              amount > 0 &&
+              selected.tif > 0 &&
+              sellRate && (
+                <div className="mt-1">
+                  <p>
+                    Sell Rate: {sellRate} {a?.symbol} (≈$
+                    {(sellRate * priceA.data).toFixed(3)}) / minute
+                  </p>
+                </div>
+              )}
           </div>
         </div>
       </div>

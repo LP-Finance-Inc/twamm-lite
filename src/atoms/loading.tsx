@@ -1,14 +1,25 @@
 import classNames from "classnames";
 
-export default function Loading() {
+export default function Loading({
+  top,
+  height,
+  width,
+}: {
+  top: number;
+  height: number;
+  width: number;
+}) {
   return (
     <div
       role="status"
-      className={classNames("w-full h-full flex justify-center mt-32")}
+      className={classNames(
+        "w-full h-full flex justify-center",
+        top ? `mt-${top}` : 0
+      )}
     >
       <svg
         aria-hidden="true"
-        className="w-8 h-8 mr-2 text-gray-500 animate-spin fill-twamm-bg"
+        className={`w-${width} h-${height} mr-2 text-gray-500 animate-spin fill-twamm-bg`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

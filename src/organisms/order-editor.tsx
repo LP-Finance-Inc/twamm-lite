@@ -159,7 +159,7 @@ export default ({
     Extra.isNothing(pairs) ||
     Extra.isNothing(M.of(available))
   ) {
-    return <Loading />;
+    return <Loading top={32} height={8} width={8} />;
   }
 
   return (

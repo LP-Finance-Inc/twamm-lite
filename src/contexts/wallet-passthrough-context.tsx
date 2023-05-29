@@ -4,28 +4,17 @@ import { WalletName, WalletReadyState } from "@solana/wallet-adapter-base";
 import { useWallet, Wallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 
-interface IWalletPassThrough {
-  publicKey: PublicKey | null;
-  wallets: Wallet[];
-  wallet: Wallet | null;
-  connect: () => Promise<void>;
-  select: (walletName: WalletName<string>) => void;
-  connecting: boolean;
-  connected: boolean;
-  disconnect: () => Promise<void | null>;
-  isWalletModalOpen: boolean;
-  setIsWalletModalOpen: (toggle: boolean) => void;
-}
-
-const initialPassThrough = {
-  publicKey: null,
-  wallets: [],
-  wallet: null,
-  connect: async () => {},
-  select: () => {},
-  connecting: false,
-  connected: false,
-  disconnect: async () => {},
+export type IWalletPassThrough = {
+  readonly publicKey: PublicKey | null;
+  readonly wallets: Wallet[];
+  readonly wallet: Wallet | null;
+  readonly connect: () => Promise<void>;
+  readonly select: (walletName: WalletName<string>) => void;
+  readonly connecting: boolean;
+  readonly connected: boolean;
+  readonly disconnect: () => Promise<void | null>;
+  readonly isWalletModalOpen: boolean;
+  readonly setIsWalletModalOpen: (toggle: boolean) => void;
 };
 
 export const WalletPassthroughContext = createContext<
@@ -52,8 +41,10 @@ export const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({
 
     if (Boolean(passThroughWallet) && passThroughWallet?.adapter.publicKey) {
       return {
-        ...initialPassThrough,
         publicKey: passThroughWallet?.adapter.publicKey,
+        wallets: [],
+        select: () => {},
+        connect: async () => {},
         wallet: {
           adapter: passThroughWallet.adapter,
           readyState: WalletReadyState.Loadable,

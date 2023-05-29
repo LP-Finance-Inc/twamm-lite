@@ -44,7 +44,7 @@ export default ({
   const [isPending, setPending] = useState<boolean>(false);
   const balanceA = useBalance(a?.address, add([keepPrevious(), refreshEach()]));
   const balanceB = useBalance(b?.address, add([keepPrevious(), refreshEach()]));
-  const { publickKey } = useWalletPassThrough();
+  const { publicKey } = useWalletPassThrough();
   const { tifs: intervalTifs, selected } = useIndexedTIFs();
   const pairPrice: any = usePrice(a?.address ? { id: a?.address } : undefined);
 
@@ -227,12 +227,12 @@ export default ({
                     <div className="flex justify-between items-center">
                       <div className="flex ml-2 mt-3 space-x-1 text-xs items-center text-white/30 fill-current">
                         <WalletIcon width={10} height={10} />
-                        {!publickKey && (
+                        {!publicKey && (
                           <span translate="no">
                             {formatNumber.format(0, 6)}
                           </span>
                         )}
-                        {publickKey && (
+                        {publicKey && (
                           <span translate="no">{displayBalanceA}</span>
                         )}
                         <span>{a?.symbol}</span>
@@ -280,12 +280,12 @@ export default ({
                     <div className="flex justify-between items-center">
                       <div className="flex ml-2 mt-3 space-x-1 text-xs items-center text-white/30 fill-current">
                         <WalletIcon width={10} height={10} />
-                        {!publickKey && (
+                        {!publicKey && (
                           <span translate="no">
                             {formatNumber.format(0, 6)}
                           </span>
                         )}
-                        {publickKey && (
+                        {publicKey && (
                           <span translate="no">{displayBalanceB}</span>
                         )}
                         <span>{b?.symbol}</span>

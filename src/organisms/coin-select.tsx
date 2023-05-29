@@ -1,5 +1,5 @@
 import type { ChangeEvent, MouseEvent } from "react";
-import { Connection, PublicKey } from "@solana/web3.js";
+import { PublicKey } from "@solana/web3.js";
 import { useState, useMemo, useCallback } from "react";
 
 import SearchIcon from "src/icons/search-icon";
@@ -29,15 +29,9 @@ export interface CoinSelectProps {
   onSelect: (arg0: TokenInfo) => void;
   tokens?: PublicKey[];
   publicKey: PublicKey | null;
-  connection: Connection;
 }
 
-export default ({
-  onSelect,
-  tokens,
-  publicKey,
-  connection,
-}: CoinSelectProps) => {
+export default ({ onSelect, tokens, publicKey }: CoinSelectProps) => {
   const [search, setSearch] = useState<string>();
 
   const { data, isLoading } = useJupTokensByMint(tokens);
@@ -58,7 +52,7 @@ export default ({
   }, []);
 
   if (isLoading) {
-    return <Loading top={32} height={8} width={8} />;
+    return <Loading top={100} height={8} width={8} />;
   }
 
   return (
@@ -82,7 +76,6 @@ export default ({
         filterValue={search}
         onClick={onCoinSelect}
         publicKey={publicKey}
-        connection={connection}
       />
     </>
   );

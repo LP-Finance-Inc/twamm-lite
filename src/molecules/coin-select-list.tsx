@@ -1,16 +1,18 @@
+import M from "easy-maybe/lib";
 import Link from "next/link";
-import { useMemo, createRef, useState, useEffect } from "react";
+import { useMemo, createRef } from "react";
 import type { MouseEvent } from "react";
 import type { ListChildComponentProps } from "react-window";
-import { Connection, PublicKey } from "@solana/web3.js";
+import { PublicKey } from "@solana/web3.js";
 import { FixedSizeList } from "react-window";
 import classNames from "classnames";
 import AutoSizer from "react-virtualized-auto-sizer";
-import * as anchor from "@project-serum/anchor";
 
 import TokenIcon from "src/icons/token-icon";
 import ExternalIcon from "src/icons/external-icon";
 import { shortenAddress, formatNumber } from "src/utils";
+import { add, keepPrevious, refreshEach } from "src/swr-options";
+import useBalance from "src/hooks/use-balance";
 
 export interface CoinSelectProps {
   data: Record<
@@ -19,66 +21,30 @@ export interface CoinSelectProps {
   >;
   filterValue?: string;
   publicKey: PublicKey | null;
-  connection: Connection;
   onClick: (arg0: MouseEvent, arg1: string) => void;
 }
 
 export interface CoinBalanceProps {
   address: string;
   publicKey: PublicKey | null;
-  connection: Connection;
 }
 
-export const CoinBalance = ({
-  address,
-  publicKey,
-  connection,
-}: CoinBalanceProps) => {
-  const [balance, setBalance] = useState<number>(0);
+export const CoinBalance = ({ address, publicKey }: CoinBalanceProps) => {
+  const balance = useBalance(address, add([keepPrevious(), refreshEach()]));
 
-  useEffect(() => {
-    async function getBalance() {
-      if (publicKey) {
-        if (address === "So11111111111111111111111111111111111111112") {
-          const bal = await connection.getBalance(publicKey);
-          setBalance(bal / 1000000000);
-          return;
-        }
-
-        const mintAddress = new PublicKey(address);
-        const res = await connection.getTokenAccountsByOwner(publicKey, {
-          mint: mintAddress,
-        });
-        if (res.value.length === 0) {
-          setBalance(0);
-          return;
-        }
-
-        const Coinbalance = await connection.getParsedAccountInfo(
-          new anchor.web3.PublicKey(res?.value[0]?.pubkey.toString())
-        );
-        if (Coinbalance && Coinbalance.value) {
-          setBalance(Coinbalance.value.data.parsed.info.tokenAmount.uiAmount);
-          return;
-        }
-      }
-      setBalance(0);
-    }
-    getBalance();
-  }, [address, connection, publicKey]);
+  const displayBalance = M.withDefault<number>(0, M.of(balance.data));
 
   if (!publicKey) {
     return <span translate="no">{formatNumber.format(0, 6)}</span>;
   }
 
-  return <span translate="no">{formatNumber.format(balance, 6)}</span>;
+  return <span translate="no">{formatNumber.format(displayBalance, 6)}</span>;
 };
 
 export default ({
   data,
   filterValue,
   publicKey,
-  connection,
   onClick = () => {},
 }: CoinSelectProps) => {
   const coins = useMemo(() => data, [data]);
@@ -164,7 +130,6 @@ export default ({
                         <CoinBalance
                           address={coinRecords[index].address}
                           publicKey={publicKey}
-                          connection={connection}
                         />
                       </div>
                     </div>

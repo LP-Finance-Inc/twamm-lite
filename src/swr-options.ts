@@ -8,14 +8,15 @@ export const retryFor = (interval = 10000, retryAttempts = 5) => ({
     key: string,
     configuration: SWRConfiguration,
     revalidate: Revalidator,
-    revalidatorOpts: Required<RevalidatorOptions>,
+    revalidatorOpts: Required<RevalidatorOptions>
   ) => {
     const { refreshInterval } = configuration;
     const { retryCount } = revalidatorOpts;
 
     if (retryCount > retryAttempts) return;
 
-    const retryIn = typeof refreshInterval === "number" ? refreshInterval : interval;
+    const retryIn =
+      typeof refreshInterval === "number" ? refreshInterval : interval;
 
     setTimeout(revalidate, retryIn, { retryCount });
   },
@@ -31,7 +32,8 @@ export const keepPrevious = () => ({ keepPreviousData: true });
 
 export const refreshEach = (refreshInterval = 10000) => ({ refreshInterval });
 
-export const add = (options: Array<{}>) => options.reduce((opt, acc) => ({ ...acc, ...opt }), {});
+export const add = (options: Array<{}>) =>
+  options.reduce((opt, acc) => ({ ...acc, ...opt }), {});
 
 interface ConfigurationWithProvider extends SWRConfiguration {
   provider?: typeof provider;

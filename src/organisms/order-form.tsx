@@ -8,6 +8,7 @@ import * as formHelpers from "src/domain/order";
 import useIndexedTIFs, { selectors } from "src/contexts/tif-context";
 import type { ValidationErrors } from "src/domain/order";
 import ExchangePairForm from "./exchange-pair-form";
+import ExecuteProgramOrder from "./program-order-progress";
 import type { IntervalVariant, PoolTIF } from "../domain/interval.d";
 import ExecuteJupiterOrder from "./jupiter-order-progress";
 
@@ -177,16 +178,15 @@ export default ({
                 validate={() => errors}
               />
             ) : (
-              <p>hi</p>
-              // <ExecuteProgramOrder
-              //   disabled={!programParams || !valid || submitting}
-              //   form="exchange-form"
-              //   onSuccess={onSuccess}
-              //   params={programParams}
-              //   progress={submitting}
-              //   scheduled={scheduled}
-              //   validate={() => errors}
-              // />
+              <ExecuteProgramOrder
+                disabled={!programParams || !valid || submitting}
+                form="exchange-form"
+                onSuccess={onSuccess}
+                params={programParams}
+                progress={submitting}
+                scheduled={scheduled}
+                validate={() => errors}
+              />
             )}
           </div>
         </>

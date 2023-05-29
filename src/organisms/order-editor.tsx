@@ -4,7 +4,6 @@ import M, { Extra } from "easy-maybe/lib";
 import { translateAddress } from "@project-serum/anchor";
 
 import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
-import useBlockchain from "src/contexts/solana-connection-context";
 import useIndexedTIFs from "src/contexts/tif-context";
 import usePrice from "src/hooks/use-price";
 import useTokenPairByTokens from "src/hooks/use-token-pair-by-tokens";
@@ -45,7 +44,6 @@ export default ({
   tradeSide: Voidable<OrderSide>;
 }) => {
   const { publicKey } = useWalletPassThrough();
-  const { connection } = useBlockchain();
 
   const pairs = M.of(tokenPairs);
   const pair = M.of(tokenPair);
@@ -159,7 +157,7 @@ export default ({
     Extra.isNothing(pairs) ||
     Extra.isNothing(M.of(available))
   ) {
-    return <Loading top={32} height={8} width={8} />;
+    return <Loading top={100} height={8} width={8} />;
   }
 
   return (
@@ -169,7 +167,6 @@ export default ({
           onSelect={onCoinSelect}
           tokens={tokens}
           publicKey={publicKey}
-          connection={connection}
         />
       </UniversalPopover>
       <OrderForm

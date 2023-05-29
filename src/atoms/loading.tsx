@@ -12,10 +12,8 @@ export default function Loading({
   return (
     <div
       role="status"
-      className={classNames(
-        "w-full h-full flex justify-center",
-        top ? `mt-${top}` : 0
-      )}
+      style={top ? { marginTop: `${top}px` } : { marginTop: "0px" }}
+      className={classNames("w-full h-full flex justify-center")}
     >
       <svg
         aria-hidden="true"

@@ -23,11 +23,9 @@ function addInlinesToCode(code: string, insertLines: string) {
 export default function CodeSnippet({
   formConfigurator,
   displayMode,
-  rpcUrl,
 }: {
   formConfigurator: FormConfigurator;
   displayMode: Init["displayMode"];
-  rpcUrl: string;
 }) {
   const DISPLAY_MODE_VALUES = useMemo(() => {
     if (displayMode === "modal") return {};
@@ -60,7 +58,7 @@ export default function CodeSnippet({
 
   const valuesToFormat = {
     ...DISPLAY_MODE_VALUES,
-    endpoint: rpcUrl,
+    endpoint: "https://api.mainnet-beta.solana.com",
     ...(Object.keys(formPropsToFormat).length > 0
       ? { formProps: formPropsToFormat }
       : undefined),

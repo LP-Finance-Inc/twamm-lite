@@ -211,11 +211,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <CodeSnippet
-        formConfigurator={watchAllFields}
-        displayMode={tab}
-        rpcUrl={ClusterApiUrl}
-      />
+      <CodeSnippet formConfigurator={watchAllFields} displayMode={tab} />
       <div className="w-full bg-twamm-bg mt-12">
         <Footer />
       </div>

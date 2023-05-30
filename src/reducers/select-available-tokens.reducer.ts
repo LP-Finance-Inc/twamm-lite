@@ -1,10 +1,13 @@
 import { flatten, lensPath, pipe, set } from "ramda";
 import { OrderSide } from "@twamm/types/lib";
 
-const flattenPairs = (pairs: AddressPair[]) => Array.from(new Set(flatten(pairs)).values());
+const flattenPairs = (pairs: AddressPair[]) =>
+  Array.from(new Set(flatten(pairs)).values());
 
 const matchPairs = (pair: AddressPair, pairs: AddressPair[]) => {
-  const matchedPair = pairs.find((tokenPair) => tokenPair.includes(pair[0]) && tokenPair.includes(pair[1]));
+  const matchedPair = pairs.find(
+    (tokenPair) => tokenPair.includes(pair[0]) && tokenPair.includes(pair[1])
+  );
 
   if (!matchedPair) return OrderSide.defaultSide;
 
@@ -13,12 +16,17 @@ const matchPairs = (pair: AddressPair, pairs: AddressPair[]) => {
   return type;
 };
 
-const selectComplementary = (token: JupToken | undefined, pairs: AddressPair[]) => {
+const selectComplementary = (
+  token: JupToken | undefined,
+  pairs: AddressPair[]
+) => {
   if (!token) return [];
 
   const availablePairs = pairs.filter((pair) => pair.includes(token.address));
 
-  const available = flatten(availablePairs).filter((pairToken) => pairToken !== token.address);
+  const available = flatten(availablePairs).filter(
+    (pairToken) => pairToken !== token.address
+  );
 
   return available;
 };
@@ -48,7 +56,11 @@ export const defaultState: State = {
   data: undefined,
 };
 
-const init = (payload: { pairs: AddressPair[]; pair: JupToken[]; type: OrderSide }) => ({
+const init = (payload: {
+  pairs: AddressPair[];
+  pair: JupToken[];
+  type: OrderSide;
+}) => ({
   type: ActionTypes.INIT,
   payload,
 });
@@ -81,7 +93,10 @@ export const action = {
   swap,
 };
 
-export default (state: State | State<Data>, act: Action): State | State<Data> => {
+export default (
+  state: State | State<Data>,
+  act: Action
+): State | State<Data> => {
   switch (act?.type) {
     case ActionTypes.INIT: {
       if (state.data) return state;
@@ -90,7 +105,9 @@ export default (state: State | State<Data>, act: Action): State | State<Data> =>
 
       const isChangingType = OrderSide.defaultSide !== type;
 
-      const [a, b]: [JupToken | undefined, JupToken] = isChangingType ? [pair[1], pair[0]] : [pair[0], pair[1]];
+      const [a, b]: [JupToken | undefined, JupToken] = isChangingType
+        ? [pair[1], pair[0]]
+        : [pair[0], pair[1]];
 
       if (!a || !b) return state;
 
@@ -126,7 +143,10 @@ export default (state: State | State<Data>, act: Action): State | State<Data> =>
           set(lensA, b),
           set(lensB, a),
           set(lensAvailable, selectComplementary(b, pairs)),
-          set(lensType, type === OrderSide.sell ? OrderSide.buy : OrderSide.sell),
+          set(
+            lensType,
+            type === OrderSide.sell ? OrderSide.buy : OrderSide.sell
+          )
         );
 
         return applyState(state);
@@ -144,7 +164,7 @@ export default (state: State | State<Data>, act: Action): State | State<Data> =>
           set(lensA, token),
           set(lensB, undefined),
           set(lensAvailable, available),
-          set(lensType, OrderSide.defaultSide),
+          set(lensType, OrderSide.defaultSide)
         );
 
         return applyState(state);
@@ -180,7 +200,10 @@ export default (state: State | State<Data>, act: Action): State | State<Data> =>
         type = matchPairs(pair, pairs);
       }
 
-      const applyState = pipe(set(lensPath(["data", "b"]), token), set(lensPath(["data", "type"]), type));
+      const applyState = pipe(
+        set(lensPath(["data", "b"]), token),
+        set(lensPath(["data", "type"]), type)
+      );
 
       return applyState(state);
     }
@@ -195,7 +218,10 @@ export default (state: State | State<Data>, act: Action): State | State<Data> =>
         set(lensPath(["data", "available"]), available),
         set(lensPath(["data", "a"]), b),
         set(lensPath(["data", "b"]), a),
-        set(lensPath(["data", "type"]), type === OrderSide.sell ? OrderSide.buy : OrderSide.sell),
+        set(
+          lensPath(["data", "type"]),
+          type === OrderSide.sell ? OrderSide.buy : OrderSide.sell
+        )
       );
 
       return applyState(state);

@@ -40,7 +40,7 @@ export default ({
       )}
       role="alert"
     >
-      <div className="flex items-center gap-3">
+      <div className="flex justify-center items-center gap-3">
         <div className="py-1">{icon}</div>
         <div>
           <p className="text-sm text-gray-600 font-medium">{children}</p>

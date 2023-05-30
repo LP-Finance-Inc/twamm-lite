@@ -13,7 +13,7 @@ const ConnectButton = ({
   <button
     type="button"
     className={classNames(
-      `w-full mt-4 flex justify-center items-center 
+      `w-full flex justify-center items-center 
         disabled:opacity-50 text-white bg-[#191B1F]  
         rounded-xl leading-none p-5 text-md  font-semibold`
     )}

@@ -87,7 +87,7 @@ export default (props: {
         }
       />
       {isErrorsVisible ? (
-        <div className="mt-1">
+        <div className="my-2">
           <Alert severity="error">
             <>
               {[...Object.keys(errors)].map((key) => (

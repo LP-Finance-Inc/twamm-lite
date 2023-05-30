@@ -9,9 +9,11 @@ import TokenSelect from "src/atoms/token-select";
 import AmountField from "src/atoms/amount-field";
 import WalletIcon from "src/icons/wallet-icon";
 import { formatPrice } from "src/domain/index";
+import TradeIntervals from "src/molecules/trade-intervals";
 import { formatNumber } from "src/utils";
 import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
 import SwitchPairButton from "src/icons/switch-pair-icon";
+import ChameleonText from "src/atoms/chameleon-text";
 import type { IntervalVariant } from "../domain/interval.d";
 
 export default ({
@@ -191,7 +193,7 @@ export default ({
 
   return (
     <form onSubmit={onSubmit} id="exchange-form">
-      <div className="h-full flex flex-col items-center justify-center pb-4">
+      <div className="h-full flex flex-col items-center justify-center">
         <div className="w-full mt-2 rounded-xl flex flex-col px-2">
           <div className="flex-col">
             {/* pay section  */}
@@ -291,7 +293,7 @@ export default ({
                         <span>{b?.symbol}</span>
                       </div>
                       {isPending ? (
-                        <div className="h-2.5 bg-gray-500 rounded-full w-20" />
+                        <div className="h-2.5 bg-gray-500 rounded-full w-20 animate-pulse" />
                       ) : (
                         <span className="text-xs text-white/30">
                           {!outValueRef.current && amount
@@ -311,13 +313,22 @@ export default ({
               amount > 0 &&
               selected.tif > 0 &&
               sellRate && (
-                <div className="mt-1">
-                  <p>
+                <div className="mt-1 pl-1">
+                  <ChameleonText className="text-sm font-medium">
                     Sell Rate: {sellRate} {a?.symbol} (≈$
                     {(sellRate * priceA.data).toFixed(3)}) / minute
-                  </p>
+                  </ChameleonText>
                 </div>
               )}
+
+            <div className="p-2">
+              <TradeIntervals
+                disabled={submitting}
+                indexedTifs={intervalTifs}
+                onSelect={handleIntervalSelect}
+                selected={selected}
+              />
+            </div>
           </div>
         </div>
       </div>

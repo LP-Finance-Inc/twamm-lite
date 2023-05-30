@@ -35,7 +35,9 @@ export default ({
 
   return (
     <>
-      {isPending && <div className="h-2.5 bg-gray-500 rounded-full w-20" />}
+      {isPending && (
+        <div className="h-2.5 bg-gray-500 rounded-full w-20 animate-pulse" />
+      )}
       {!isPending && (
         <NumericFormat
           allowNegative={false}

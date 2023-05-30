@@ -93,12 +93,12 @@ function OrderProgress(props: {
         text="Exchange"
       />
       {!routes.error ? null : (
-        <div className="pt-1">
+        <div className="my-2">
           <Alert severity="error">{routes.error.message}</Alert>
         </div>
       )}
       {isErrorsVisible ? (
-        <div className="pt-1">
+        <div className="my-2">
           <Alert severity="error">
             <>
               {[...Object.keys(errors)].map((key) => (

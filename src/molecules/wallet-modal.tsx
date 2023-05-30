@@ -1,9 +1,10 @@
 import type { FC, MouseEvent } from "react";
-import { useWallet, WalletContextState } from "@solana/wallet-adapter-react";
+import { WalletContextState } from "@solana/wallet-adapter-react";
 import { Adapter, WalletReadyState } from "@solana/wallet-adapter-base";
 
 import LeftArrowIcon from "src/icons/left-arrow-icon";
 import { useSnackbar } from "src/contexts/notification-context";
+import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
 import WalletListItem from "./wallet-list-item";
 
 const PRIORITISE: {
@@ -21,7 +22,7 @@ interface WalletModalProps {
 
 export const WalletModal: FC<WalletModalProps> = ({ setIsWalletModalOpen }) => {
   const { enqueueSnackbar } = useSnackbar();
-  const { wallets, select } = useWallet();
+  const { wallets, select } = useWalletPassThrough();
 
   const handleWalletClick = (event: MouseEvent, wallet: Adapter) => {
     event.preventDefault();

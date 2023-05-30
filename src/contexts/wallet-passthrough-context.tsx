@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useMemo } from "react";
 import { WalletName, WalletReadyState } from "@solana/wallet-adapter-base";
 import { useWallet, Wallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
@@ -36,7 +36,7 @@ export const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({
     disconnect,
   } = useWallet();
 
-  const value = (() => {
+  const value = useMemo(() => {
     const { passThroughWallet } = window.Twamm;
 
     if (Boolean(passThroughWallet) && passThroughWallet?.adapter.publicKey) {
@@ -74,7 +74,18 @@ export const WalletPassthroughProvider: FC<{ children: ReactNode }> = ({
       isWalletModalOpen,
       setIsWalletModalOpen,
     };
-  })();
+  }, [
+    publicKey,
+    wallets,
+    wallet,
+    connect,
+    select,
+    connecting,
+    connected,
+    disconnect,
+    isWalletModalOpen,
+    setIsWalletModalOpen,
+  ]);
 
   return (
     <WalletPassthroughContext.Provider value={value}>

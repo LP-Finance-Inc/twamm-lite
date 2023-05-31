@@ -27,7 +27,7 @@ export default ({ children, onClose, setOpen, title }: Props) => {
             <LeftArrowIcon width={24} height={24} />
           </div>
 
-          {title && <div className="text-white">Select Token</div>}
+          {title && <div className="text-white">{title}</div>}
 
           <div className=" w-6 h-6" />
         </div>

@@ -71,7 +71,7 @@ const WalletListItem = forwardRef(
     <li
       ref={ref}
       className="relative list-none h-full flex justify-between 
-    p-4 cursor-pointer text-white bg-[#2C2D33] rounded-xl hover:bg-white/10"
+      p-4 cursor-pointer text-white bg-[#2C2D33] rounded-xl hover:bg-white/10"
     >
       <div onClick={handleClick}>
         <div className="absolute top-0 left-0  w-full h-full">

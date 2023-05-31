@@ -72,7 +72,7 @@ export const WalletModal: FC<WalletModalProps> = ({ setIsWalletModalOpen }) => {
 
         <div className="text-white">Connect Wallet</div>
 
-        <div className=" w-6 h-6" />
+        <div className="w-6 h-6" />
       </div>
 
       <div className="mt-7 overflow-auto">

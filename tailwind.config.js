@@ -8,7 +8,7 @@ module.exports = {
     preflight: isWidgetOnly ? false : true,
   },
   mode: "jit",
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
@@ -17,8 +17,6 @@ module.exports = {
         "twamm-dark-bg": "#292A33",
         "twamm-jungle-green": "#24AE8F",
         "twamm-primary": "#FBA43A",
-        warning: "#FAA63C",
-        "token-btn-bg": "#36373E",
       },
       fontSize: {
         xxs: ["0.625rem", "1rem"],

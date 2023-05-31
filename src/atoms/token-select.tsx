@@ -23,7 +23,7 @@ export default ({
   return (
     <button
       type="button"
-      className="py-2.5 px-3 rounded-xl flex items-center bg-token-btn-bg hover:bg-white/20 text-white"
+      className="py-2.5 px-3 rounded-xl flex items-center  bg-[#36373E] hover:bg-white/20  text-white"
       onClick={disabled ? () => null : handleClick}
       disabled={disabled}
     >

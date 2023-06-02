@@ -12,9 +12,10 @@ const Instant = (props: {
   selected: boolean;
   value: Voidable<number>;
   values: Voidable<any>;
+  executionPeriod?: boolean;
 }) => {
   if (!props.values) return null;
-
+  if (!props.executionPeriod) return null;
   return (
     <IntervalButton
       disabled={props.disabled}
@@ -33,6 +34,7 @@ export default ({
   valueIndex,
   valuesOpt,
   values,
+  executionPeriod,
 }: {
   disabled: boolean;
   onClick: (e: SyntheticEvent<HTMLElement>) => void;
@@ -40,6 +42,7 @@ export default ({
   valueIndex?: number;
   valuesOpt: number;
   values?: number[];
+  executionPeriod?: boolean;
 }) => {
   if (!values) {
     return <div className="h-8 bg-gray-500 rounded-md w-full animate-pulse" />;
@@ -67,7 +70,7 @@ export default ({
 
           const isSelected = d.selected || isComplementaryInterval;
 
-          if (d.value === SpecialIntervals.INSTANT)
+          if (d.value === SpecialIntervals.INSTANT) {
             return (
               <Instant
                 disabled={disabled}
@@ -76,8 +79,10 @@ export default ({
                 selected={value === SpecialIntervals.INSTANT}
                 value={d.value}
                 values={values}
+                executionPeriod={executionPeriod}
               />
             );
+          }
 
           return (
             <IntervalButton

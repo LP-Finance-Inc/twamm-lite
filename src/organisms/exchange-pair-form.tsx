@@ -321,7 +321,7 @@ export default ({
                 </div>
               )}
 
-            <div className="p-2">
+            <div className="p-2 mt-1">
               <TradeIntervals
                 disabled={submitting}
                 indexedTifs={intervalTifs}

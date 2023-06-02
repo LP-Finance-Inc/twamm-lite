@@ -14,6 +14,7 @@ export default ({
   value,
   valueIndex,
   values,
+  executionPeriod,
 }: {
   disabled: boolean;
   info?: string;
@@ -22,6 +23,7 @@ export default ({
   value?: number | IndexedTIF;
   valueIndex?: number;
   values?: number[];
+  executionPeriod?: boolean;
 }) => {
   const intervalValues = useMemo(() => values, [values]);
 
@@ -36,8 +38,8 @@ export default ({
   );
 
   return (
-    <div className="w-full">
-      <div className="pb-1">
+    <div className="w-full pb-2">
+      <div className="pb-2">
         <label
           htmlFor="title"
           className="flex items-center gap-x-2 text-sm text-white/70 fill-current"
@@ -55,7 +57,7 @@ export default ({
           </div>
         </label>
       </div>
-      <div>
+      <div className="my-2">
         <Intervals
           disabled={disabled}
           onClick={onIntervalSelect}
@@ -63,6 +65,7 @@ export default ({
           valueIndex={valueIndex}
           valuesOpt={1}
           values={intervalValues}
+          executionPeriod={executionPeriod}
         />
       </div>
     </div>

@@ -1,10 +1,8 @@
+import type { ChangeEvent } from "react";
 import { useCallback, useState } from "react";
-import * as yup from "yup";
-import { Form } from "react-final-form";
 
 import ClusterUtils from "src/domain/cluster";
 import type * as TCluster from "src/domain/cluster.d";
-import { clusterValidator } from "src/utils/validators";
 import { useSnackbar } from "src/contexts/notification-context";
 import SettingButton from "src/atoms/setting-button";
 import ChameleonText from "src/atoms/chameleon-text";
@@ -33,8 +31,8 @@ export default ({
   presets,
   setCluster,
 }: {
-  cluster: ClusterProps;
   clusters: TCluster.ClusterInfo[];
+  cluster: ClusterProps;
   presets: any;
   setCluster: (cluster: TCluster.ClusterInfo | TCluster.Moniker) => boolean;
   closeModal: () => void;
@@ -43,30 +41,40 @@ export default ({
 
   const [clusterMoniker, setClusterMoniker] = useState(cluster.moniker);
 
+  const [customEndpoint, setCustomEndpoint] = useState<string>(
+    localStorage.getItem("twammClusterEndpoint") || ""
+  );
+
   const clusterUtils = ClusterUtils(presets.solana);
 
   const isCustomSelected = clusterMoniker === presets.custom.moniker;
 
-  const onSaveCustomEndpoint = useCallback(
-    async ({ endpoint }: { endpoint: string }) => {
-      const customCluster = {
-        endpoint,
-        name: presets.custom.name,
-        moniker: presets.custom.moniker,
-      };
+  const onSaveCustomEndpoint = useCallback(async () => {
+    const customCluster = {
+      endpoint: customEndpoint,
+      name: presets.custom.name,
+      moniker: presets.custom.moniker,
+    };
 
-      const isError = setCluster(customCluster);
+    const isError = setCluster(customCluster);
 
-      const { msg, variant } = clusterChangeAlert(
-        isError,
-        customCluster.moniker
-      );
-      enqueueSnackbar(msg, variant);
+    const { msg, variant } = clusterChangeAlert(isError, customCluster.moniker);
+    enqueueSnackbar(msg, variant);
 
-      if (!isError && closeModal) closeModal();
-    },
-    [enqueueSnackbar, closeModal, presets, setCluster]
-  );
+    if (!isError && closeModal) closeModal();
+  }, [
+    customEndpoint,
+    presets.custom.name,
+    presets.custom.moniker,
+    setCluster,
+    enqueueSnackbar,
+    closeModal,
+  ]);
+
+  const handleCustomeInput = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event?.target as { value: string };
+    setCustomEndpoint(value);
+  };
 
   const onSavePresetEndpoint = useCallback(
     ({ endpoint }: { endpoint: TCluster.Moniker }) => {
@@ -111,41 +119,26 @@ export default ({
       </div>
 
       {isCustomSelected && (
-        <Form
-          initialValues={{
-            endpoint:
-              presets.solana.endpoint === cluster.endpoint
-                ? undefined
-                : cluster.endpoint,
-          }}
-          onSubmit={onSaveCustomEndpoint}
-          validate={clusterValidator(
-            yup.object().shape({
-              endpoint: yup.string().required().url(),
-            })
-          )}
-        >
-          {({ handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
-              <div className="flex items-center gap-x-2 my-2">
-                <input
-                  type="text"
-                  name="endpoint"
-                  className="w-full rounded-md px-2 py-2 truncate bg-[#212128] text-white/50 placeholder:text-white/40 text-sm"
-                  placeholder="RPC endpoint"
-                />
-                <button
-                  type="submit"
-                  className="flex justify-center items-center 
+        <form onSubmit={onSaveCustomEndpoint}>
+          <div className="flex items-center gap-x-2 my-2">
+            <input
+              type="text"
+              name="endpoint"
+              value={customEndpoint}
+              onChange={handleCustomeInput}
+              className="w-full rounded-md px-2 py-2 truncate bg-[#212128] text-white/50 placeholder:text-white/40 text-sm"
+              placeholder="RPC endpoint"
+            />
+            <button
+              type="submit"
+              className="flex justify-center items-center 
                     disabled:opacity-50 text-white bg-[#191B1F]  
                     rounded-md leading-none p-2.5 text-sm  font-semibold"
-                >
-                  <ChameleonText className="pb-0.5">Switch</ChameleonText>
-                </button>
-              </div>
-            </form>
-          )}
-        </Form>
+            >
+              <ChameleonText className="pb-0.5">Switch</ChameleonText>
+            </button>
+          </div>
+        </form>
       )}
     </>
   );

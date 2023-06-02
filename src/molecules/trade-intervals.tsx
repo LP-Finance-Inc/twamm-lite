@@ -91,30 +91,25 @@ export default ({
 
   return (
     <>
-      <div className="pb-2">
-        <TimeInterval
-          disabled={disabled}
-          info={i18n.OrderControlsIntervalsScheduleOrderInfo}
-          label={i18n.OrderControlsIntervalsScheduleOrder}
-          onSelect={onScheduleSelect}
-          value={values.schedule}
-          valueIndex={values.scheduleIndex}
-          values={scheduleTifs}
-        />
-      </div>
-      {executionPeriod === true && (
-        <div className="pb-2">
-          <TimeInterval
-            disabled={disabled}
-            info={i18n.OrderControlsIntervalsExecutionPeriodInfo}
-            label={i18n.OrderControlsIntervalsExecutionPeriod}
-            onSelect={onPeriodSelect}
-            value={values.period}
-            valueIndex={values.periodIndex}
-            values={periodTifs}
-          />
-        </div>
-      )}
+      <TimeInterval
+        disabled={disabled}
+        info={i18n.OrderControlsIntervalsScheduleOrderInfo}
+        label={i18n.OrderControlsIntervalsScheduleOrder}
+        onSelect={onScheduleSelect}
+        value={values.schedule}
+        valueIndex={values.scheduleIndex}
+        values={scheduleTifs}
+      />
+      <TimeInterval
+        disabled={disabled}
+        info={i18n.OrderControlsIntervalsExecutionPeriodInfo}
+        label={i18n.OrderControlsIntervalsExecutionPeriod}
+        onSelect={onPeriodSelect}
+        value={values.period}
+        valueIndex={values.periodIndex}
+        values={periodTifs}
+        executionPeriod={executionPeriod}
+      />
     </>
   );
 };

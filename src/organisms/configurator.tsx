@@ -35,7 +35,7 @@ export default function Configurator({
       {/* Execution Period */}
       <div className="flex justify-between mt-5">
         <div>
-          <p className="text-sm text-white/75">Execution Period</p>
+          <p className="text-sm text-white/75">useJupiter</p>
           <p className="text-xs text-white/30">
             Option to swap with jupiter and twamm or only twamm.
           </p>

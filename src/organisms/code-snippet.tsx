@@ -108,7 +108,12 @@ export default function CodeSnippet({
           {isCopied ? "Copied!" : "Copy to clipboard"}
         </button>
 
-        <SyntaxHighlighter language="typescript" showLineNumbers style={vs2015}>
+        <SyntaxHighlighter
+          language="typescript"
+          showLineNumbers
+          style={vs2015}
+          className="text-sm"
+        >
           {snippet}
         </SyntaxHighlighter>
       </div>

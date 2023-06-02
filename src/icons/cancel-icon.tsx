@@ -1,9 +1,9 @@
-const CancelIcon = () => (
-  <div className="flex items-center text-gray-300 rounded-full fill-current">
+const CancelIcon = ({ height, width }: { height: number; width: number }) => (
+  <div className="flex items-center text-red-600 rounded-full fill-current">
     <svg
       fill="inherit"
-      width={28}
-      height={28}
+      width={width}
+      height={height}
       viewBox="0 0 32 32"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"

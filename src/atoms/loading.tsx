@@ -5,7 +5,7 @@ export default function Loading({
   height,
   width,
 }: {
-  top: number;
+  top?: number;
   height: number;
   width: number;
 }) {

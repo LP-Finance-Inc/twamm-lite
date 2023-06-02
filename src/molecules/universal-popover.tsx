@@ -13,20 +13,29 @@ export interface Props {
   children: ReactNode;
   onClose?: () => void;
   title?: string;
+  arrow: boolean;
 }
 
 interface ModalProps extends Props {
   setOpen: (arg0: boolean) => void;
   title?: string;
+  arrow: boolean;
 }
 
-const Modal = memo(({ children, onClose, setOpen, title }: ModalProps) => (
-  <UniversalModal onClose={onClose} setOpen={setOpen} title={title}>
-    {children}
-  </UniversalModal>
-));
+const Modal = memo(
+  ({ children, onClose, setOpen, title, arrow }: ModalProps) => (
+    <UniversalModal
+      onClose={onClose}
+      setOpen={setOpen}
+      title={title}
+      arrow={arrow}
+    >
+      {children}
+    </UniversalModal>
+  )
+);
 
-export default forwardRef(({ children, onClose, title }: Props, ref) => {
+export default forwardRef(({ children, onClose, title, arrow }: Props, ref) => {
   const [open, setOpen] = useState(false);
 
   useImperativeHandle(ref, () => ({
@@ -42,7 +51,7 @@ export default forwardRef(({ children, onClose, title }: Props, ref) => {
     <>
       {!open && null}
       {open && (
-        <Modal onClose={onClose} setOpen={setOpen} title={title}>
+        <Modal onClose={onClose} setOpen={setOpen} title={title} arrow={arrow}>
           {children}
         </Modal>
       )}

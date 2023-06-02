@@ -162,7 +162,7 @@ export default ({
 
   return (
     <>
-      <UniversalPopover ref={selectCoinRef} title="Select token">
+      <UniversalPopover ref={selectCoinRef} title="Select token" arrow>
         <CoinSelect
           onSelect={onCoinSelect}
           tokens={tokens}

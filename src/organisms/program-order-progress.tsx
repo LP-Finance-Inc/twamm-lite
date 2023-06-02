@@ -70,7 +70,7 @@ export default (props: {
 
   return (
     <>
-      <UniversalPopover ref={cancelRef}>
+      <UniversalPopover ref={cancelRef} arrow>
         {props.params && (
           <SimpleCancelOrder data={props.params} onClick={onApproveCancel} />
         )}

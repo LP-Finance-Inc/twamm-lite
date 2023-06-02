@@ -136,7 +136,7 @@ const RenderShell = (props: Init) => {
 
   const contentClassName: any = useMemo(() => {
     if (!displayMode || displayMode === "modal") {
-      return `flex flex-col h-screen w-screen max-h-[100vh] md:max-h-[600px]
+      return `flex flex-col h-screen w-screen max-h-[100vh] md:max-h-[620px]
        max-w-[360px] overflow-auto text-black relative bg-twamm-bg rounded-lg webkit-scrollbar ${
          containerClassName || ""
        }`;

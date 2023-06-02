@@ -20,7 +20,7 @@ const TokenIcon = ({ alt, src, width, height, disabled }: TokenIconProps) => (
       <Image src={src} alt={alt} fill style={{ objectFit: "contain" }} />
     ) : (
       <>
-        {disabled && <CancelIcon />}
+        {disabled && <CancelIcon height={28} width={28} />}
         {!disabled && <QuestionMark />}
       </>
     )}

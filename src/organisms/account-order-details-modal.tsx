@@ -79,9 +79,6 @@ export default ({
   data?: any;
   isLoading: boolean;
 }) => {
-  console.log("poolAddress", poolAddress);
-  console.log("order", order);
-
   const details = usePoolDetails(poolAddress, order);
   const tokenPair = useTokenPairByPool(poolAddress);
 
@@ -92,7 +89,6 @@ export default ({
       M.of(tokenPair.data)
     )
   );
-  // const tokens = useTokensByMint(pairMints);
 
   const tokens = useMemo(() => {
     if (pairMints && !isLoading) {

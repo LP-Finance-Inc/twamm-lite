@@ -79,6 +79,9 @@ export default ({
   data?: any;
   isLoading: boolean;
 }) => {
+  console.log("poolAddress", poolAddress);
+  console.log("order", order);
+
   const details = usePoolDetails(poolAddress, order);
   const tokenPair = useTokenPairByPool(poolAddress);
 
@@ -132,9 +135,6 @@ export default ({
       });
     }, M.of(details.data));
   }, [details, onCancel, order, side, supply]);
-
-  console.log("details.isLoading", details.isLoading);
-  console.log("details.data", details.data);
 
   if (details.isLoading || !details.data)
     return (

@@ -35,7 +35,7 @@ export default ({ closeModal }: { closeModal: () => void }) => {
     >
       <div className="flex justify-between items-center p-4 border-b border-white/10">
         <div className="text-md font-semibold">
-          <span> {i18n.Settings}</span>
+          <span>{i18n.Settings}</span>
         </div>
         <div
           className="text-white fill-current cursor-pointer"

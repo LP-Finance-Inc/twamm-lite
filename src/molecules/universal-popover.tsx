@@ -14,47 +14,58 @@ export interface Props {
   onClose?: () => void;
   title?: string;
   arrow: boolean;
+  universal?: boolean;
 }
 
 interface ModalProps extends Props {
   setOpen: (arg0: boolean) => void;
   title?: string;
   arrow: boolean;
+  universal?: boolean;
 }
 
 const Modal = memo(
-  ({ children, onClose, setOpen, title, arrow }: ModalProps) => (
+  ({ children, onClose, setOpen, title, arrow, universal }: ModalProps) => (
     <UniversalModal
       onClose={onClose}
       setOpen={setOpen}
       title={title}
       arrow={arrow}
+      universal={universal}
     >
       {children}
     </UniversalModal>
   )
 );
 
-export default forwardRef(({ children, onClose, title, arrow }: Props, ref) => {
-  const [open, setOpen] = useState(false);
+export default forwardRef(
+  ({ children, onClose, title, arrow, universal }: Props, ref) => {
+    const [open, setOpen] = useState(false);
 
-  useImperativeHandle(ref, () => ({
-    close() {
-      setOpen(false);
-    },
-    isOpened: open,
-    open() {
-      setOpen(true);
-    },
-  }));
-  return (
-    <>
-      {!open && null}
-      {open && (
-        <Modal onClose={onClose} setOpen={setOpen} title={title} arrow={arrow}>
-          {children}
-        </Modal>
-      )}
-    </>
-  );
-});
+    useImperativeHandle(ref, () => ({
+      close() {
+        setOpen(false);
+      },
+      isOpened: open,
+      open() {
+        setOpen(true);
+      },
+    }));
+    return (
+      <>
+        {!open && null}
+        {open && (
+          <Modal
+            onClose={onClose}
+            setOpen={setOpen}
+            title={title}
+            arrow={arrow}
+            universal={universal}
+          >
+            {children}
+          </Modal>
+        )}
+      </>
+    );
+  }
+);

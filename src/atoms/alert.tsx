@@ -32,7 +32,7 @@ export default ({
   return (
     <div
       className={classNames(
-        "rounded-md px-4 py-2",
+        "w-full rounded-md px-4 py-2",
         severity === "error" ? "bg-[#fdeded]" : null,
         severity === "info" ? "bg-[#e5f6fd]" : null,
         severity === "warning" ? "bg-[#FFF4E5]" : null,

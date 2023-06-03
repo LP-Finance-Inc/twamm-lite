@@ -2,6 +2,8 @@ import { useEffect } from "react";
 
 type Options = Partial<{ max: number }>;
 
+export const isFloat = (n: any) => !Number.isNaN(n) && n % 1 !== 0;
+
 export function useDebouncedEffect(fn: Function, deps: any[], time: number) {
   useEffect(() => {
     const timeout = setTimeout(fn, time);

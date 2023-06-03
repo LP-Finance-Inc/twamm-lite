@@ -84,7 +84,7 @@ export default function App() {
   return (
     <div className="bg-twamm-dark-bg h-screen w-screen max-w-screen overflow-x-hidden flex flex-col justify-between">
       <div>
-        <div className="">
+        <div>
           <div className="flex flex-col items-center h-full w-full mt-4 md:mt-14">
             <div className="flex flex-col justify-center items-center text-center">
               <ChameleonText className="text-4xl md:text-[52px] font-semibold px-4 pb-2 md:px-0">

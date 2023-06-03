@@ -20,7 +20,7 @@ export default ({ disabled, form, loading = false, onClick, text }: Props) => (
       onClick={onClick}
       type="submit"
       className={classNames(
-        `w-full flex justify-center items-center 
+        `w-full flex justify-center items-center mb-2
         disabled:opacity-50 text-white bg-[#191B1F]  
         rounded-xl leading-none p-5 text-md font-semibold`,
         disabled ? "opacity-50 cursor-not-allowed" : ""

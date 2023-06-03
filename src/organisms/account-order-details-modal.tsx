@@ -37,7 +37,7 @@ const Content = ({
     <h5 className="flex items-center flex-row text-white gap-x-2">
       <PairCardSymbols data={tokens} displayDirection side={details.side} />
       {!details.expired ? (
-        <UpdateIcon height={30} width={30} />
+        <UpdateIcon height={25} width={25} />
       ) : (
         <DoneIcon height={25} width={25} />
       )}
@@ -132,6 +132,9 @@ export default ({
       });
     }, M.of(details.data));
   }, [details, onCancel, order, side, supply]);
+
+  console.log("details.isLoading", details.isLoading);
+  console.log("details.data", details.data);
 
   if (details.isLoading || !details.data)
     return (

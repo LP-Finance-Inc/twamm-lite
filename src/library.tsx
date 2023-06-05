@@ -2,7 +2,7 @@ import "tailwindcss/tailwind.css";
 import { CSSProperties, useState, useEffect, useMemo } from "react";
 import { createRoot } from "react-dom/client";
 
-import JupiterLogo from "src/icons/jupiter-logo";
+import LPLogo from "src/icons/lp-logo";
 import { Init } from "./types";
 import packageJson from "../package.json";
 
@@ -228,12 +228,12 @@ const RenderWidgetShell = (props: Init) => {
     }
 
     const widgetContainerClassName: string =
-      size === "default" ? "h-14 w-14" : "h-10 w-10";
+      size === "default" ? "h-14 w-14" : "h-11 w-11";
 
     return {
       ...result,
       widgetContainerClassName,
-      widgetLogoSize: size === "default" ? 42 : 32,
+      widgetLogoSize: size === "default" ? 30 : 25,
     };
   }, [props.widgetStyle?.position, props.widgetStyle?.size]);
 
@@ -243,7 +243,7 @@ const RenderWidgetShell = (props: Init) => {
         className={`${classes.widgetContainerClassName} rounded-full bg-black flex items-center justify-center cursor-pointer`}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <JupiterLogo
+        <LPLogo
           width={classes.widgetLogoSize}
           height={classes.widgetLogoSize}
         />

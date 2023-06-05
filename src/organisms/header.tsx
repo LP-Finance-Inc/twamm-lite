@@ -3,9 +3,8 @@ import M, { Extra } from "easy-maybe/lib";
 import type { FC } from "react";
 import { useEffect, useRef, useCallback, useState } from "react";
 
-import JupiterLogo from "src/icons/jupiter-logo";
+import LPLogo from "src/icons/lp-logo";
 import SettingIcon from "src/icons/setting-icon";
-import OrdersIcon from "src/icons/order-icon";
 import TransactionRunnerModal from "src/molecules/transaction-runner-modal";
 import useTxRunner from "src/contexts/transaction-runner-context";
 import UniversalPopover, { Ref } from "src/molecules/universal-popover";
@@ -50,24 +49,15 @@ const Header: FC<{
       <div className="mt-2 h-7 pl-3 pr-2">
         <div className="w-full flex items-center justify-between">
           <Link
-            href="https://"
+            href="https://www.lp.finance/"
             target="_blank"
             rel="noreferrer noopener"
             className="flex items-center space-x-2"
           >
-            <JupiterLogo width={24} height={24} />
-            <span className="font-bold text-sm text-white">Jupiter</span>
+            <LPLogo width={24} height={24} />
           </Link>
 
           <div className="flex space-x-1 items-center">
-            <button
-              type="button"
-              className="p-2 h-7 w-7 flex items-center justify-center border rounded-full border-white/10 bg-black/10 text-white/30 fill-current"
-              onClick={() => setIsOpenOrders(true)}
-            >
-              <OrdersIcon height={14} width={14} />
-            </button>
-
             <TransactionProgress setOpen={() => onTxStatusToggle(true)} />
             <button
               type="button"
@@ -75,6 +65,13 @@ const Header: FC<{
               onClick={() => setIsOpenSetting(true)}
             >
               <SettingIcon height={16} width={16} />
+            </button>
+            <button
+              type="button"
+              className="py-2 px-3 h-7 flex items-center rounded-2xl text-xs bg-[#191B1F] text-white"
+              onClick={() => setIsOpenOrders(true)}
+            >
+              Orders
             </button>
 
             <WalletButton setIsWalletModalOpen={setIsWalletModalOpen} />

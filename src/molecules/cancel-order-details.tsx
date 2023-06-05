@@ -61,11 +61,15 @@ export default ({
   return (
     <>
       <div className="flex justify-center">
-        <button type="button" onClick={onToggle}>
+        <button
+          type="button"
+          className="p-2 h-8 w-8 rounded-full border border-gray-400 flex items-center justify-center"
+          onClick={onToggle}
+        >
           <ChevronDownIcon />
         </button>
       </div>
-      <div className="p-2 border border-gray-400 h-8 w-8 rounded-md">
+      <div>
         <CancelOrderLiquidity
           ab={tokens}
           amount={amount}

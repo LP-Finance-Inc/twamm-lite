@@ -50,7 +50,7 @@ export const WalletModal: FC<WalletModalProps> = ({ setIsWalletModalOpen }) => {
         // eslint-disable-next-line react/no-array-index-key
         <ul key={index}>
           <WalletListItem
-            handleClick={(event: any) =>
+            handleClick={(event: MouseEvent) =>
               handleWalletClick(event, wallet.adapter)
             }
             wallet={wallet.adapter}

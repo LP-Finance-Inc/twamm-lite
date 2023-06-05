@@ -37,9 +37,7 @@ const SettingButton = ({
     <button
       type="button"
       className={`${
-        highlighted
-          ? `v2-border-gradient ${roundBorderClass} bg-v2-gradient bg-transparent`
-          : ""
+        highlighted ? `${roundBorderClass} bg-v2-gradient bg-transparent` : ""
       } ${borderClassName} ${classes} ${className} relative`}
       onClick={onClick}
     >

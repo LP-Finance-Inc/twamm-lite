@@ -23,11 +23,11 @@ module.exports = {
       },
       backgroundImage: {
         "twamm-gradient":
-          "linear-gradient(91.26deg, #FCC00A 15.73%, #4EBAE9 83.27%)",
+          "linear-gradient(104.11deg, #3A3B43 2.09%, #3A3B43 24.01%, rgba(58, 59, 67, 0.56) 119%)",
         "twamm-swap-gradient":
           "linear-gradient(96.8deg, rgba(250, 164, 58, 1) 4.71%, rgba(113, 229, 237, 1) 87.84%)",
         "v2-gradient":
-          "linear-gradient(96.8deg, rgba(250, 196, 58, 0.1) 4.71%, rgba(34, 218, 229, 0.1) 87.84%)",
+          "linear-gradient(104.11deg, #3A3B43 2.09%, #3A3B43 24.01%, rgba(58, 59, 67, 0.56) 119%)",
       },
     },
   },

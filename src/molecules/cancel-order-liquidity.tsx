@@ -42,11 +42,11 @@ export default ({
 
   return (
     <>
-      <div>
+      <div className="p-2">
         <div>
           {pair.map(({ amount: amnt, image, symbol }) => (
-            <div key={symbol}>
-              <p className="text-sm">{amnt}</p>
+            <div key={symbol} className="flex items-center justify-between p-1">
+              <p className="text-base text-white/60">{amnt}</p>
               <div className="p-1 flex flex-row items-center">
                 <Image src={image} alt="liquidity" height={30} width={30} />
 
@@ -64,7 +64,7 @@ export default ({
         </div>
       )}
       {Extra.isJust(price) && (
-        <div className="py-2 px-2">
+        <div className="py-2 px-2 text-white/60">
           <p className="text-right">
             1 {a.symbol} = {!p ? "-" : formatRate(p)} {b.symbol}
           </p>

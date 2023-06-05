@@ -65,7 +65,7 @@ const WalletButton: FC<{ setIsWalletModalOpen(toggle: boolean): void }> = ({
           aria-label="dropdown-list"
           className={
             active
-              ? "absolute block top-10 right-0 text-sm bg-black rounded-lg p-2 text-white"
+              ? "absolute block top-8 right-0 text-sm bg-black rounded-lg p-2 text-white"
               : "hidden"
           }
           ref={ref}

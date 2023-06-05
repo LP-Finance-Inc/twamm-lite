@@ -54,38 +54,44 @@ export default ({
   }, [setDetailsOpen]);
 
   return (
-    <div>
-      <h4 className="pt-3 pb-2">{i18n.OrderFlowCancelTitle}</h4>
-      {Extra.isNothing(order) && <Loading height={8} width={8} />}
-      {Extra.isJust(order) && (
-        <>
-          <div className="p-2">
-            <CancelOrderAmount
-              percentage={percentage}
-              onChange={onAmountChange}
-              onToggleDetails={onToggleDetails}
-            />
-          </div>
-          {detailsOpen && (
-            <CancelOrderDetails
-              data={tokens.data}
-              details={details.data}
-              onToggle={onToggleDetails}
-              percentage={percentage}
-            />
-          )}
-          <div className="p-2">
-            <button
-              type="button"
-              disabled={!percentage}
-              className="w-full"
-              onClick={onCancel}
-            >
-              {i18n.OrderFlowCancelControl}
-            </button>
-          </div>
-        </>
-      )}
+    <div className="w-full">
+      <div className="flex justify-center text-center">
+        <h4 className="text-white/80 font-semibold text-lg pt-3 pb-2">
+          {i18n.OrderFlowCancelTitle}
+        </h4>
+        {Extra.isNothing(order) && <Loading height={8} width={8} />}
+      </div>
+      <div className="w-full">
+        {Extra.isJust(order) && (
+          <>
+            <div className="p-2">
+              <CancelOrderAmount
+                percentage={percentage}
+                onChange={onAmountChange}
+                onToggleDetails={onToggleDetails}
+              />
+            </div>
+            {detailsOpen && (
+              <CancelOrderDetails
+                data={tokens.data}
+                details={details.data}
+                onToggle={onToggleDetails}
+                percentage={percentage}
+              />
+            )}
+            <div className="w-full p-2">
+              <button
+                type="button"
+                disabled={!percentage}
+                className="w-full capitalize flex justify-center border border-blue-200 py-2 rounded-md text-white/70 text-sm cursor-pointer"
+                onClick={onCancel}
+              >
+                {i18n.OrderFlowCancelControl}
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

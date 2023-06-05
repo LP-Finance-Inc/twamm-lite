@@ -6,10 +6,10 @@ const JupiterLogo: React.FC<{ width?: number; height?: number }> = ({
   height = 24,
 }) => (
   <Image
-    src="https://jup.ag/svg/jupiter-logo.svg"
+    src="/lp-logo-mobile.png"
     width={width}
     height={height}
-    alt="Jupiter aggregator"
+    alt="LP Finance"
   />
 );
 

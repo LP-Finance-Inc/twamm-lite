@@ -105,7 +105,7 @@ export default (props: {
   return (
     <>
       <UniversalPopover onClose={onDetailsClose} ref={detailsRef} arrow={false}>
-        {!orderState && <Loading height={30} width={30} />}
+        {!orderState && <Loading height={8} width={8} />}
         {orderState === "cancel" && details && (
           <CancelOrderModal
             data={accounts}

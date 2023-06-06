@@ -29,7 +29,7 @@ import Footer from "src/organisms/footer";
 const isDeveloping =
   process.env.NODE_ENV === "development" && typeof window !== "undefined";
 
-const isPreview = Boolean(process.env.NEXT_PUBLIC_IS_NEXT_PREVIEW);
+const isPreview = Boolean(true);
 
 if ((isDeveloping || isPreview) && typeof window !== "undefined") {
   (window as any).Twamm = {};

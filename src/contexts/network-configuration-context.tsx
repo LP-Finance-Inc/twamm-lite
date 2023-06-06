@@ -15,7 +15,7 @@ export const NetworkConfigurationProvider: FC<{ children: ReactNode }> = ({
 }) => {
   const [networkConfiguration, setNetworkConfiguration] = useLocalStorage(
     "network",
-    process.env.NEXT_PUBLIC_CLUSTER_NETWORK
+    "mainnet-beta"
   );
 
   const ContextValue = useMemo(

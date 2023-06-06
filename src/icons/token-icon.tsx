@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import QuestionMark from "src/icons/question-mark";
 import CancelIcon from "src/icons/cancel-icon";
 
@@ -13,11 +11,11 @@ export interface TokenIconProps {
 
 const TokenIcon = ({ alt, src, width, height, disabled }: TokenIconProps) => (
   <div
-    className="relative text-xs flex items-center justify-center  rounded-full overflow-hidden"
+    className="text-xs flex items-center justify-center  rounded-full overflow-hidden"
     style={{ width, height }}
   >
     {src && alt ? (
-      <Image src={src} alt={alt} fill style={{ objectFit: "contain" }} />
+      <img src={src} alt={alt} height={28} width={28} loading="lazy" />
     ) : (
       <>
         {disabled && <CancelIcon height={28} width={28} />}

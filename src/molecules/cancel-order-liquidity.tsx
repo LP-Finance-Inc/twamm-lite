@@ -1,4 +1,3 @@
-import Image from "next/image";
 import M, { Extra } from "easy-maybe/lib";
 import { useMemo } from "react";
 
@@ -48,7 +47,7 @@ export default ({
             <div key={symbol} className="flex items-center justify-between p-1">
               <p className="text-base text-white/60">{amnt}</p>
               <div className="p-1 flex flex-row items-center">
-                <Image src={image} alt="liquidity" height={30} width={30} />
+                <img src={image} alt="liquidity" height={30} width={30} />
 
                 <span className="text-sm font-semibold text-white/60 pl-1">
                   {symbol.toUpperCase()}

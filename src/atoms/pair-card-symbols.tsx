@@ -1,4 +1,3 @@
-import Image from "next/image";
 import M from "easy-maybe/lib";
 
 import type { MaybeTokens } from "src/hooks/use-tokens-by-mint";
@@ -8,14 +7,13 @@ const TokenImage = ({ data }: { data: MaybeTokens[0] }) => {
   if (data instanceof Error) return <QuestionMark />;
 
   return (
-    <div className="relative h-7 w-7">
-      <Image
-        alt={data?.symbol}
-        src={data?.imageSmall}
-        fill
-        className="object-contain"
-      />
-    </div>
+    <img
+      alt={data?.symbol}
+      src={data?.imageSmall}
+      height={28}
+      width={28}
+      loading="lazy"
+    />
   );
 };
 

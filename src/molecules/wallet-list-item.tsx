@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type {
   MouseEvent,
   ForwardedRef,
@@ -43,12 +42,11 @@ export const WalletIcon: FC<WalletIconProps> = ({ wallet, ...props }) => {
 
   if (wallet && src && !hasError) {
     return (
-      <Image
-        width={props.width || 24}
-        height={props.height || 24}
+      <img
+        width={props.width || 26}
+        height={props.height || 26}
         src={src}
         alt={`${wallet.name} icon`}
-        className="object-contain"
         onError={() => {
           setHasError(true);
         }}

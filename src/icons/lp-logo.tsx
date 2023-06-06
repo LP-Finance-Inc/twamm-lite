@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const JupiterLogo: React.FC<{ width?: number; height?: number }> = ({
+const LPLogo: React.FC<{ width?: number; height?: number }> = ({
   width = 24,
   height = 24,
 }) => (
@@ -13,4 +13,4 @@ const JupiterLogo: React.FC<{ width?: number; height?: number }> = ({
   />
 );
 
-export default JupiterLogo;
+export default LPLogo;

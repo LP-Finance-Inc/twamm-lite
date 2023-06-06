@@ -39,6 +39,7 @@
     "eslint-config-next": "12.2.5",
     "eslint-config-prettier": "8.5.0",
     "final-form": "^4.20.9",
+    "ignore-loader": "^0.1.2",
     "isomorphic-fetch": "^3.0.0",
     "lodash.debounce": "^4.0.8",
     "moment": "^2.29.4",

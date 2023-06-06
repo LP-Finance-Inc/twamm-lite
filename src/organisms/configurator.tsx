@@ -8,7 +8,6 @@ export default function Configurator({
   feeAccount,
   feeBps,
   platformFeeAccount,
-  supportedToken,
   executionPeriod,
   useWalletPassthrough,
   setValue,
@@ -16,7 +15,6 @@ export default function Configurator({
   feeAccount: string;
   feeBps: string;
   platformFeeAccount: string;
-  supportedToken: string;
   executionPeriod: boolean;
   useWalletPassthrough: boolean;
   setValue: UseFormSetValue<FormConfigurator>;
@@ -101,17 +99,6 @@ export default function Configurator({
           </p>
         </div>
       </div>
-      <input
-        className="mt-2 text-white w-full flex justify-between items-center space-x-2 
-        text-left rounded-md bg-white/10 px-4 py-2 text-sm font-medium shadow-sm border border-white/10"
-        value={supportedToken}
-        inputMode="text"
-        onChange={(e) => {
-          const { value } = e.target;
-          setValue("supportedToken", value);
-        }}
-      />
-      <div className="w-full border-b border-white/10 py-3" />
 
       {/* Fee BPS */}
       <div className="flex justify-between mt-5">

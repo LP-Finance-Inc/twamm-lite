@@ -5,6 +5,7 @@ import { TOKEN_LIST_URL } from "@jup-ag/core";
 
 import useBlockchain from "src/contexts/solana-connection-context";
 import useTwammLiteParams from "src/contexts/twamm-lite-params-context";
+import { tokenBRegistry } from "src/token-pair-registry";
 
 const swrKey = (params: { moniker: Cluster; supportedToken: string }) => ({
   key: "JupTokens",
@@ -18,7 +19,9 @@ const fetcher = async ({ params }: SWRParams<typeof swrKey>) => {
 
   let ADDRESSES: string[];
   try {
-    ADDRESSES = supportedToken.split(",");
+    ADDRESSES = Array.from(
+      new Set(Object.keys(supportedToken).concat(tokenBRegistry))
+    );
   } catch (e) {
     ADDRESSES = ["EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"];
   }
@@ -45,6 +48,7 @@ const fetcher = async ({ params }: SWRParams<typeof swrKey>) => {
 export default (_: void, options = {}) => {
   const { clusters } = useBlockchain();
   const { supportedToken } = useTwammLiteParams();
+
   const moniker = clusters[0].moniker as "mainnet-beta";
 
   return useSWR(swrKey({ moniker, supportedToken }), fetcher, options);

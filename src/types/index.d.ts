@@ -28,11 +28,15 @@ export type DefaultExplorer =
   | "Solana Beach"
   | "SolanaFM";
 
+export type TokenRegistry = {
+  [key: string]: string[];
+};
+
 export interface FormProps {
   feeAccount: string;
   feeBps: string;
   platformFeeAccount: string;
-  supportedToken: string;
+  supportedToken: TokenRegistry;
   executionPeriod: boolean;
 }
 
@@ -68,7 +72,7 @@ export interface FormConfigurator {
   feeAccount: string;
   feeBps: string;
   platformFeeAccount: string;
-  supportedToken: string;
+  supportedToken: TokenRegistry;
   executionPeriod: boolean;
   useWalletPassthrough: boolean;
 }

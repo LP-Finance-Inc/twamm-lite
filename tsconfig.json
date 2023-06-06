@@ -18,9 +18,9 @@
     "module": "CommonJS",
     "noImplicitAny": true,
     "moduleResolution": "node",
+    "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmitOnError": false,
     "jsx": "preserve",
     "incremental": true,
     "paths": {

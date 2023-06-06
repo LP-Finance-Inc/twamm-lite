@@ -4,7 +4,7 @@ import { isNil } from "ramda";
 import type { IntervalVariant } from "src/domain/interval.d";
 import IntervalButton from "src/atoms/interval-button";
 import { formatInterval } from "src/utils/index";
-import { SpecialIntervals } from "src/domain/interval.d";
+import { SpecialIntervals } from "src/domain/interval";
 
 const Instant = (props: {
   disabled: boolean;

@@ -8,7 +8,7 @@ import {
 } from "react";
 
 import type { IntervalVariant, IndexedTIF } from "src/domain/interval.d";
-import { SpecialIntervals } from "src/domain/interval.d";
+import { SpecialIntervals } from "src/domain/interval";
 import useTradeIntervals, { action as A } from "src/hooks/use-trade-intervals";
 
 type ScheduleTIF = boolean;

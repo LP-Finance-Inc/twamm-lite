@@ -5,7 +5,7 @@ import i18n from "src/i18n/en.json";
 import TimeInterval from "src/atoms/time-interval";
 import type { IntervalVariant, PoolTIF } from "src/domain/interval.d";
 import useIndexedTIFs from "src/contexts/tif-context";
-import { SpecialIntervals } from "src/domain/interval.d";
+import { SpecialIntervals } from "src/domain/interval";
 import useTwammLiteParams from "src/contexts/twamm-lite-params-context";
 
 export default ({

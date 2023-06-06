@@ -2,7 +2,7 @@ import M from "easy-maybe/lib";
 import { OrderSide } from "@twamm/types/lib";
 import i18n from "src/i18n/en.json";
 import type { IndexedTIF } from "./interval.d";
-import { SpecialIntervals } from "./interval.d";
+import { SpecialIntervals } from "./interval";
 
 export type ValidationErrors = {
   a?: Error;

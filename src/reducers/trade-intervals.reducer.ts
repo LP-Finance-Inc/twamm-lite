@@ -3,7 +3,7 @@ import type {
   PoolTIF,
   IntervalVariant,
 } from "src/domain/interval.d";
-import { SpecialIntervals } from "src/domain/interval.d";
+import { SpecialIntervals } from "src/domain/interval";
 
 function byActivePool(poolTif: PoolTIF) {
   // @ts-expect-error

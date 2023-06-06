@@ -4,19 +4,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "jup.ag",
-      },
-      {
-        protocol: "https",
-        hostname: "raw.githubusercontent.com",
-      },
-      {
-        protocol: "https",
-        hostname: "shdw-drive.genesysgo.net",
-      },
+    domains: [
+      "jup.ag",
+      "raw.githubusercontent.com",
+      "shdw-drive.genesysgo.net",
     ],
   },
   webpack: (config, { isServer }) => {

@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Wallet } from "@solana/wallet-adapter-react";
 import { UnsafeBurnerWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { WalletReadyState } from "@solana/wallet-adapter-base";
+import Head from "next/head";
 
 import { Init, FormConfigurator } from "src/types";
 import i18n from "src/i18n/en.json";
@@ -82,139 +83,147 @@ export default function App() {
   }, [watchAllFields.useWalletPassthrough]);
 
   return (
-    <div className="bg-twamm-dark-bg h-screen w-screen max-w-screen overflow-x-hidden flex flex-col justify-between">
-      <div>
+    <>
+      <Head>
+        <title>Twamm Lite</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <div className="bg-twamm-dark-bg h-screen w-screen max-w-screen overflow-x-hidden flex flex-col justify-between">
         <div>
-          <div className="flex flex-col items-center h-full w-full mt-4 md:mt-14">
-            <div className="flex flex-col justify-center items-center text-center">
-              <ChameleonText className="text-4xl md:text-[52px] font-semibold px-4 pb-2 md:px-0">
-                {i18n.Heading}
-              </ChameleonText>
-              <p className="text-[#9D9DA6] w-[80%] md:max-w-[60%] text-md mt-4 heading-[24px]">
-                {i18n.Subtitle}
-              </p>
+          <div>
+            <div className="flex flex-col items-center h-full w-full mt-4 md:mt-14">
+              <div className="flex flex-col justify-center items-center text-center">
+                <ChameleonText className="text-4xl md:text-[52px] font-semibold px-4 pb-2 md:px-0">
+                  {i18n.Heading}
+                </ChameleonText>
+                <p className="text-[#9D9DA6] w-[80%] md:max-w-[60%] text-md mt-4 heading-[24px]">
+                  {i18n.Subtitle}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="flex justify-center">
-            <div className="max-w-6xl bg-black/25 mt-12 rounded-xl flex flex-col md:flex-row w-full md:p-4">
-              <Configurator {...watchAllFields} setValue={setValue} />
-              <div className="mt-8 md:mt-0 md:ml-4 h-full w-full bg-black/40 rounded-xl flex flex-col">
-                <div className="mt-4 flex justify-center ">
-                  <button
-                    onClick={() => {
-                      setTab("modal");
-                    }}
-                    type="button"
-                    className={classNames(
-                      "!bg-none relative px-4 justify-center ",
-                      tab === "modal" ? "" : "opacity-20 hover:opacity-70"
-                    )}
-                  >
-                    <div className="flex items-center text-md text-white font-medium">
-                      {i18n.Tabs[0]}
-                    </div>
+            <div className="flex justify-center">
+              <div className="max-w-6xl bg-black/25 mt-12 rounded-xl flex flex-col md:flex-row w-full md:p-4">
+                <Configurator {...watchAllFields} setValue={setValue} />
+                <div className="mt-8 md:mt-0 md:ml-4 h-full w-full bg-black/40 rounded-xl flex flex-col">
+                  <div className="mt-4 flex justify-center ">
+                    <button
+                      onClick={() => {
+                        setTab("modal");
+                      }}
+                      type="button"
+                      className={classNames(
+                        "!bg-none relative px-4 justify-center ",
+                        tab === "modal" ? "" : "opacity-20 hover:opacity-70"
+                      )}
+                    >
+                      <div className="flex items-center text-md text-white font-medium">
+                        {i18n.Tabs[0]}
+                      </div>
 
+                      {tab === "modal" ? (
+                        <div
+                          className="absolute left-0 bottom-[-8px] w-full h-0.5 bg-gradient-to-r
+                       from-[rgba(252,192,10,1)] to-[rgba(78,186,233,1)]"
+                        />
+                      ) : (
+                        <div className="absolute left-0 bottom-[-8px] w-full h-[1px] bg-white/50" />
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setTab("integrated");
+                      }}
+                      type="button"
+                      className={classNames(
+                        "!bg-none relative px-4 justify-center",
+                        tab === "integrated"
+                          ? ""
+                          : "opacity-20 hover:opacity-70"
+                      )}
+                    >
+                      <div className="flex items-center text-md text-white font-medium">
+                        {i18n.Tabs[1]}
+                      </div>
+                      {tab === "integrated" ? (
+                        <div
+                          className="absolute left-0 bottom-[-8px] w-full h-0.5 bg-gradient-to-r
+                       from-[rgba(252,192,10,1)] to-[rgba(78,186,233,1)]"
+                        />
+                      ) : (
+                        <div className="absolute left-0 bottom-[-8px] w-full h-[1px] bg-white/50" />
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setTab("widget");
+                      }}
+                      type="button"
+                      className={classNames(
+                        "!bg-none relative px-4 justify-center",
+                        tab === "widget" ? "" : "opacity-20 hover:opacity-70"
+                      )}
+                    >
+                      <div className="flex items-center text-md text-white font-medium">
+                        {i18n.Tabs[2]}
+                      </div>
+                      {tab === "widget" ? (
+                        <div
+                          className="absolute left-0 bottom-[-8px] w-full h-0.5 bg-gradient-to-r
+                       from-[rgba(252,192,10,1)] to-[rgba(78,186,233,1)]"
+                        />
+                      ) : (
+                        <div className="absolute left-0 bottom-[-8px] w-full h-[1px] bg-white/50" />
+                      )}
+                    </button>
+                  </div>
+
+                  <span className="flex justify-center text-center text-xs text-[#9D9DA6] mt-4">
+                    {tab === "modal"
+                      ? "Twamm renders as a modal and takes up the whole screen."
+                      : null}
+                    {tab === "integrated"
+                      ? "Twamm renders as a part of your dApp."
+                      : null}
+                    {tab === "widget"
+                      ? "Twamm renders as part of a widget that can be placed at different positions on your dApp."
+                      : null}
+                  </span>
+
+                  <div className="flex flex-grow items-center justify-center text-white/75">
                     {tab === "modal" ? (
-                      <div
-                        className="absolute left-0 bottom-[-8px] w-full h-0.5 bg-gradient-to-r
-                       from-[rgba(252,192,10,1)] to-[rgba(78,186,233,1)]"
+                      <ModalTerminal
+                        rpcUrl={ClusterApiUrl}
+                        fakeWallet={wallet}
+                        formProps={watchAllFields}
                       />
-                    ) : (
-                      <div className="absolute left-0 bottom-[-8px] w-full h-[1px] bg-white/50" />
-                    )}
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setTab("integrated");
-                    }}
-                    type="button"
-                    className={classNames(
-                      "!bg-none relative px-4 justify-center",
-                      tab === "integrated" ? "" : "opacity-20 hover:opacity-70"
-                    )}
-                  >
-                    <div className="flex items-center text-md text-white font-medium">
-                      {i18n.Tabs[1]}
-                    </div>
+                    ) : null}
                     {tab === "integrated" ? (
-                      <div
-                        className="absolute left-0 bottom-[-8px] w-full h-0.5 bg-gradient-to-r
-                       from-[rgba(252,192,10,1)] to-[rgba(78,186,233,1)]"
+                      <IntegratedTerminal
+                        rpcUrl={ClusterApiUrl}
+                        fakeWallet={wallet}
+                        formProps={watchAllFields}
                       />
-                    ) : (
-                      <div className="absolute left-0 bottom-[-8px] w-full h-[1px] bg-white/50" />
-                    )}
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setTab("widget");
-                    }}
-                    type="button"
-                    className={classNames(
-                      "!bg-none relative px-4 justify-center",
-                      tab === "widget" ? "" : "opacity-20 hover:opacity-70"
-                    )}
-                  >
-                    <div className="flex items-center text-md text-white font-medium">
-                      {i18n.Tabs[2]}
-                    </div>
+                    ) : null}
                     {tab === "widget" ? (
-                      <div
-                        className="absolute left-0 bottom-[-8px] w-full h-0.5 bg-gradient-to-r
-                       from-[rgba(252,192,10,1)] to-[rgba(78,186,233,1)]"
+                      <WidgetTerminal
+                        rpcUrl={ClusterApiUrl}
+                        fakeWallet={wallet}
+                        formProps={watchAllFields}
                       />
-                    ) : (
-                      <div className="absolute left-0 bottom-[-8px] w-full h-[1px] bg-white/50" />
-                    )}
-                  </button>
-                </div>
-
-                <span className="flex justify-center text-center text-xs text-[#9D9DA6] mt-4">
-                  {tab === "modal"
-                    ? "Twamm renders as a modal and takes up the whole screen."
-                    : null}
-                  {tab === "integrated"
-                    ? "Twamm renders as a part of your dApp."
-                    : null}
-                  {tab === "widget"
-                    ? "Twamm renders as part of a widget that can be placed at different positions on your dApp."
-                    : null}
-                </span>
-
-                <div className="flex flex-grow items-center justify-center text-white/75">
-                  {tab === "modal" ? (
-                    <ModalTerminal
-                      rpcUrl={ClusterApiUrl}
-                      fakeWallet={wallet}
-                      formProps={watchAllFields}
-                    />
-                  ) : null}
-                  {tab === "integrated" ? (
-                    <IntegratedTerminal
-                      rpcUrl={ClusterApiUrl}
-                      fakeWallet={wallet}
-                      formProps={watchAllFields}
-                    />
-                  ) : null}
-                  {tab === "widget" ? (
-                    <WidgetTerminal
-                      rpcUrl={ClusterApiUrl}
-                      fakeWallet={wallet}
-                      formProps={watchAllFields}
-                    />
-                  ) : null}
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <CodeSnippet formConfigurator={watchAllFields} displayMode={tab} />
+        <div className="w-full bg-twamm-bg mt-12">
+          <Footer />
+        </div>
       </div>
-      <CodeSnippet formConfigurator={watchAllFields} displayMode={tab} />
-      <div className="w-full bg-twamm-bg mt-12">
-        <Footer />
-      </div>
-    </div>
+    </>
   );
 }

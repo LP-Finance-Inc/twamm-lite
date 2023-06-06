@@ -56,7 +56,7 @@ export default function App() {
       feeBps,
       platformFeeAccount,
       supportedToken: NEXT_PUBLIC_SUPPORTED_TOKEN,
-      executionPeriod: true,
+      useJupiter: true,
       useWalletPassthrough: false,
     },
   });

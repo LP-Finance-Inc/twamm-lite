@@ -6,8 +6,12 @@ import { TOKEN_LIST_URL } from "@jup-ag/core";
 import useBlockchain from "src/contexts/solana-connection-context";
 import useTwammLiteParams from "src/contexts/twamm-lite-params-context";
 import { tokenBRegistry } from "src/token-pair-registry";
+import { TokenRegistry } from "src/types";
 
-const swrKey = (params: { moniker: Cluster; supportedToken: string }) => ({
+const swrKey = (params: {
+  moniker: Cluster;
+  supportedToken: TokenRegistry;
+}) => ({
   key: "JupTokens",
   params,
 });

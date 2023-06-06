@@ -37,7 +37,7 @@ export interface FormProps {
   feeBps: string;
   platformFeeAccount: string;
   supportedToken: TokenRegistry;
-  executionPeriod: boolean;
+  useJupiter: boolean;
 }
 
 export interface Init {
@@ -73,6 +73,6 @@ export interface FormConfigurator {
   feeBps: string;
   platformFeeAccount: string;
   supportedToken: TokenRegistry;
-  executionPeriod: boolean;
+  useJupiter: boolean;
   useWalletPassthrough: boolean;
 }

@@ -1,12 +1,14 @@
 import type { FC, ReactNode } from "react";
 import { createContext, useContext, useMemo } from "react";
 
+import { TokenRegistry } from "src/types";
+
 export type TwammLiteParamsContext = {
   readonly feeAccount: string;
   readonly feeBps: number;
   readonly platformFeeAccount: string;
-  readonly supportedToken: string;
-  readonly executionPeriod: boolean;
+  readonly supportedToken: TokenRegistry;
+  readonly useJupiter: boolean;
   readonly endpoint: string;
 };
 
@@ -18,8 +20,8 @@ export const Provider: FC<{
   feeAccount: string;
   feeBps: string;
   platformFeeAccount: string;
-  supportedToken: string;
-  executionPeriod: boolean;
+  supportedToken: TokenRegistry;
+  useJupiter: boolean;
   endpoint: string;
   children: ReactNode;
 }> = ({
@@ -27,7 +29,7 @@ export const Provider: FC<{
   feeBps,
   platformFeeAccount,
   supportedToken,
-  executionPeriod,
+  useJupiter,
   endpoint,
   children,
 }) => {
@@ -37,7 +39,7 @@ export const Provider: FC<{
       feeBps: parseInt(feeBps, 10),
       platformFeeAccount,
       supportedToken,
-      executionPeriod,
+      useJupiter,
       endpoint,
     }),
     [
@@ -45,7 +47,7 @@ export const Provider: FC<{
       feeBps,
       platformFeeAccount,
       supportedToken,
-      executionPeriod,
+      useJupiter,
       endpoint,
     ]
   );

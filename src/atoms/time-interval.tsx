@@ -14,7 +14,7 @@ export default ({
   value,
   valueIndex,
   values,
-  executionPeriod,
+  useJupiter,
 }: {
   disabled: boolean;
   info?: string;
@@ -23,7 +23,7 @@ export default ({
   value?: number | IndexedTIF;
   valueIndex?: number;
   values?: number[];
-  executionPeriod?: boolean;
+  useJupiter?: boolean;
 }) => {
   const intervalValues = useMemo(() => values, [values]);
 
@@ -65,7 +65,7 @@ export default ({
           valueIndex={valueIndex}
           valuesOpt={1}
           values={intervalValues}
-          executionPeriod={executionPeriod}
+          useJupiter={useJupiter}
         />
       </div>
     </div>

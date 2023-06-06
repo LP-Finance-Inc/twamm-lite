@@ -22,7 +22,7 @@ export default ({
   const { periodTifs, scheduleTifs, scheduleSelected, periodSelected } =
     useIndexedTIFs();
 
-  const { executionPeriod } = useTwammLiteParams();
+  const { useJupiter } = useTwammLiteParams();
 
   const [instant, setInstant] = useState<number>();
 
@@ -108,7 +108,7 @@ export default ({
         value={values.period}
         valueIndex={values.periodIndex}
         values={periodTifs}
-        executionPeriod={executionPeriod}
+        useJupiter={useJupiter}
       />
     </>
   );

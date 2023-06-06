@@ -8,14 +8,14 @@ export default function Configurator({
   feeAccount,
   feeBps,
   platformFeeAccount,
-  executionPeriod,
+  useJupiter,
   useWalletPassthrough,
   setValue,
 }: {
   feeAccount: string;
   feeBps: string;
   platformFeeAccount: string;
-  executionPeriod: boolean;
+  useJupiter: boolean;
   useWalletPassthrough: boolean;
   setValue: UseFormSetValue<FormConfigurator>;
 }) {
@@ -40,9 +40,9 @@ export default function Configurator({
         </div>
         <Toggle
           className="min-w-[40px]"
-          active={executionPeriod}
+          active={useJupiter}
           onClick={() =>
-            setValue("executionPeriod", !executionPeriod, { shouldDirty: true })
+            setValue("useJupiter", !useJupiter, { shouldDirty: true })
           }
         />
       </div>

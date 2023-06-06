@@ -48,8 +48,8 @@ export default function CodeSnippet({
     ...(formConfigurator.platformFeeAccount
       ? { platformFeeAccount: formConfigurator.platformFeeAccount }
       : undefined),
-    ...(formConfigurator.executionPeriod
-      ? { executionPeriod: formConfigurator.executionPeriod }
+    ...(formConfigurator.useJupiter
+      ? { useJupiter: formConfigurator.useJupiter }
       : undefined),
     ...(formConfigurator.supportedToken
       ? { supportedToken: formConfigurator.supportedToken }

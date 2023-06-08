@@ -265,13 +265,7 @@ const RenderWidgetShell = (props: Init) => {
 };
 
 async function init(props: Init) {
-  const {
-    passThroughWallet,
-    onSwapError,
-    onSuccess,
-    integratedTargetId,
-    ...restProps
-  } = props;
+  const { passThroughWallet, integratedTargetId, ...restProps } = props;
 
   const targetDiv = document.createElement("div");
   const instanceExist = document.getElementById(containerId);
@@ -309,8 +303,6 @@ async function init(props: Init) {
   window.Twamm.root = root;
   window.Twamm._instance = element;
   window.Twamm.passThroughWallet = passThroughWallet;
-  window.Twamm.onSwapError = onSwapError;
-  window.Twamm.onSuccess = onSuccess;
 }
 
 const attributes = (document.currentScript as HTMLScriptElement)?.attributes;

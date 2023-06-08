@@ -2,7 +2,6 @@ import { CSSProperties } from "react";
 import { Root } from "react-dom/client";
 
 import { Wallet } from "@solana/wallet-adapter-react";
-import { TransactionError } from "@solana/web3.js";
 
 declare global {
   interface Window {
@@ -52,8 +51,6 @@ export interface Init {
   containerStyles?: CSSProperties;
   containerClassName?: string;
   passThroughWallet?: Wallet | null;
-  onSwapError?: ({ error }: { error?: TransactionError }) => void;
-  onSuccess?: ({ txid }: { txid: string }) => void;
   scriptDomain?: string;
 }
 

@@ -4,11 +4,11 @@ import { PublicKey } from "@solana/web3.js";
 
 import useBlockchain from "src/contexts/solana-connection-context";
 import { programId, idl } from "src/env";
-import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 export default () => {
   const { commitment, createConnection } = useBlockchain();
-  const { wallet } = useWalletPassThrough();
+  const wallet = useWallet();
 
   if (!programId) {
     throw new Error("Can not start. Absent program address");

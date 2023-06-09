@@ -51,7 +51,7 @@ const fetcher =
           {
             memcmp: {
               offset: 32,
-              bytes: params.address.toBase58(),
+              bytes: params?.address?.toBase58(),
             },
           },
         ],

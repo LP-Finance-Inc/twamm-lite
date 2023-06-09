@@ -72,7 +72,7 @@ export class Order {
 
     const all = await this.getOrders<TOrder>(orderAddresses);
 
-    function presentOrder(o: typeof all[0]): o is TOrder {
+    function presentOrder(o: (typeof all)[0]): o is TOrder {
       return o !== null;
     }
 

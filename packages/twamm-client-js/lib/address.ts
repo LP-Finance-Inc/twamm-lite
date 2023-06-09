@@ -3,7 +3,7 @@ import {
   getAssociatedTokenAddress as getAddress,
   NATIVE_MINT,
 } from "@solana/spl-token";
-import { PublicKey } from "@solana/web3.js";
+import type { PublicKey } from "@solana/web3.js";
 
 declare module "@solana/spl-token" {
   const getAssociatedTokenAddress: typeof Fn;

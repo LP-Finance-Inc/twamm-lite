@@ -58,5 +58,3 @@ export const tokenPairRegistry: TokenRegistry = {
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
 };
-
-export const tokenBRegistry = ["EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"];

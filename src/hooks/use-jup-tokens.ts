@@ -5,7 +5,6 @@ import { TOKEN_LIST_URL } from "@jup-ag/core";
 
 import useBlockchain from "src/contexts/solana-connection-context";
 import useTwammLiteParams from "src/contexts/twamm-lite-params-context";
-import { tokenBRegistry } from "src/token-pair-registry";
 import { TokenRegistry } from "src/types";
 
 const swrKey = (params: {
@@ -21,11 +20,22 @@ const isSol = (t: JupToken) => SplToken.isNativeAddress(t.address);
 const fetcher = async ({ params }: SWRParams<typeof swrKey>) => {
   const { moniker, supportedToken } = params;
 
+  const tokenBRegistry: Array<string> = [];
+
+  const CreateArr = Array.from(new Set(Object.keys(supportedToken)));
+
+  for (let i = 0; i < CreateArr.length; i += 1) {
+    const address = CreateArr[i];
+    const addressB = supportedToken[address];
+    const isFind = tokenBRegistry.includes(addressB[0]);
+    if (!isFind) {
+      tokenBRegistry.push(addressB[0]);
+    }
+  }
+
   let ADDRESSES: string[];
   try {
-    ADDRESSES = Array.from(
-      new Set(Object.keys(supportedToken).concat(tokenBRegistry))
-    );
+    ADDRESSES = CreateArr.concat(tokenBRegistry);
   } catch (e) {
     ADDRESSES = ["EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"];
   }

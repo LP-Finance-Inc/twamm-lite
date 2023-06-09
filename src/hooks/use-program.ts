@@ -1,14 +1,14 @@
 import type { Wallet } from "@project-serum/anchor";
 import { Program, AnchorProvider as Provider } from "@project-serum/anchor";
 import { PublicKey } from "@solana/web3.js";
-import { useWallet } from "@solana/wallet-adapter-react";
 
 import useBlockchain from "src/contexts/solana-connection-context";
 import { programId, idl } from "src/env";
+import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
 
 export default () => {
   const { commitment, createConnection } = useBlockchain();
-  const wallet = useWallet();
+  const { wallet } = useWalletPassThrough();
 
   if (!programId) {
     throw new Error("Can not start. Absent program address");

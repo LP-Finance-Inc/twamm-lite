@@ -1,14 +1,15 @@
 import useSWR from "swr";
-import { useWallet } from "@solana/wallet-adapter-react";
-import type { PairConfig } from "src/types/decl.d";
 import { view, lensPath } from "ramda";
+
+import type { PairConfig } from "src/types/decl.d";
+import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
 import useTokenPairs from "./use-token-pairs";
 
 type Key = PairConfig["mint"];
 
 export default (_: void, options = {}) => {
   const { data } = useTokenPairs();
-  const { publicKey: address } = useWallet();
+  const { publicKey: address } = useWalletPassThrough();
 
   return useSWR(
     data && ["addressPairs", address],

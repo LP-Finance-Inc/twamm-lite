@@ -2,6 +2,7 @@ import type { FC, ReactNode } from "react";
 import { createContext, useContext, useMemo } from "react";
 
 import { TokenRegistry } from "src/types";
+import useTokenPair from "src/hooks/use-token-pair";
 
 export type TwammLiteParamsContext = {
   readonly feeAccount: string;
@@ -33,12 +34,14 @@ export const Provider: FC<{
   endpoint,
   children,
 }) => {
+  const { data } = useTokenPair();
+
   const ContextValue = useMemo(
     () => ({
-      feeAccount,
-      feeBps: parseInt(feeBps, 10),
-      platformFeeAccount,
-      supportedToken,
+      feeAccount: feeAccount || "9pvCGNF2aw43Smb4J1pdyobq6PnjwkhXkuFov8P42S5w",
+      feeBps: parseInt(feeBps, 10) || 0,
+      platformFeeAccount: platformFeeAccount || "",
+      supportedToken: supportedToken || data,
       useJupiter,
       endpoint,
     }),
@@ -47,6 +50,7 @@ export const Provider: FC<{
       feeBps,
       platformFeeAccount,
       supportedToken,
+      data,
       useJupiter,
       endpoint,
     ]

@@ -51,9 +51,6 @@ export default function CodeSnippet({
     ...(formConfigurator.useJupiter
       ? { useJupiter: formConfigurator.useJupiter }
       : undefined),
-    ...(formConfigurator.supportedToken
-      ? { supportedToken: formConfigurator.supportedToken }
-      : undefined),
   };
 
   const valuesToFormat = {

@@ -8,6 +8,7 @@ import { Wallet } from "@solana/wallet-adapter-react";
 import { UnsafeBurnerWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { WalletReadyState } from "@solana/wallet-adapter-base";
 import Head from "next/head";
+import Link from "next/link";
 
 import { Init, FormConfigurator } from "src/types";
 import i18n from "src/i18n/en.json";
@@ -91,18 +92,31 @@ export default function App() {
       <div className="bg-twamm-dark-bg h-screen w-screen max-w-screen overflow-x-hidden flex flex-col justify-between">
         <div>
           <div>
-            <div className="flex flex-col items-center h-full w-full mt-4 md:mt-14">
-              <div className="flex flex-col justify-center items-center text-center">
-                <ChameleonText className="text-4xl md:text-[52px] font-semibold px-4 pb-2 md:px-0">
+            <div className="flex flex-col items-center  h-full w-full mt-4 md:mt-10">
+              <div className="flex flex-col justify-center items-center gap-y-5 text-center">
+                <ChameleonText className="text-4xl md:text-[52px] font-semibold">
                   {i18n.Heading}
                 </ChameleonText>
-                <p className="text-[#9D9DA6] w-[80%] md:max-w-[60%] text-md mt-4 heading-[24px]">
+                <p className="text-[#9D9DA6] w-[80%] md:max-w-[60%] text-md heading-[24px]">
                   {i18n.Subtitle}
                 </p>
+
+                <Link
+                  href="https://docs.lp.finance/twamm/integrate-twamm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button
+                    type="button"
+                    className="shadow-2xl px-5 py-4 border border-gray-900 w-52 text-center rounded-xl bg-[#191B1F] text-white"
+                  >
+                    Document
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="max-w-6xl bg-black/25 mt-12 rounded-xl flex flex-col md:flex-row w-full md:p-4">
+              <div className="max-w-6xl bg-black/25 mt-6 rounded-xl flex flex-col md:flex-row w-full md:p-4">
                 <Configurator {...watchAllFields} setValue={setValue} />
                 <div className="mt-8 md:mt-0 md:ml-4 h-full w-full bg-black/40 rounded-xl flex flex-col">
                   <div className="mt-4 flex justify-center ">

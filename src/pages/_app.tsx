@@ -17,7 +17,6 @@ import {
   NEXT_PUBLIC_SUPPORTED_TOKEN,
   feeAccount,
   feeBps,
-  platformFeeAccount,
 } from "src/env";
 import ChameleonText from "src/atoms/chameleon-text";
 import WidgetTerminal from "src/organisms/widget-terminal";
@@ -56,7 +55,7 @@ export default function App() {
     defaultValues: {
       feeAccount,
       feeBps,
-      platformFeeAccount,
+      platformFeeAccount: "",
       supportedToken: NEXT_PUBLIC_SUPPORTED_TOKEN,
       useJupiter: true,
       useWalletPassthrough: false,

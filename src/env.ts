@@ -15,8 +15,7 @@ export const feeAccount: string = process.env.NEXT_PUBLIC_FEE_ACCOUNT || "";
 
 export const feeBps: string = process.env.NEXT_PUBLIC_FEE_BPS || "0";
 
-export const platformFeeAccount: string =
-  process.env.NEXT_PUBLIC_PLATFORM_FEE_ACCOUNT || "";
+export const platformFeeAccount: string = "";
 
 export const JUPITER_CONFIG_URI = "https://quote-api.jup.ag";
 

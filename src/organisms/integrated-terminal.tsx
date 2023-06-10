@@ -63,7 +63,7 @@ export default function IntegratedTerminal({
 
           <div
             id="integrated-terminal"
-            className={`flex h-full w-full max-w-[384px] overflow-auto justify-center bg-[#282830] rounded-xl ${
+            className={`flex h-full w-full max-w-[400px] overflow-auto justify-center bg-[#282830] rounded-xl ${
               !isLoaded ? "hidden" : ""
             }`}
           />

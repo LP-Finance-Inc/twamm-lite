@@ -137,7 +137,7 @@ const RenderShell = (props: Init) => {
   const contentClassName: any = useMemo(() => {
     if (!displayMode || displayMode === "modal") {
       return `flex flex-col h-screen w-screen max-h-[100vh] md:max-h-[620px]
-       max-w-[360px] overflow-auto text-black relative bg-twamm-bg rounded-lg webkit-scrollbar ${
+       max-w-[400px] overflow-auto text-black relative bg-twamm-bg rounded-lg webkit-scrollbar ${
          containerClassName || ""
        }`;
     }
@@ -253,7 +253,7 @@ const RenderWidgetShell = (props: Init) => {
         id="integrated-terminal"
         className={`absolute overflow-auto pb-2 ${
           classes.contentClassName
-        } flex flex-col w-[90vw] h-[600px] max-w-[384px] max-h-[75vh] webkit-scrollbar 
+        } flex flex-col w-[90vw] h-[600px] max-w-[390px] max-h-[82vh] webkit-scrollbar 
         rounded-2xl bg-twamm-bg transition-opacity duration-300 shadow-2xl ${
           !isOpen ? "h-0 opacity-0" : "opacity-100"
         }`}

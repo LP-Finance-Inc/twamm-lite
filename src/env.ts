@@ -1,5 +1,6 @@
 import type { Idl } from "@project-serum/anchor";
 
+import { tokenPairRegistry } from "src/token-pair-registry";
 import idlJson from "../idl.json";
 
 export const idl = idlJson as Idl;
@@ -21,3 +22,5 @@ export const JUPITER_CONFIG_URI = "https://quote-api.jup.ag";
 export const JUPITER_PRICE_ENDPOINT_V4 = "https://price.jup.ag/v4/price";
 
 export const NEXT_PUBLIC_ENABLE_TX_SIMUL: string = "0";
+
+export const NEXT_PUBLIC_SUPPORTED_TOKEN = tokenPairRegistry;

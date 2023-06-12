@@ -1,6 +1,8 @@
 import { flatten, lensPath, pipe, set } from "ramda";
 import { OrderSide } from "@twamm/types/lib";
 
+import { definedPairs } from "src/token-pair-registry";
+
 const flattenPairs = (pairs: AddressPair[]) =>
   Array.from(new Set(flatten(pairs)).values());
 
@@ -112,7 +114,7 @@ export default (
       if (!a || !b) return state;
 
       const all = flattenPairs(pairs);
-      const available = selectComplementary(a, pairs);
+      const available = selectComplementary(a, definedPairs);
 
       const next = {
         a: { ...a, image: a.logoURI },
@@ -142,7 +144,7 @@ export default (
         const applyState = pipe(
           set(lensA, b),
           set(lensB, a),
-          set(lensAvailable, selectComplementary(b, pairs)),
+          set(lensAvailable, selectComplementary(b, definedPairs)),
           set(
             lensType,
             type === OrderSide.sell ? OrderSide.buy : OrderSide.sell
@@ -154,7 +156,7 @@ export default (
 
       // Allow to select every token for A
       // Cleanup present b if does not match the pair
-      const available = selectComplementary(token, pairs);
+      const available = selectComplementary(token, definedPairs);
 
       const shouldResetB = b && !available.includes(b.address);
 
@@ -210,9 +212,9 @@ export default (
     case ActionTypes.SWAP: {
       if (!state.data) return state;
 
-      const { a, all, b, pairs, type } = state.data;
+      const { a, all, b, type } = state.data;
 
-      const available = b ? selectComplementary(b, pairs) : all;
+      const available = b ? selectComplementary(b, definedPairs) : all;
 
       const applyState = pipe(
         set(lensPath(["data", "available"]), available),

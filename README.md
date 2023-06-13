@@ -60,17 +60,17 @@ There are currently 3 modes to integrate TWAMM Lite into your dApp.
 * `Integrated`: Renders TWAMM as a part of your dApp.
 * `Widget`: Renders Twamm as a widget that can be placed in different positions.
 
-### **Modal**
+#### **Modal**
 
 ```tsx
 window.Twamm.init({ displayMode: 'modal' });
 ```
 
-### **Integrated**
+#### **Integrated**
 ```tsx
 window.Twamm.init({ displayMode: 'integrated' });
 ```
-### **Widget**
+#### **Widget**
 ```tsx
 window.Twamm.init({
   displayMode: 'widget',

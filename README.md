@@ -62,7 +62,7 @@ There are currently 3 modes to integrate TWAMM Lite into your dApp.
 
 {% tabs %}
 {% tab title="Modal" %}
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-08 at 11.56.44 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="/lp-logo.png" alt=""><figcaption></figcaption></figure>
 
 ```tsx
 window.Twamm.init({ displayMode: 'modal' });

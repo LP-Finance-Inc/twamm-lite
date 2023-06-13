@@ -60,26 +60,17 @@ There are currently 3 modes to integrate TWAMM Lite into your dApp.
 * `Integrated`: Renders TWAMM as a part of your dApp.
 * `Widget`: Renders Twamm as a widget that can be placed in different positions.
 
-{% tabs %}
-{% tab title="Modal" %}
-<figure><img src="/lp-logo.png" alt=""><figcaption></figcaption></figure>
+### **Modal**
 
 ```tsx
 window.Twamm.init({ displayMode: 'modal' });
 ```
-{% endtab %}
 
-{% tab title="Integrated" %}
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-08 at 11.54.08 PM.png" alt=""><figcaption></figcaption></figure>
-
+### **Integrated**
 ```tsx
 window.Twamm.init({ displayMode: 'integrated' });
 ```
-{% endtab %}
-
-{% tab title="Widget" %}
-<figure><img src="../.gitbook/assets/Screenshot 2023-06-08 at 11.54.33 PM.png" alt=""><figcaption></figcaption></figure>
-
+### **Widget**
 ```tsx
 window.Twamm.init({
   displayMode: 'widget',
@@ -89,9 +80,6 @@ window.Twamm.init({
     },
 });
 ```
-{% endtab %}
-{% endtabs %}
-
 ## formProps <a href="#formprops-available-on-v1" id="formprops-available-on-v1"></a>
 
 Configure TWAMM Lite's behavior and allowed actions for your user.

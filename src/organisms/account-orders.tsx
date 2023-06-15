@@ -21,8 +21,9 @@ export default ({ closeModal }: { closeModal: () => void }) => {
   );
 
   return (
-    <div className="relative max-w-5xl w-full rounded-xl flex flex-col bg-twamm-bg py-2 max-h-[90%]">
-      <div className="flex justify-end items-center p-4 absolute top-2 right-4">
+    <div className="relative max-w-5xl w-full rounded-xl flex flex-col bg-twamm-bg py-2 max-h-[98%] min-h-[650px]">
+      <div className="flex justify-between items-center p-4">
+        <ChameleonText className="text-xl font-semibold">Orders</ChameleonText>
         <div
           className="text-white fill-current cursor-pointer"
           onClick={closeModal}
@@ -31,9 +32,7 @@ export default ({ closeModal }: { closeModal: () => void }) => {
         </div>
       </div>
 
-      <div className="my-4 p-3 overflow-y-scroll overflow-x-scroll webkit-scrollbar min-h-[700px]">
-        <ChameleonText className="text-xl font-semibold">Orders</ChameleonText>
-
+      <div className="px-4 py-2 overflow-auto  max-h-fit">
         <AccountOrdersList
           tokenList={data}
           isLoading={isLoading}

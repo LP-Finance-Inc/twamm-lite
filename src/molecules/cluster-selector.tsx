@@ -124,7 +124,7 @@ export default ({
             <input
               type="text"
               name="endpoint"
-              value={customEndpoint}
+              // value={customEndpoint}
               onChange={handleCustomeInput}
               className="w-full rounded-md px-2 py-2 truncate bg-[#212128] text-white/50 placeholder:text-white/40 text-sm"
               placeholder="RPC endpoint"

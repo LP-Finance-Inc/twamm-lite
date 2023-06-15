@@ -21,7 +21,7 @@ export default function Configurator({
 }) {
   return (
     <div
-      className="w-full max-w-full border border-white/10 md:border-none md:mx-0 md:max-w-[300px] max-h-[700px] 
+      className="w-full max-w-full border border-white/10 md:border-none md:mx-0 md:max-w-[300px] max-h-[100vh] 
     overflow-y-scroll overflow-x-hidden webkit-scrollbar bg-white/5 rounded-xl p-4"
     >
       <p className="text-white mt-2 text-sm font-semibold">

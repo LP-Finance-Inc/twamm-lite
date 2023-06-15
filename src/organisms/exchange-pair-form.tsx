@@ -13,7 +13,7 @@ import TradeIntervals from "src/molecules/trade-intervals";
 import { formatNumber } from "src/utils";
 import useWalletPassThrough from "src/contexts/wallet-passthrough-context";
 import SwitchPairButton from "src/icons/switch-pair-icon";
-import ChameleonText from "src/atoms/chameleon-text";
+import api from "src/api";
 import type { IntervalVariant } from "../domain/interval.d";
 
 export default ({
@@ -42,6 +42,8 @@ export default ({
   const [a, b] = [primary, secondary];
   const outRef = useRef<number>(0);
   const outValueRef = useRef<number>(0);
+  const savedUsdRef = useRef<number>(0);
+  const savedPercentageRef = useRef<number>(0);
   const [pairAmount, setPairAmount] = useState<number>(0);
   const [isPending, setPending] = useState<boolean>(false);
   const balanceA = useBalance(a?.address, add([keepPrevious(), refreshEach()]));
@@ -152,18 +154,40 @@ export default ({
         tifAccountedTokenAFormattedAmount = tokenAFormattedAmount;
       }
 
-      fetch(
-        `https://quote-api.jup.ag/v4/quote?inputMint=${tokenA}&outputMint=${tokenB}&amount=${tifAccountedTokenAFormattedAmount}&onlyDirectRoutes=true`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          const bestRoute = data.data[0];
+      Promise.all([
+        fetch(
+          `${api.quoteJup}?inputMint=${tokenA}&outputMint=${tokenB}&amount=${tifAccountedTokenAFormattedAmount}&onlyDirectRoutes=true`
+        ),
+        fetch(
+          `${api.quoteJup}?inputMint=${tokenA}&outputMint=${tokenB}&amount=${tokenAFormattedAmount}&onlyDirectRoutes=true`
+        ),
+      ])
+        .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+        .then(([data1, data2]) => {
+          const bestRoute = data1.data[0];
           const { outAmount } = bestRoute;
-
           const tifAccountedAmount = outAmount * epochs;
+
+          const noTwapBestAmount = data2.data[0].outAmount;
+
           if (tokenBDecimals) {
             const OutAmount = tifAccountedAmount / 10 ** tokenBDecimals;
+            let savedUsd =
+              ((tifAccountedAmount - noTwapBestAmount) / 10 ** tokenBDecimals) *
+              priceB.data;
+            let savedPercentage =
+              ((tifAccountedAmount - noTwapBestAmount) / noTwapBestAmount) *
+              100;
 
+            savedUsd = Number(
+              savedUsd?.toFixed(10)?.match(/^-?\d*\.?0*\d{0,3}/)?.[0]
+            );
+            savedPercentage = Number(
+              savedPercentage?.toFixed(10)?.match(/^-?\d*\.?0*\d{0,3}/)?.[0]
+            );
+            savedUsdRef.current = savedUsd >= 0 ? savedUsd : 0;
+            savedPercentageRef.current =
+              savedPercentage >= 0 ? savedPercentage : 0;
             outRef.current = OutAmount;
             outValueRef.current = Number(
               (OutAmount * priceB.data)
@@ -172,12 +196,16 @@ export default ({
             );
             setPending(false);
           } else {
+            savedUsdRef.current = 0;
+            savedPercentageRef.current = 0;
             outRef.current = 0;
             outValueRef.current = 0;
             setPending(false);
           }
         })
         .catch(() => {
+          savedUsdRef.current = 0;
+          savedPercentageRef.current = 0;
           outRef.current = 0;
           outValueRef.current = 0;
           setPending(false);
@@ -313,11 +341,15 @@ export default ({
               amount > 0 &&
               selected.tif > 0 &&
               sellRate && (
-                <div className="mt-1 pl-1">
-                  <ChameleonText className="text-sm font-medium">
+                <div className="mt-1 pl-1 flex justify-center items-center flex-col">
+                  <p className="text-sm font-medium text-fuchsia-600">
                     Sell Rate: {sellRate} {a?.symbol} (≈$
                     {(sellRate * priceA.data).toFixed(3)}) / minute
-                  </ChameleonText>
+                  </p>
+                  <p className="text-sm font-medium text-white/80">
+                    Saving ${savedUsdRef.current} ({savedPercentageRef.current}
+                    %) from price impact!
+                  </p>
                 </div>
               )}
 

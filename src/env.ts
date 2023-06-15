@@ -11,9 +11,10 @@ export const ClusterApiUrl = process.env.NEXT_PUBLIC_CLUSTER_API_URL || "";
 
 export const programId: string = "TWAPzC9xaeBpgDNF26z5VAcmxBowVz5uqmTx47LkWUy";
 
-export const feeAccount: string = process.env.NEXT_PUBLIC_FEE_ACCOUNT || "";
+export const FeeAccount: string =
+  "9pvCGNF2aw43Smb4J1pdyobq6PnjwkhXkuFov8P42S5w";
 
-export const feeBps: string = process.env.NEXT_PUBLIC_FEE_BPS || "0";
+export const FeeBps: string = "0";
 
 export const platformFeeAccount: string = "";
 

@@ -6,15 +6,7 @@ import QuestionMark from "src/icons/question-mark";
 const TokenImage = ({ data }: { data: MaybeTokens[0] }) => {
   if (data instanceof Error) return <QuestionMark />;
 
-  return (
-    <img
-      alt={data?.symbol}
-      src={data?.imageSmall}
-      height={28}
-      width={28}
-      loading="lazy"
-    />
-  );
+  return <img alt={data?.symbol} src={data?.imageSmall} loading="lazy" />;
 };
 
 const TokenSymbol = ({ data }: { data: MaybeTokens[0] }) => (
@@ -46,11 +38,11 @@ export default ({
   return (
     <div className="flex flex-row items-center gap-x-2">
       <div className="relative flex flex-row">
-        <div className="z-10">
+        <div className="z-10 h-7 w-7">
           <TokenImage data={displayTokens[0]} />
         </div>
 
-        <div className="absolute right-[-20px] z-5">
+        <div className="absolute right-[-20px] z-5 h-7 w-7">
           <TokenImage data={displayTokens[1]} />
         </div>
       </div>

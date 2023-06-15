@@ -12,12 +12,7 @@ import Link from "next/link";
 
 import { Init, FormConfigurator } from "src/types";
 import i18n from "src/i18n/en.json";
-import {
-  ClusterApiUrl,
-  NEXT_PUBLIC_SUPPORTED_TOKEN,
-  feeAccount,
-  feeBps,
-} from "src/env";
+import { ClusterApiUrl, NEXT_PUBLIC_SUPPORTED_TOKEN } from "src/env";
 import ChameleonText from "src/atoms/chameleon-text";
 import WidgetTerminal from "src/organisms/widget-terminal";
 import ModalTerminal from "src/organisms/modal-terminal";
@@ -53,8 +48,8 @@ export default function App() {
 
   const { watch, setValue } = useForm<FormConfigurator>({
     defaultValues: {
-      feeAccount,
-      feeBps,
+      feeAccount: "",
+      feeBps: "",
       platformFeeAccount: "",
       supportedToken: NEXT_PUBLIC_SUPPORTED_TOKEN,
       useJupiter: true,
@@ -93,7 +88,7 @@ export default function App() {
           <div>
             <div className="flex flex-col items-center  h-full w-full mt-4 md:mt-10">
               <div className="flex flex-col justify-center items-center gap-y-5 text-center">
-                <ChameleonText className="text-4xl md:text-[52px] font-semibold">
+                <ChameleonText className="text-4xl md:text-[40px] font-semibold">
                   {i18n.Heading}
                 </ChameleonText>
                 <p className="text-[#9D9DA6] w-[80%] md:max-w-[60%] text-md heading-[24px]">

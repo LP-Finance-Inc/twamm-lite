@@ -19,7 +19,6 @@ export type RowId = string | number;
 
 export type SelectionModel = RowId[];
 
-// lightweight version of GridValueGetterParams
 export interface ValueGetterParams<V = any> {
   row: RowModel;
   value: V;
@@ -55,7 +54,6 @@ type RenderCellDef<T = ReactNode> = (
 ) => T;
 
 export interface Props {
-  // columnVisibilityModel: {};
   checkboxSelection: boolean; // eslint-disable-line react/no-unused-prop-types
   columns: ColDef[];
   error: Error | undefined;
@@ -82,7 +80,7 @@ const Header = (props: {
     props.onSortModelChange(!sortModelItem.sort ? [] : [sortModelItem]);
 
   return (
-    <thead>
+    <thead className="text-sm text-gray-700 capitalize bg-gray-50">
       <tr>
         {props.columns.map((c) => (
           <th
@@ -131,7 +129,6 @@ const Rows = (props: {
 }) => (
   <tbody>
     {props.rows.map((r) => (
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
       <tr
         key={r.id}
         onClick={() =>
@@ -141,7 +138,8 @@ const Rows = (props: {
             columns: props.columns,
           })
         }
-        className="bg-[#191B1F] text-white/60 transition duration-300 ease-in-out hover:bg-[#26272a]"
+        className="bg-[#191B1F] text-white/60 transition cursor-pointer duration-300 ease-in-out
+         hover:bg-[#26272a] border-t border-gray-500"
       >
         {props.columns.map((c) => {
           const name = c.field;
@@ -211,8 +209,8 @@ export default (props: Props) => {
   }, [columns, props.rows, props.sortModel]);
 
   return (
-    <div className="w-full h-full border-separate border-spacing-y-2">
-      <table className="w-full text-left border-separate border-spacing-y-2 py-2 text-sm">
+    <div className="w-full h-full relative overflow-x-auto shadow-md sm:rounded-lg webkit-scrollbar">
+      <table className="w-full text-sm text-left text-gray-500">
         <Header
           columns={props.columns}
           onSortModelChange={onSortModelChange}

@@ -346,7 +346,7 @@ export default ({
                     Sell Rate: {sellRate} {a?.symbol} (≈$
                     {(sellRate * priceA.data).toFixed(3)}) / minute
                   </p>
-                  <p className="text-sm font-medium text-white/80">
+                  <p className="text-sm font-medium text-green-700">
                     Saving ${savedUsdRef.current} ({savedPercentageRef.current}
                     %) from price impact!
                   </p>

@@ -4,7 +4,7 @@ import SettingButton from "src/atoms/setting-button";
 
 const PRIORITY_PRESET: { idx: number; value: string }[] = [
   { idx: 0, value: "None" },
-  { idx: 1, value: "Hight" },
+  { idx: 1, value: "High" },
   { idx: 2, value: "Turbo" },
 ];
 

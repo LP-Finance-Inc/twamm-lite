@@ -85,7 +85,7 @@ export default function App() {
   return (
     <>
       <Head>
-        <title>Twamm Lite</title>
+        <title>LP Finance | TWAMM Lite</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="bg-twamm-dark-bg h-screen w-screen max-w-screen overflow-x-hidden flex flex-col justify-between">
@@ -194,13 +194,13 @@ export default function App() {
 
                   <span className="flex justify-center text-center text-xs text-[#9D9DA6] mt-4">
                     {tab === "modal"
-                      ? "Twamm renders as a modal and takes up the whole screen."
+                      ? "TWAMM renders as a modal and takes up the whole screen."
                       : null}
                     {tab === "integrated"
-                      ? "Twamm renders as a part of your dApp."
+                      ? "TWAMM renders as a part of your dApp."
                       : null}
                     {tab === "widget"
-                      ? "Twamm renders as part of a widget that can be placed at different positions on your dApp."
+                      ? "TWAMM renders as part of a widget that can be placed at different positions on your dApp."
                       : null}
                   </span>
 

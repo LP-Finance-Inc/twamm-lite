@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 type Registry = {
   [key: string]: string[];
 };
@@ -12,19 +13,19 @@ export const tokenPairRegistry: Registry = {
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // USDCet
-  A9mUU4qviSctJVPJdBJWkb28deg915LYJKrzQ19ji3FM: [
+  "A9mUU4qviSctJVPJdBJWkb28deg915LYJKrzQ19ji3FM": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // MNGO
-  MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac: [
+  "MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // HNT
-  hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux: [
+  "hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // RLB
-  RLBxxFkseAZ4RgJH3Sqn8jXxhmGoz9jWxDNJMh8pL7a: [
+  "RLBxxFkseAZ4RgJH3Sqn8jXxhmGoz9jWxDNJMh8pL7a": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // SAMO
@@ -32,11 +33,11 @@ export const tokenPairRegistry: Registry = {
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // SOL
-  So11111111111111111111111111111111111111112: [
+  "So11111111111111111111111111111111111111112": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // ORCA
-  orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE: [
+  "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // RAY
@@ -44,11 +45,11 @@ export const tokenPairRegistry: Registry = {
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // MNDE
-  MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey: [
+  "MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // LFNTY
-  LFNTYraetVioAPnGJht4yNg2aUZFXR776cMeN9VMjXp: [
+  "LFNTYraetVioAPnGJht4yNg2aUZFXR776cMeN9VMjXp": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // ARB
@@ -56,7 +57,7 @@ export const tokenPairRegistry: Registry = {
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // HBB
-  HBB111SCo9jkCejsZfz8Ec8nH7T6THF8KEKSnvwT6XK6: [
+  "HBB111SCo9jkCejsZfz8Ec8nH7T6THF8KEKSnvwT6XK6": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // // MPLX
@@ -64,46 +65,54 @@ export const tokenPairRegistry: Registry = {
   //   "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   // ],
   // TULIP
-  TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs: [
+  "TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   ],
   // LDO
-  HZRCwxP2Vq9PCpPXooayhJ2bxTpo5xfpQrwB1svh332p: [
-    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "HZRCwxP2Vq9PCpPXooayhJ2bxTpo5xfpQrwB1svh332p": [
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
   ],
   // HADES
-  BWXrrYFhT7bMHmNBFoQFWdsSgA3yXoAnMhDK6Fn1eSEn: [
-    "9TVjnzpF3X8DHsfVqYWoCGphJxtGYh1PDCFN5QmsHW5t",
+  "BWXrrYFhT7bMHmNBFoQFWdsSgA3yXoAnMhDK6Fn1eSEn": [
+    "9TVjnzpF3X8DHsfVqYWoCGphJxtGYh1PDCFN5QmsHW5t"
   ],
   // // MDS
   // "9TVjnzpF3X8DHsfVqYWoCGphJxtGYh1PDCFN5QmsHW5t": [
   //   "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
   // ]
   // ATLAS
-  ATLASXmbPQxBUYbxPsV97usA3fPQYEqzQBUHgiFCUsXx: [
-    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "ATLASXmbPQxBUYbxPsV97usA3fPQYEqzQBUHgiFCUsXx": [
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
   ],
   // DUST
-  DUSTawucrTsGU8hcqRdHDCbuYhCPADMLM2VcCb8VnFnQ: [
-    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "DUSTawucrTsGU8hcqRdHDCbuYhCPADMLM2VcCb8VnFnQ": [
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
   ],
   // BATCH 2
   // PRNT
   "4TUNzcgp2fPD48fcW4seRjyqyDZMrPj4ZubnXFEsKeYk": [
-    "So11111111111111111111111111111111111111112",
+    "So11111111111111111111111111111111111111112"
   ],
   // BONK
-  DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263: [
+  "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-  ],
+  ], 
   // GUAC
-  AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR: [
+  "AZsHEMXd36Bj1EMNXhowJajpUXzrKcK57wW4ZGXVa7yR": [
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-  ],
+  ], 
   // KING
   "9noXzpXnkyEcKF3AeXqUHTdR59V5uvrRBUZ9bwfQwxeq": [
-    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
   ],
+  // FISHY
+  "Fishy64jCaa3ooqXw7BHtKvYD8BTkSyAPh6RNE3xZpcN": [
+    "So11111111111111111111111111111111111111112"
+  ],
+  // FORGE
+  "FoRGERiW7odcCBGU1bztZi16osPBHjxharvDathL5eds": [
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+  ]
 };
 
 export const definedPairs: AddressPair[] = [];

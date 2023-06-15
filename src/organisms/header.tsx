@@ -49,7 +49,7 @@ const Header: FC<{
       <div className="mt-2 h-7 pl-3 pr-2">
         <div className="w-full flex items-center justify-between">
           <Link
-            href="https://www.lp.finance/"
+            href="https://www.twap.so/"
             target="_blank"
             rel="noreferrer noopener"
             className="flex items-center space-x-2"

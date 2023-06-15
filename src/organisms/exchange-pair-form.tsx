@@ -342,11 +342,11 @@ export default ({
               selected.tif > 0 &&
               sellRate && (
                 <div className="mt-1 pl-1 flex justify-center items-center flex-col">
-                  <p className="text-sm font-medium text-fuchsia-600">
+                  <p className="text-sm font-medium text-[#FF69B4]">
                     Sell Rate: {sellRate} {a?.symbol} (≈$
                     {(sellRate * priceA.data).toFixed(3)}) / minute
                   </p>
-                  <p className="text-sm font-medium text-green-700">
+                  <p className="text-sm font-medium text-[#00E000]">
                     Saving ${savedUsdRef.current} ({savedPercentageRef.current}
                     %) from price impact!
                   </p>

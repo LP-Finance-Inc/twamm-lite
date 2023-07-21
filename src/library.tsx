@@ -246,6 +246,7 @@ const RenderWidgetShell = (props: Init) => {
         <LPLogo
           width={classes.widgetLogoSize}
           height={classes.widgetLogoSize}
+          img={props.logoProps.img}
         />
       </div>
 

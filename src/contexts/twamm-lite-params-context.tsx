@@ -11,6 +11,10 @@ export type TwammLiteParamsContext = {
   readonly supportedToken: TokenRegistry;
   readonly useJupiter: boolean;
   readonly endpoint: string;
+  readonly logoProps: {
+    img: string;
+    redirectUrl: string;
+  };
 };
 
 export const Context = createContext<TwammLiteParamsContext | undefined>(
@@ -24,6 +28,10 @@ export const Provider: FC<{
   supportedToken: TokenRegistry;
   useJupiter: boolean;
   endpoint: string;
+  logoProps: {
+    img: string;
+    redirectUrl: string;
+  };
   children: ReactNode;
 }> = ({
   feeAccount,
@@ -33,6 +41,7 @@ export const Provider: FC<{
   useJupiter,
   endpoint,
   children,
+  logoProps,
 }) => {
   const ContextValue = useMemo(
     () => ({
@@ -42,6 +51,7 @@ export const Provider: FC<{
       supportedToken: supportedToken || NEXT_PUBLIC_SUPPORTED_TOKEN,
       useJupiter,
       endpoint,
+      logoProps,
     }),
     [
       feeAccount,
@@ -50,6 +60,7 @@ export const Provider: FC<{
       supportedToken,
       useJupiter,
       endpoint,
+      logoProps,
     ]
   );
 

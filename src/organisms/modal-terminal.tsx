@@ -1,6 +1,7 @@
 import { Wallet } from "@solana/wallet-adapter-react";
 
 import { FormProps } from "src/types";
+import { ModelLogo, ModelLogoLink } from "src/env";
 import WalletDisconnectedGraphic from "src/icons/wallet-connected-graphic";
 
 export default function ModalTerminal({
@@ -17,6 +18,10 @@ export default function ModalTerminal({
       endpoint: rpcUrl,
       formProps,
       passThroughWallet: fakeWallet,
+      logoProps: {
+        img: ModelLogo,
+        redirectUrl: ModelLogoLink,
+      },
     });
   };
 

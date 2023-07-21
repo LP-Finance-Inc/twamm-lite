@@ -1,11 +1,12 @@
 import React from "react";
 
-const LPLogo: React.FC<{ width?: number; height?: number }> = ({
-  width = 24,
-  height = 24,
-}) => (
+const LPLogo: React.FC<{
+  width?: number;
+  height?: number;
+  img?: string;
+}> = ({ width = 24, height = 24, img }) => (
   <img
-    src="https://lite.lp.finance/lp-logo-mobile.png"
+    src={img}
     width={width}
     height={height}
     alt="LP Finance"

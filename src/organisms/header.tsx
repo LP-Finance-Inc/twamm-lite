@@ -8,6 +8,7 @@ import SettingIcon from "src/icons/setting-icon";
 import TransactionRunnerModal from "src/molecules/transaction-runner-modal";
 import useTxRunner from "src/contexts/transaction-runner-context";
 import UniversalPopover, { Ref } from "src/molecules/universal-popover";
+import useTwammLiteParams from "src/contexts/twamm-lite-params-context";
 import WalletButton from "./wallet-button";
 import TransactionProgress from "./transaction-progress";
 import AccountOrders from "./account-orders";
@@ -18,6 +19,7 @@ const Header: FC<{
 }> = ({ setIsWalletModalOpen, setIsOpenSetting }) => {
   const runnerRef = useRef<Ref>();
   const { active } = useTxRunner();
+  const { logoProps } = useTwammLiteParams();
 
   const [isOpenOrders, setIsOpenOrders] = useState<boolean>(false);
 
@@ -49,12 +51,12 @@ const Header: FC<{
       <div className="mt-2 h-7 pl-3 pr-2">
         <div className="w-full flex items-center justify-between">
           <Link
-            href="https://www.twap.so/"
+            href={logoProps.redirectUrl}
             target="_blank"
             rel="noreferrer noopener"
             className="flex items-center space-x-2"
           >
-            <LPLogo width={24} height={24} />
+            <LPLogo width={24} height={24} img={logoProps.img} />
           </Link>
 
           <div className="flex space-x-1 items-center">

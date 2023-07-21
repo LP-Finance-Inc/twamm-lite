@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Wallet } from "@solana/wallet-adapter-react";
 
 import { FormProps } from "src/types";
+import { ModelLogo, ModelLogoLink } from "src/env";
 import { useDebouncedEffect } from "src/utils";
 
 export default function IntegratedTerminal({
@@ -22,6 +23,10 @@ export default function IntegratedTerminal({
       integratedTargetId: "integrated-terminal",
       formProps,
       passThroughWallet: fakeWallet,
+      logoProps: {
+        img: ModelLogo,
+        redirectUrl: ModelLogoLink,
+      },
     });
   };
 

@@ -51,6 +51,10 @@ export interface Init {
   containerStyles?: CSSProperties;
   containerClassName?: string;
   passThroughWallet?: Wallet | null;
+  logoProps: {
+    img: string;
+    redirectUrl: string;
+  };
   scriptDomain?: string;
 }
 

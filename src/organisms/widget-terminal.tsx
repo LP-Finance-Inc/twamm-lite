@@ -3,6 +3,7 @@ import { Wallet } from "@solana/wallet-adapter-react";
 import classNames from "classnames";
 
 import { FormProps, WidgetSize, WidgetPosition } from "src/types";
+import { ModelLogo, ModelLogoLink } from "src/env";
 import { useDebouncedEffect } from "src/utils";
 import LeftArrowIcon from "src/icons/left-arrow-icon";
 import TwammButton from "src/atoms/twamm-button";
@@ -27,6 +28,10 @@ export default function WidgetTerminal(props: {
       formProps,
       passThroughWallet: fakeWallet,
       endpoint: rpcUrl,
+      logoProps: {
+        img: ModelLogo,
+        redirectUrl: ModelLogoLink,
+      },
     });
   };
 

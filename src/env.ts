@@ -25,3 +25,6 @@ export const JUPITER_PRICE_ENDPOINT_V4 = "https://price.jup.ag/v4/price";
 export const NEXT_PUBLIC_ENABLE_TX_SIMUL: string = "0";
 
 export const NEXT_PUBLIC_SUPPORTED_TOKEN = tokenPairRegistry;
+
+export const ModelLogo: string = "https://lite.lp.finance/lp-logo-mobile.png";
+export const ModelLogoLink: string = "https://www.twap.so/";

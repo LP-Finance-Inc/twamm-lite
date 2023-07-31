@@ -25,7 +25,7 @@
     "Offline": "You are offline. Waiting for connection.",
     "OrderCollisionWarning": "You have the order with the opposite direction at this pool already. Cancel it first, then try create the order again.",
     "OrderControlsIntervalsExecutionPeriod": "Execution Period",
-    "OrderControlsIntervalsExecutionPeriodInfo": "Order is broked down into small pieces and executed over the specified period.",
+    "OrderControlsIntervalsExecutionPeriodInfo": "Order is broken down into small pieces and executed over the specified period.",
     "OrderControlsIntervalsScheduleOrder": "Schedule Order",
     "OrderControlsIntervalsScheduleOrderInfo": "Order starts executing after the specified period.",
     "OrderControlsPlaceOrder": "Place Order",

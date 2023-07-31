@@ -1,5 +1,5 @@
 import M from "easy-maybe/lib";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 
 import i18n from "src/i18n/en.json";
 import TimeInterval from "src/atoms/time-interval";
@@ -19,29 +19,31 @@ export default ({
   onSelect: (arg0: IntervalVariant, arg1: boolean) => void;
   selected?: IntervalVariant;
 }) => {
-  const { periodTifs, scheduleTifs, scheduleSelected, periodSelected } =
-    useIndexedTIFs();
+  // const { periodTifs, scheduleTifs, scheduleSelected, periodSelected } =
+  //   useIndexedTIFs();
+  /* Replaced to hide schedule order */
+  const { periodTifs, scheduleSelected, periodSelected } = useIndexedTIFs();
 
   const { useJupiter } = useTwammLiteParams();
 
-  const [instant, setInstant] = useState<number>();
+  // const [instant, setInstant] = useState<number>();
 
-  const onScheduleSelect = useCallback(
-    (value: number) => {
-      if (instant) setInstant(undefined);
+  // const onScheduleSelect = useCallback(
+  //   (value: number) => {
+  //     if (instant) setInstant(undefined);
 
-      M.tap((itifs) => {
-        const indexedTIF = itifs.find((itif) => itif.left === value);
+  //     M.tap((itifs) => {
+  //       const indexedTIF = itifs.find((itif) => itif.left === value);
 
-        if (value === SpecialIntervals.NO_DELAY) {
-          onSelect(value, false);
-        } else if (indexedTIF) {
-          onSelect(indexedTIF, true);
-        }
-      }, M.of(indexedTifs));
-    },
-    [indexedTifs, instant, onSelect]
-  );
+  //       if (value === SpecialIntervals.NO_DELAY) {
+  //         onSelect(value, false);
+  //       } else if (indexedTIF) {
+  //         onSelect(indexedTIF, true);
+  //       }
+  //     }, M.of(indexedTifs));
+  //   },
+  //   [indexedTifs, instant, onSelect]
+  // );
   const onPeriodSelect = useCallback(
     (value: number) => {
       M.tap((itifs) => {
@@ -91,7 +93,7 @@ export default ({
 
   return (
     <>
-      <TimeInterval
+      {/* <TimeInterval
         disabled={disabled}
         info={i18n.OrderControlsIntervalsScheduleOrderInfo}
         label={i18n.OrderControlsIntervalsScheduleOrder}
@@ -99,7 +101,7 @@ export default ({
         value={values.schedule}
         valueIndex={values.scheduleIndex}
         values={scheduleTifs}
-      />
+      /> */}
       <TimeInterval
         disabled={disabled}
         info={i18n.OrderControlsIntervalsExecutionPeriodInfo}

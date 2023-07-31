@@ -343,12 +343,13 @@ export default ({
               sellRate && (
                 <div className="mt-1 pl-1 flex justify-center items-center flex-col">
                   <p className="text-sm font-medium text-[#FF69B4]">
-                    Sell Rate: {sellRate} {a?.symbol} (≈$
-                    {(sellRate * priceA.data).toFixed(3)}) / minute
+                    Swap {sellRate} {a?.symbol} (≈$
+                    {(sellRate * priceA.data).toFixed(3)}) / minute for{" "}
+                    {b?.symbol}
                   </p>
                   <p className="text-sm font-medium text-[#00E000]">
-                    Saving ${savedUsdRef.current} ({savedPercentageRef.current}
-                    %) from price impact!
+                    Save ${savedUsdRef.current} ({savedPercentageRef.current}
+                    %) from price impact
                   </p>
                 </div>
               )}
